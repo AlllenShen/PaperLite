@@ -1,1 +1,1 @@
-"# PaperLite" 
+# PaperLite
