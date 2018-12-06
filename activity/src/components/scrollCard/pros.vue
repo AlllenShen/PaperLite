@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div>
-        
           <router-link to="/mine">
           <Button class=bts1> 
             <div class="text">
