@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <Calender></Calender>
+    <m></m>
   </div>
 </template>
 
 <script>
-import Calender from './components/calender/'
+import m from './views/main.vue'
 export default {
   components: {
-    Calender: Calender
+    m
   }
 }
 </script>
