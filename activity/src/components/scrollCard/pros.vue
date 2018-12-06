@@ -9,7 +9,7 @@
             </div>
           </Button>
           </router-link>
-        <router-link to="/all">
+        <router-link to="/mine">
           <Button class=bts2>
             <div class="text">
               <p>全</p>
@@ -31,15 +31,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .bts1{
   position: fixed;
   font-size: 12px;
   color:#4a4a48;
   left:0%;
-  top:0px;
+  bottom:120px;
   width: 30px;
-  height: 60px;
+  height: 70px;
   border-radius:0px;
 }
 .bts2{
@@ -47,14 +47,14 @@ export default {
   font-size: 12px;
   color:#4a4a48;
   left:0%;
-  top:60px;
+  bottom:50px;
   width: 30px;
-  height: 60px;
+  height: 70px;
   border-radius:0px;
 }
 .text{
   position: absolute;
   left:9px;
-  top:12px;
+  top:14px;
 }
 </style>

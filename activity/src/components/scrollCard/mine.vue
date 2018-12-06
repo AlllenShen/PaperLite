@@ -70,7 +70,7 @@ export default {
                    //这里之所以要设置宽度，是因为.pic-wrapper和.pic-list的宽度一样大          
                    //当.pic-list的宽度大于.pic-wrapper的宽度，才能横向滚动          
                    let proWidth = 120; //这里是设置每张图片的宽度          
-                   let margin = 100;          //width是所有图片的宽度和以及margin的大小和          
+                   let margin = 40;          //width是所有图片的宽度和以及margin的大小和          
                    let width = (proWidth + margin)*this.items.length - margin;          
                    console.log(width);          
                    this.$refs.proList.style.width = width + 'px'; //设置.pic-list的宽度的宽度          
@@ -89,11 +89,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .pro-wrapper{
     position: fixed;
     left:10%;
-    top:0%;
+    bottom: 70px;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -104,7 +104,7 @@ export default {
   .pro-items{
     display: inline-block;
     margin-right: 16px;
-    width:150px;
+    width:120px;
   }
   li{
     float: left;
