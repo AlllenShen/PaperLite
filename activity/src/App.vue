@@ -1,8 +1,18 @@
 <template>
   <div id="app">
-    
+    <Calender></Calender>
   </div>
 </template>
+
+<script>
+import Calender from './components/calender/'
+export default {
+  components: {
+    Calender: Calender
+  }
+}
+</script>
+
 
 <style>
 #app {
