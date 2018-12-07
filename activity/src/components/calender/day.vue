@@ -1,11 +1,12 @@
 <template>
   <div id='calender'>
     <div class="card">
-      <div class="date" v-if="date" :class="{'date-border': activity, 'today': today, 'selected': selected}">{{date}}</div>
+      <div class="date" v-if="date" 
+        :class="{'today': today, 'selected': selected, 'selected-date': activity && selected, 'date-border': activity}">{{date}}</div>
       <div v-else>&nbsp;</div>
     </div>
     <div class="card">
-      <div v-if="activity" class="activity" :class="{'activity-today': selected}">{{activity}}</div>
+      <div v-if="activity" class="activity" :class="{'selected-act': selected}">{{activity}}</div>
       <div v-else>&nbsp;</div>
     </div>
   </div>
@@ -45,14 +46,20 @@ export default {
 }
 .selected{
   background-color: #eeeeee;
-}
-.today {
-  color: #ff7657;
-  /* color: white; */
+  border-radius: 3px;
 }
 .date-border {
   border-left: 1px solid #627a97;
   border-right: 1px solid #627a97;
+}
+.selected-date{
+  border-radius: 0;
+  border-left: 1px solid #ff7657;
+  border-right: 1px solid #ff7657;
+}
+.today {
+  color: #ff7657;
+  /* color: white; */
 }
 .activity{
   color: white;
@@ -60,7 +67,7 @@ export default {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.activity-today {
+.selected-act {
   background-color: #ff7657;
 }
 </style>
