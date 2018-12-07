@@ -3,15 +3,15 @@
     <Row class='header'>
       <Col span="6">
         <div @click="handlePreMonth()">
-          <Icon type="md-arrow-dropleft"/>
+          <Icon size='24' type="md-arrow-dropleft"/>
         </div>
       </Col>
-      <Col span="12" >
+      <Col class="show-date" span="12" >
         {{selectedYear}}年{{selectedMonth}}月{{selectedDate}}日
       </Col>
       <Col span="6">
         <div @click="handleNextMonth()">
-          <Icon type="md-arrow-dropright"/>
+          <Icon size='24' type="md-arrow-dropright"/>
         </div>
       </Col>
     </Row>
@@ -138,6 +138,7 @@ export default {
 .header {
   font-size: 1rem;
   text-align: center;
+  margin-top: 0.5rem;
 }
 
 .main {
