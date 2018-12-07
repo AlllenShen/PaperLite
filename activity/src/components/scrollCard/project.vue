@@ -2,7 +2,7 @@
     <div class="project">
             <div class='card'>
                 <div :style='backColor' class="cardHead">
-                    <p class="title">{{type}}</p>
+                    <p>{{type}}</p>
                 </div>
                 <div class="cardBody">
                     <p>活动名称：{{name}}</p>
@@ -28,11 +28,10 @@
         }
     }
 </script>
-<style>
+<style scoped>
     .card{
         border: 1px solid #dcdee2;
-        border-color: #e8eaec;
-        width: 150px;
+        width: 120px;
         border-radius: 10px;
     }
     .cardHead{
@@ -42,14 +41,19 @@
         text-align: center;
         left:50%;
         color: #fbeed7;
-        padding: 14px 16px;
+        padding: 10px 0px;
         line-height: 1;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+        height: 35px;
     }
     .cardBody{
         font-size: 3px;
         padding: 16px;
+        background-color: #ffffff;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        height:70px;
     }
 </style>
 

@@ -27,10 +27,11 @@ export default {
 
 <style scoped>
 .bar{
-    position: relative;
+    position: fixed;
+    bottom: 0;
     text-align: center;
     padding-top: 11px;
-    width: 360px;
+    width: 100%;
     height: 55px;
     background: #364e68;
     }

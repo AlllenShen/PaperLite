@@ -47,6 +47,7 @@ export default {
       activities: {
         2: 1,
         6: 2,
+        31: 1,
       }
     }
   },
