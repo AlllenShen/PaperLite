@@ -8,9 +8,9 @@ export default {
     data () {
         return{
             items:[
-                {id:1,label:"首页",icon_name:"md-calendar",icon_color:"white",icon_size:"20"},
-                {id:2,label:"浏览",icon_name:"md-list",icon_color:"white", icon_size:"20"},
-                {id:3,label:"我的",icon_name:"md-person",icon_color:"white",icon_size:"20"}
+                {id:1,label:"首页",icon_name:"ios-home",icon_color:"white",icon_size:"24"},
+                {id:2,label:"探索",icon_name:"ios-planet",icon_color:"white", icon_size:"24"},
+                {id:3,label:"我的",icon_name:"ios-notifications",icon_color:"white",icon_size:"24"}
             ]
         }
     },

@@ -33,7 +33,8 @@ export default {
     width: 100%;
     height: 55px;
     background: #364e68;
-    }
+    z-index: 10;
+}
 .left_item {
     position: absolute;   
     margin-left: 3%;

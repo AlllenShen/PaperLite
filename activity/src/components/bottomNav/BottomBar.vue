@@ -34,7 +34,8 @@ export default {
     width: 100%;
     height: 55px;
     background: #364e68;
-    }
+    z-index: 10;
+}
 .item{
     display: flex;
     justify-content: space-around;
