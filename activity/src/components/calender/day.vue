@@ -16,8 +16,6 @@
 export default {
   data () { 
     return { 
-      date: 1,
-      activity: 2,
     }  
   },
   props: {
