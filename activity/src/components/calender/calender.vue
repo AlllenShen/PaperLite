@@ -28,6 +28,7 @@
         </div>
       </div>
     </div>
+    <!-- <div style="clear:both"></div>  -->
   </div>
 </template>
 
@@ -136,6 +137,10 @@ export default {
 </script>
 
 <style lang='less'>
+#calender{
+  overflow:hidden;
+  zoom:1;
+}
 .header {
   font-size: 1rem;
   text-align: center;
