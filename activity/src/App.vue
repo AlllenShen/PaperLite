@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <m></m>
+    <home></home>
   </div>
 </template>
 
 <script>
-import m from './views/main.vue'
+import home from './views/home.vue'
 export default {
   components: {
-    m
+    home
   }
 }
 </script>
@@ -16,7 +16,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'PingFang';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
