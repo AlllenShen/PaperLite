@@ -1,28 +1,20 @@
 <template>
-  <div id="main">
-    <div class='hn'>
-      <headnav></headnav>
-    </div>
-    <div class='ca'>
-      <calender></calender>
-    </div>
-    <div class='pj'>
-      <pros></pros>
-    </div>
-    <div class='bn'>
-      <bottomnav></bottomnav>
-    </div>
+  <div id="home">
+    <headnav></headnav>
+    <calender></calender>
+    <scrollCard></scrollCard>
+    <bottomnav></bottomnav>
   </div>
 </template>
 
 <script>
-import pros from '../components/scrollCard/pros.vue'
+import scrollCard from '../components/scrollCard/'
 import calender from '../components/calender/'
-import bottomnav from '../components/bottomNav/BottomNav.vue'
-import headnav from '../components/headNav/HeadNav.vue'
+import bottomnav from '../components/bottomNav/'
+import headnav from '../components/headNav'
 export default {
   components: {
-    pros,
+    scrollCard,
     calender,
     bottomnav,
     headnav
@@ -31,8 +23,9 @@ export default {
 </script>
   
 <style scoped>
-  #main{
+  #home{
       margin-top: 55px;
+      margin-bottom: 55px;
   }
   /* .hn{
     position: fixed;
