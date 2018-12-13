@@ -26,6 +26,7 @@ export default {
 
 <style scoped>
 .bar{
+<<<<<<< HEAD
     position: relative;
     text-align: center;
     padding-top: 20px;
@@ -33,6 +34,17 @@ export default {
     height: 55px;
     background: #364e68;
     }
+=======
+    position: fixed;
+    top: 0;
+    text-align: center;
+    padding-top: 20px;
+    width: 100%;
+    height: 55px;
+    background: #364e68;
+    z-index: 10;
+}
+>>>>>>> ee95d0afc063ab226c7b444f52e060382bf7edb2
 .left_item {
     position: absolute;   
     margin-left: 3%;
