@@ -92,7 +92,7 @@ export default {
 #scroll-main {
   overflow: hidden;
   /* background-color: #efefef; */
-  /* border-top: solid 5px #efefef; */
+  border-top: solid 5px #efefef;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
