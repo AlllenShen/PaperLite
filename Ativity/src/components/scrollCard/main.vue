@@ -30,21 +30,21 @@ export default {
     return {
       mine: [
           {
-            color: '#ffba5a',
+            color: '#74b49b',
             type: '竞赛活动',
             name:'数学竞赛',
             time:'8:00',
             place:'二教101'
           },
           {
-            color: '#665c84',
+            color: '#ffba6a',
             type: '报告讲座',
             name: '这是一个长名称的测试',
             time: '9:00',
             place:'五教101'
           },
           {
-            color: '#ff7657',
+            color: '#ff987e',
             type: '志愿服务',
             name: '人工智能讲座',
             time: '9:00',

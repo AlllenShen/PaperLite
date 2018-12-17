@@ -39,7 +39,7 @@
   font-weight: bold;
   text-align: center;
   /* left:50%; */
-  color: #fbeed7;
+  color: #ffffff;
   padding: 10px 0px;
   line-height: 1;
   border-top-left-radius: 10px;
