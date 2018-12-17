@@ -3,7 +3,7 @@
     <mainHead title="首页"></mainHead>
     <calender></calender>
     <scrollCard></scrollCard>
-    <mainBottom></mainBottom>
+    <mainBottom current="首页"></mainBottom>
   </div>
 </template>
 

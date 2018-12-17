@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <home></home>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -9,6 +9,9 @@ import home from './views/home.vue'
 export default {
   components: {
     home
+  },
+  created () {
+    this.$router.push('/home')
   }
 }
 </script>

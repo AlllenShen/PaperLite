@@ -106,8 +106,8 @@ export default {
   /* border-bottom: solid 1px #efefef; */
   background-color: #ffffff
 }
-.mine {
-  /* border-top: solid 1px #fafafa; */
+.scroll-pad {
+  padding-left: 0.5rem;
 }
 .select{
   background-color: #627a97;

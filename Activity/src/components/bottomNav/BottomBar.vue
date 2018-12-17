@@ -2,8 +2,8 @@
     <div id="BottomBar">
         <div class="bar">
             <div class="item" :style="{'color': color}">        
-                <div v-for="(item,index) in items" :item="item" >                 
-                    <BarItem>
+                <div v-for="(item,index) in items">                 
+                    <BarItem @click.native="navTo(item.to)">
                         <template slot="Icon" >
                             <Icon v-if="item.selected" :type="item.icon_name" :color="selectedColor" :size="item.icon_size" />
                             <Icon v-else :type="item.icon_name" :color="color" :size="item.icon_size" />
@@ -29,7 +29,7 @@ export default {
     },
     props:{
         items:{
-            type: Object
+            type: Array
         }, 
         color: {
             type: String
@@ -38,6 +38,17 @@ export default {
             type: String
         }
     },
+    data () {
+        return {
+
+        }
+    },
+    methods: {
+        navTo (path) {
+            // console.log(path);
+            this.$router.push(path)
+        }
+    }
 }
 </script>
 
