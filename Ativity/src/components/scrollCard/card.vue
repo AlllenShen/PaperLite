@@ -30,7 +30,7 @@
 <style lang="less" scoped>
 .card{
   border: 1px solid #dcdee2;
-  min-width: 130px;
+  min-width: 115px;
   border-radius: 10px;
 }
 .cardHead{
@@ -48,6 +48,7 @@
 }
 .cardBody{
   // font-size: 3px;
+  font-family: 'PingFang';
   padding: 1rem 0.5rem 1rem 0.5rem;
   background-color: #ffffff;
   border-bottom-left-radius: 10px;

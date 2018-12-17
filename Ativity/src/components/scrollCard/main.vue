@@ -92,7 +92,7 @@ export default {
 #scroll-main {
   overflow: hidden;
   /* background-color: #efefef; */
-  border-top: solid 5px #efefef;
+  /* border-top: solid 5px #efefef; */
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -102,16 +102,16 @@ export default {
   font-size: 12px;
   color:#4a4a48;
   padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-  border-right: solid 1px #efefef;
-  border-bottom: solid 1px #efefef;
+  /* border-right: solid 1px #efefef; */
+  /* border-bottom: solid 1px #efefef; */
   background-color: #ffffff
 }
 .mine {
-  border-top: solid 1px #fafafa;
+  /* border-top: solid 1px #fafafa; */
 }
 .select{
-  background-color: #b3e5fc
-
+  background-color: #627a97;
+  color: white;
 }
 .nav {
   position: relative;

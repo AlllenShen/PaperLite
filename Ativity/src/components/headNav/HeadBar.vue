@@ -32,8 +32,9 @@ export default {
     padding-top: 20px;
     width: 100%;
     height: 55px;
-    background: #364e68;
     z-index: 10;
+    border-bottom: #dedede solid 1px;
+    background-color: white;
 }
 .left_item {
     position: absolute;   
@@ -41,10 +42,11 @@ export default {
     }
 .headline{   
     position: absolute;
+    /* font-weight: bold; */
     font-size: 17px;
-    color: white;
     left: 44%;
     top: 30%;
+    color: #1e1e1e
 }
 .right_item{
     position: absolute;

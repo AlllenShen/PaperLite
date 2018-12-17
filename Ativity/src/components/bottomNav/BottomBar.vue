@@ -1,12 +1,18 @@
 <template>
     <div id="BottomBar">
         <div class="bar">
-            <div class="item">        
-                <div v-for="(item,index) in items" :item="item">                 
+            <div class="item" :style="{'color': color}">        
+                <div v-for="(item,index) in items" :item="item" >                 
                     <BarItem>
-                        <template slot="Icon"><Icon :type="item.icon_name" :color="item.icon_color" :size="item.icon_size" /></template>                           
+                        <template slot="Icon" >
+                            <Icon v-if="item.selected" :type="item.icon_name" :color="selectedColor" :size="item.icon_size" />
+                            <Icon v-else :type="item.icon_name" :color="color" :size="item.icon_size" />
+                        </template>                           
                         <!--<img slot="Img" src="item.url">-->
-                        <template slot="Label"><p>{{item.label}}</p></template>
+                        <template slot="Label">
+                            <p v-if="item.selected" :style="{'color':selectedColor}">{{item.label}}</p>
+                            <p v-else>{{item.label}}</p>
+                        </template>
                     </BarItem>                                        
                 </div>
             </div>            
@@ -21,7 +27,17 @@ export default {
     components:{
         BarItem
     },
-    props:['items'],
+    props:{
+        items:{
+            type: Object
+        }, 
+        color: {
+            type: String
+        }, 
+        selectedColor:{
+            type: String
+        }
+    },
 }
 </script>
 
@@ -33,7 +49,8 @@ export default {
     padding-top: 11px;
     width: 100%;
     height: 55px;
-    background: #364e68;
+    background: #ffffff;
+    border-top: #dedede solid 1px;
     z-index: 10;
 }
 .item{
@@ -45,6 +62,6 @@ export default {
     height:"30px";
 }
 .item p{
-    color: white;
+    /* color: white; */
 }
 </style>

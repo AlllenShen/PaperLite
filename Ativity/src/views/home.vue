@@ -1,23 +1,22 @@
 <template>
   <div id="home">
-    <headnav></headnav>
+    <mainHead title="首页"></mainHead>
     <calender></calender>
     <scrollCard></scrollCard>
-    <bottomnav></bottomnav>
+    <mainBottom></mainBottom>
   </div>
 </template>
 
 <script>
 import scrollCard from '../components/scrollCard/'
 import calender from '../components/calender/'
-import bottomnav from '../components/bottomNav/'
-import headnav from '../components/headNav'
+import { mainBottom, mainHead } from '../components/mainNav/'
 export default {
   components: {
     scrollCard,
     calender,
-    bottomnav,
-    headnav
+    mainBottom,
+    mainHead
   }
 }
 </script>

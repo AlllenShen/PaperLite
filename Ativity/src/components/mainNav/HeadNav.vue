@@ -1,18 +1,22 @@
 <template>
-    <HeadBar v-bind:headline = "bar_title">
+    <HeadBar v-bind:headline="title">
         <template slot="left_element">
-            <Icon type="md-arrow-back" color="white" size="20" />
+            <Icon type="md-arrow-back" color="#7e7e7e" size="24" />
         </template>
-
         <template slot="right_element">
-            <Icon type="md-more" color="white" size="20" />
+            <Icon type="md-more" color="#7e7e7e" size="24" />
         </template>            
     </HeadBar>
 </template>
 
 <script>
-import HeadBar from './HeadBar.vue'
+import HeadBar from '../headNav/'
 export default {
+    props:{
+        title: {
+            type: String
+        },
+    },
     data () {
         return{
             bar_title: '标题'

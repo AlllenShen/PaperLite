@@ -1,3 +1,3 @@
-import headNav from './HeadNav.vue'
+import headNav from './HeadBar.vue'
 
 export default headNav
