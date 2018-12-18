@@ -107,7 +107,7 @@ export default {
   background-color: #ffffff
 }
 .scroll-pad {
-  padding-left: 0.5rem;
+  padding-left: 1rem;
 }
 .select{
   background-color: #627a97;
