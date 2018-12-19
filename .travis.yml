@@ -3,7 +3,7 @@ node_js:
 - '11'
 install:
 - cd Activity
-- cnpm install
+- npm install
 script:
 - npm run build
 after_success:
