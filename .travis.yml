@@ -7,7 +7,7 @@ install:
 script:
 - npm run build
 after_success:
-- ssh root@118.89.48.63 'cd /projects/PaperLite/Activity && git pull && cnpm install && npm run build'
+- ssh root@118.89.48.63 StrictHostKeyChecking=no 'cd /projects/PaperLite && git pull origin dev && build.sh'
 before_install:
 - openssl aes-256-cbc -K $encrypted_7fcec3e17f76_key -iv $encrypted_7fcec3e17f76_iv
   -in id_rsa.pub.enc -out C:\\Users\\93214\\.ssh\\id_rsa.pub -d
