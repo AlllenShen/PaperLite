@@ -16,6 +16,11 @@
                     <div class="bottom">
                         <div>负责人：{{personInCharge}}联系方式：{{numbers}}</div>
                     </div>
+                <div class="st">
+                    <div class="signUp">
+                    报名
+                    </div>
+                </div>
             </div>
                 <div slot="watch" class="f">
                     浏览
@@ -107,5 +112,19 @@
         margin-left:5%;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    .st{
+        position: absolute;
+        right:10px;
+        /* width: 40px; */
+        top:75px;
+    }
+    .signUp{
+      border-radius: 5px;
+      padding:6px 10px 6px 14px;
+      letter-spacing: 4px;
+      color: white;
+      background-color: #ffba5a;
+      font-size: 13px;
     }
 </style>

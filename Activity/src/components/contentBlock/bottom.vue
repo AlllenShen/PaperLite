@@ -3,12 +3,10 @@
             <div class="comment">
             <Input v-model="value8" type="textarea" :autosize="{minRows: 1,maxRows: 3}" placeholder="添加评论" />
             </div>
-        <div class="team">
-        组队
+        <div class="announce">
+        发布
         </div>
-        <div class="signUp">
-        报名
-        </div>
+        
         
     <!-- <Drawer  placement="down" :closable="false" v-model="value1">
         <div class="comment">
@@ -49,18 +47,13 @@
         width:80%;
         color: #bdbdbd;
     }
-    .team{
+    .announce{
         position: relative;
-        top:15px;
+        top:12px;
         float: right;
-        margin-right:5px;
+        margin-right:16px;
         color: #364e68;
+        font-size: 15px;
     }
-    .signUp{
-        position: relative;
-        float: right;
-        top:15px;
-        margin-right: 5px;
-        color: #ff7657;
-    }
+    
 </style>
