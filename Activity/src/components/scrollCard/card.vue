@@ -1,5 +1,5 @@
 <template>
-  <div class='card' :style="{width: width + 'px'}">
+  <div class='card' :style="{width: width + 'px'}" @click="goTail">
     <div :style='backColor' class="cardHead">
       <p>{{type}}</p>
     </div>
@@ -23,6 +23,11 @@
     props: ['color','type','name','time','place', 'width'],
     mounted () {   
       this.backColor = {backgroundColor: this.color}
+    },
+    methods:{
+      goTail() {
+        this.$router.push('/detail')
+      }
     }
   }
 </script>

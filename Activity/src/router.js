@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import detail from './views/detail.vue'
 import actList from './components/activityList'
 import explore from './views/explore'
 import home from './views/home'
@@ -20,5 +20,10 @@ export default new Router({
       path: '/home',
       component: home
     },
+    {
+      name: 'detail',
+      path: '/detail',
+      component: detail
+    }
   ]
 })
