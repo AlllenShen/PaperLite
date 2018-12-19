@@ -17,7 +17,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 #app {
   font-family: 'PingFang';
   -webkit-font-smoothing: antialiased;
