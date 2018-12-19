@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import test from './test.vue'
 import './registerServiceWorker'
 import iView from 'iview'
 import router from './router'
@@ -12,5 +13,5 @@ Vue.bus = bus
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(test)
 }).$mount('#app')
