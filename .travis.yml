@@ -13,5 +13,5 @@ install:
 script:
 - npm run build
 after_success:
-- ssh root@118.89.48.63 -o StrictHostKeyChecking=no 'cd /projects/PaperLite && git
+- ssh root@118.89.48.63 -o StrictHostKeyChecking=no 'cd /root/projects/PaperLite && git
   pull origin dev && build.sh'
