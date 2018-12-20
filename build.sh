@@ -1,3 +1,4 @@
+#!/bin/bash
 echo -----------------
 echo run build.sh
 cd Activity
