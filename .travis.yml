@@ -7,7 +7,6 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - eval $(ssh-agent)
 - export TZ='Asia/Shanghai'
-- ssh root@118.89.48.63 -o StrictHostKeyChecking=no
 install:
 - cd Activity
 - npm install
