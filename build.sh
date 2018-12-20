@@ -2,7 +2,7 @@
 echo -----------------
 echo run build.sh
 echo -----------------
-cd /root/projects/PaperLite/Activity
+cd Activity
 npm install
 npm run build
 echo -----------------
