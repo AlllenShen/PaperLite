@@ -1,3 +1,7 @@
+echo -----------------
+echo run build.sh
 cd Activity
-cnpm install
+npm install
 npm run build
+echo build finished
+echo -----------------
