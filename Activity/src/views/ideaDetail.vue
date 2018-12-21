@@ -1,18 +1,22 @@
 <template>
     <div>
+        <!-- 调用headnav 实现返回按钮 发布按钮 参考mine.vue -->
         <div>
+            <!-- 用原生textarea 去除边框 -->
             <Input v-model="value1" type="textarea" :rows="8" placeholder="写下你的想法吧....." />
         </div>
 
         <!-- 按键 -->
         <div>
+            <!-- 调节pading和margin的间隔 -->
             <Icon type="md-images" size="34"/>
+            <!-- 用span 不选中时边框+白底 选中填充+白字 -->
             <Button type="warning"@click="noname">匿名</Button>
-
         </div>
-
         <div>
+            <!-- 用简洁模式 -->
             <Collapse v-model="value2">
+                <!-- 内容用data的数据 不要写死 数据会从服务器请求 注意结构  下同 -->
                 <Panel name="1">
                     面向人群:
                     <p slot="content">

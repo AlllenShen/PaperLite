@@ -32,7 +32,7 @@ export default {
                     label:"我的",
                     icon_name:"ios-notifications",
                     icon_size:"26",
-                    // to: '/mine'
+                    to: '/mine'
                 }
             ],
             color: '#bdbdbd',
@@ -46,7 +46,7 @@ export default {
         for (let item in this.items) {
             if (this.items[item].label == this.current){
                 this.items[item].selected = true
-                console.log(this.items[item]);
+                // console.log(this.items[item]);
             }
         }
     }
