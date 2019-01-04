@@ -5,7 +5,12 @@ import os
 os.chdir('..')
 from sqlalchemy.exc import InvalidRequestError
 
-from models import Session, Student, Academy, Activity, Organization, Teacher
+from models import session_factory, Student, Academy, Activity, Organization, Teacher
+
+"""
+ TODO:
+    - 抓取逻辑需要调整以处理对错误情况，保证数据完整
+"""
 
 
 class SecondaryLessonSpider:
@@ -28,7 +33,7 @@ class SecondaryLessonSpider:
         if r.status_code != 200 :
             raise ValueError('login request responses {}. Check values'.format(r.status_code))
         self.headers['authorization'] = 'Bearer ' + r.json()['data']
-        self.session = Session()
+        self.session = session_factory()
         self.log = open('error.log', 'a', encoding='utf-8')
 
     def __del__(self):
