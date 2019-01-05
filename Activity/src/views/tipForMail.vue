@@ -29,13 +29,13 @@
 </script>
 <style scoped>
 .MailBox h3{
-    position: center;
+    /* position: center; */
     top: 14px;
-    line-height: 24px;
+    /* line-height: 24px; */
     padding: 8px 0;
     color: #364e68;
     font-size: 30px;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-style: 微软雅黑;
 }
 .MailBox p{
@@ -43,7 +43,6 @@
     font-size:5px;
     padding-top: 0px;
     text-align:center;
-    
 }
 .MailBox #mail{
     margin-top: 10px;

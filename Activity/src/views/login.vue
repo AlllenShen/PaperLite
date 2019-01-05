@@ -1,16 +1,28 @@
 <template>
     <div class="loginbox">
-        <h3>{{title}}</h3>
-        <p>{{tip}}</p>
-        <span class="erroe-show" v-show="error_warning">{{tip_warning}}</span>
+        <!-- 不要用原来那种定位方式，h和p这种tag一般都在文章中才使用
+            用class或者id定位就行    
+         -->
+        <div class="title"> <span>{{title}}</span> </div>
+        <!-- 提示信息统一在这显示 -->
+        <div class="tip"> <span>{{tip}}</span> </div>
+        <!-- <span class="erroe-show" v-show="error_warning">{{tip_warning}}</span> -->
+        <div class="login">
             <form name="login" id="login" >
-                <label for="username">学号：</label>
-                <input type="text" placeholder="请输入学号" v-bind="username" id="username" autofocus /><br>
-                <label for="psw" >密码：</label>
-                <input type="password"  placeholder="请输入密码" v-bind="psw" id="psw"/><br>
-                <input type="button" value="取消" @click="exit()" id="exit"/>
-                <input type="button" value="登录" @click="loginin()" id="check-in"/>
+                <div class="center">
+                    <label class="input-label" for="username">学号</label>
+                    <input type="text" v-bind="username" id="username" autofocus /><br>
+                </div>
+                <div class="center">
+                    <label class="input-label" for="pw" >密码</label>
+                    <input type="password" v-bind="pw" id="pw"/><br>
+                </div>
+                <div class="center btn">
+                    <input type="button" value="取消" @click="exit()" id="exit"/>
+                    <input type="button" value="登录" @click="login()" id="commit"/>
+                </div>
             </form>  
+        </div>
   </div>
 </template>
 <script>
@@ -18,91 +30,166 @@
         data(){
             return{
                 title:"登录",
-                tip:"请使用信息门户密码登录！",
+                tip:"使用信息门户账号密码即可登录",
+                // 这里不用tip_warning，登录失败直接改写tip就能显示
                 tip_warning:"用户名或密码错误",
                 error_warning:false,
                 username:'',
-                psw:'',
+                pw:'',
             }
         },
         methods:{
-        loginin:function(){
-            if(this.username!=username||this.psw!=password)
-            {
-                this.error_warning=true;
-            }else{
-                this.error_warning=false;
-            }
+        login:function(){
+            /* 服务器会返回一个json串，类似
+                {
+                    msg: 'login success',
+                    code: 200,
+                    user_info: {
+                        ...
+                    }
+                }
+                或者
+                {
+                    msg: 'wrong password',
+                    code: 403,
+                }
+                通过这个json判断登录状态并且把信息写入到cookie
+                cookie的相关函数我有还没弄过来
+            */
+            // if(this.username!=username||this.pw!=password)
+            // {
+            //     this.error_warning=true;
+            // }else{
+            //     this.error_warning=false;
+            // }
         }
-    }       
+    }        
 }
 </script>
 <style scoped>
+.center {
+    max-width: 80%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
 
-.loginbox h3{
-    position: center;
-    top: 14px;
-    line-height: 24px;
+.loginbox {
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.title{
+    /* position: center; */
+    /* center是无效的 应该是想用absolute定位
+        这里不要使用绝对定位，用margin把div撑开即可
+     */
+    /* top: 14px; */
+    /* line-height: 24px; */
     padding: 8px 0;
     color: #364e68;
-    font-size: 70px;
-    font-weight: bold;
-    font-style: 微软雅黑;
+    font-size: 30px;
+    /* font-style: 微软雅黑; */
+    font-family: PingFangSC-Ultralight, sans-serif;
+    border-bottom: #364e68 solid 1px;
+    padding-left: 5px;
 }
-.loginbox p{
+.tip {
+    color: #ff7657;
+    background-color: #f3f3f3;
+    margin: 1rem 0 1rem 0;
+    padding: 1rem 0 1rem 0;
+    text-align:center;
+    font-size: 15px;
+    border-radius: 2px;
+}
+
+.input-label {
+    color: #364e68;
+    font-size: 16px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.login {
+    padding-top: 1rem;
+}
+
+.login input {
+    margin-top: 1rem;
+    border: none;
+    border-bottom: #364e68 solid 1px;
+    width: 70%;
+    height: 30px;
+}
+
+.login input:hover {
+    border: none;
+    border-bottom: #364e68 solid 1px;
+}
+
+/* .loginbox span{
     color: #ff7657;
     font-size:5px;
     padding-top: 0px;
     text-align:center;
-    
-}
-.loginbox span{
-    color: #ff7657;
-    font-size:5px;
-    padding-top: 0px;
-    text-align:center;
-}
-.login input[type='text']{
-    width:20px;
-    height:20px;
-}
+} */
+
 .login input[type='button']{
-    position: center;
+    /* position: center;
     display: block;
     font-size: 18px;
     text-align: center;
-    font-style: 微软雅黑;
-    margin:0 auto;
-       
+    font-style: 微软雅黑; 这段没意义*/
+    border-bottom: 1px solid #364e68;
+    color: #364e68;  
+    background-color: #ffffff;
+    font-size: 16px; 
+    /* margin-top: 30px; */
+    /* margin-right: 30px; */
+    height: 30px;
+    width: 30%;
 }
-.loginbox #username{
-    margin-top: 10px;
-    position: center;
-    width:200px;
+
+.btn {
+    margin-top: 2rem;
+}
+
+#commit {
+    float: right;
+    border-bottom: 1px solid #ff7657;
+}
+
+/* id选择器可以直接定位 */
+/* #username{ */
+    /* margin-top: 10px; */
+    /* position: center; */
+    /* width: 40%;
     height:30px ;
 }
-.loginbox #psw{
+#pw{
     margin-top: 30px;
     position: center;
     width:200px;
     height:30px ;
-}
-.loginbox #exit{  
-    border: 2px solid #ff7657;
-    background: #ff7657;
-    color: #fff;   
-    font-size: 20px;
+} */
+/* #exit{  
+    border-bottom: 1px solid #364e68;
+    color: #364e68;  
+    background-color: #ffffff;
+    font-size: 16px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px; 
     margin-top: 30px;
     margin-right: 30px;
-    height: 50px;
-    width:80px; 
+    height: 30px;
+    width: 30%; 
     
 }
-.loginbox #check-in{
+#commit{
     border: 2px solid #364e68;
     background: #364e68;
     color: #fff;
@@ -115,5 +202,5 @@
     margin-left: 30px;
     height: 50px;
     width:80px; 
-}
+} */
 </style>

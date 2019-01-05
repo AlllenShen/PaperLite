@@ -6,6 +6,8 @@ import mine from './views/mine.vue'
 import actList from './components/activityList'
 import explore from './views/explore'
 import home from './views/home'
+import login from './views/login'
+import tipForMail from './views/tipForMail'
 
 Vue.use(Router)
 
@@ -36,6 +38,16 @@ export default new Router({
       name: 'detail',
       path: '/detail',
       component: detail
+    },
+    {
+      name: 'login',
+      path: '/login',
+      component: login
+    },
+    {
+      name: 'tipForMail',
+      path: '/tipForMail',
+      component: tipForMail
     }
   ]
 })

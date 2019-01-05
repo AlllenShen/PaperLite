@@ -9,7 +9,9 @@
             <Icon type="md-more" color="#7e7e7e" size="24" />
         </template>
     </headNav>
-    <router-link to="/idea">想法页</router-link>
+    <router-link to="/idea">想法页</router-link> <br>
+    <router-link to="/login">login</router-link> <br>
+    <router-link to="/tip-for-mail">tip-for-mail</router-link>
     <router-view></router-view>
     <mainBottom current="我的"></mainBottom>  
 </div>
