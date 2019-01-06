@@ -5,13 +5,13 @@
          -->
         <div class="title"> <span>{{title}}</span> </div>
         <!-- 提示信息统一在这显示 -->
-        <div class="tip"> <span>{{tip}}</span> </div>
+        <div class="tip"> <span v-html="tip"></span> </div>
         <!-- <span class="erroe-show" v-show="error_warning">{{tip_warning}}</span> -->
         <div class="login">
             <form name="login" id="login" >
                 <div class="center">
-                    <label class="input-label" for="username">学号</label>
-                    <input type="text" v-bind="username" id="username" autofocus /><br>
+                    <label class="input-label" for="email">邮箱</label>
+                    <input type="text" v-bind="email" id="email" autofocus /><br>
                 </div>
                 <div class="center">
                     <label class="input-label" for="pw" >密码</label>
@@ -30,11 +30,11 @@
         data(){
             return{
                 title:"登录",
-                tip:"使用信息门户账号密码即可登录",
+                tip:'<strong>使用第二课堂邮箱密码登录</strong> <br> 没有第二课堂账号？<a href="https://dev.wxhfut.com/student/#/register">前往注册</a>',
                 // 这里不用tip_warning，登录失败直接改写tip就能显示
                 tip_warning:"用户名或密码错误",
                 error_warning:false,
-                username:'',
+                email:'',
                 pw:'',
             }
         },
@@ -56,7 +56,7 @@
                 通过这个json判断登录状态并且把信息写入到cookie
                 cookie的相关函数我有还没弄过来
             */
-            // if(this.username!=username||this.pw!=password)
+            // if(this.email!=email||this.pw!=password)
             // {
             //     this.error_warning=true;
             // }else{
@@ -165,7 +165,7 @@
 }
 
 /* id选择器可以直接定位 */
-/* #username{ */
+/* #email{ */
     /* margin-top: 10px; */
     /* position: center; */
     /* width: 40%;
