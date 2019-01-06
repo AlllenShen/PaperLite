@@ -46,7 +46,7 @@ export default new Router({
     },
     {
       name: 'tipForMail',
-      path: '/tipForMail',
+      path: '/tip-for-mail',
       component: tipForMail
     }
   ]

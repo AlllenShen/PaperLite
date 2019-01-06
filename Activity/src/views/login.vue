@@ -122,6 +122,9 @@
     border-bottom: #364e68 solid 1px;
     width: 70%;
     height: 30px;
+    outline: none;
+    -webkit-appearance : none; /* 去除圆角 */
+    border-radius: 0;
 }
 
 .login input:hover {
