@@ -11,7 +11,11 @@ export default {
     home
   },
   created () {
-    this.$router.push('/home')
+    let route = document.URL.split('#')[1]
+    console.log(route);
+    if (route == '/')
+      route = '/home'
+    this.$router.push(route)
   }
 }
 </script>
