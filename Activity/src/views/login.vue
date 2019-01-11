@@ -37,7 +37,7 @@
                 error_warning:false,
                 email: '932142511@qq.com',
                 pw: 'ssh19970912',
-                loginAPI: 'http://127.0.0.1:8888/user/login'
+                loginAPI: 'http://118.89.48.63:8001/user/login'
             }
         },
         methods:{
@@ -64,7 +64,7 @@
                             this.tip = '<strong>用户名或密码错误</strong>'
                         }
                     }, (response) => {
-                        this.tip = '<strong>登录请求失败</strong> 请检查您的网络'
+                        this.tip = '<strong>登录请求失败</strong> 请检查您的网络 <br> 或者服务器挂了...'
                     })
             }
     }        
