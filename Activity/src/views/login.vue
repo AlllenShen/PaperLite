@@ -35,8 +35,8 @@
                 // 这里不用tip_warning，登录失败直接改写tip就能显示
                 // tip_warning: "用户名或密码错误",
                 error_warning:false,
-                email: '932142511@qq.com',
-                pw: 'ssh19970912',
+                email: '',
+                pw: '',
                 loginAPI: 'http://118.89.48.63:8001/user/login'
             }
         },
