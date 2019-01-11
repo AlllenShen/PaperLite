@@ -11,11 +11,11 @@
             <form name="login" id="login" >
                 <div class="center">
                     <label class="input-label" for="email">邮箱</label>
-                    <input type="text" v-bind="email" id="email" autofocus /><br>
+                    <input type="text" v-model="email" id="email" autofocus /><br>
                 </div>
                 <div class="center">
                     <label class="input-label" for="pw" >密码</label>
-                    <input type="password" v-bind="pw" id="pw"/><br>
+                    <input type="password" v-model="pw" id="pw"/><br>
                 </div>
                 <div class="center btn">
                     <input type="button" value="取消" @click="exit()" id="exit"/>
@@ -26,43 +26,47 @@
   </div>
 </template>
 <script>
+    import utils from '../assets/utils'
     export default {
         data(){
             return{
-                title:"登录",
-                tip:'<strong>使用第二课堂邮箱密码登录</strong> <br> 没有第二课堂账号？<a href="https://dev.wxhfut.com/student/#/register">前往注册</a>',
+                title: "登录",
+                tip: '<strong>使用第二课堂邮箱密码登录</strong> <br> 没有第二课堂账号？<a href="https://dev.wxhfut.com/student/#/register">前往注册</a>',
                 // 这里不用tip_warning，登录失败直接改写tip就能显示
-                tip_warning:"用户名或密码错误",
+                // tip_warning: "用户名或密码错误",
                 error_warning:false,
-                email:'',
-                pw:'',
+                email: '932142511@qq.com',
+                pw: 'ssh19970912',
+                loginAPI: 'http://127.0.0.1:8888/user/login'
             }
         },
         methods:{
-        login:function(){
-            /* 服务器会返回一个json串，类似
-                {
-                    msg: 'login success',
-                    code: 200,
-                    user_info: {
-                        ...
-                    }
-                }
-                或者
-                {
-                    msg: 'wrong password',
-                    code: 403,
-                }
-                通过这个json判断登录状态并且把信息写入到cookie
-                cookie的相关函数我有还没弄过来
-            */
-            // if(this.email!=email||this.pw!=password)
-            // {
-            //     this.error_warning=true;
-            // }else{
-            //     this.error_warning=false;
-            // }
-        }
+            login () {
+                // todo: 格式校验
+                // console.log(this.pw, this.email);
+                this.$http.post(
+                    this.loginAPI,
+                    {
+                        'email': this.email,
+                        'pw': this.pw
+                    }).then((response) => {
+                        console.log(response.data)
+                        let data = response.data
+                        if (data.code == 200) {
+                            utils.setCookie('userInfo', data.user_info)
+                            this.$emit('loginSuccess', data.user_info)
+                            console.log('emit');
+                        }
+                        if (data.code == 400) {
+                            this.tip = '<strong>登录错误</strong>'
+                        }
+                        if (data.code == 403) {
+                            this.tip = '<strong>用户名或密码错误</strong>'
+                        }
+                    }, (response) => {
+                        this.tip = '<strong>登录请求失败</strong> 请检查您的网络'
+                    })
+            }
     }        
 }
 </script>
