@@ -8,17 +8,17 @@
                     <div class="proName">{{name}}娲诲姩</div>
                 </div>
                     <div class="head">
-                        <div>鏃堕棿锛歿{time}}</div>
-                        <div>鍦扮偣锛歿{place}}</div>
-                        <div>闈㈠悜浜虹兢锛歿{people}}</div>
-                        <div>鍐呭锛歿{content}}</div>
+                        <div>时间：{{time}}</div>
+                        <div>地点：{{place}}</div>
+                        <div>面向人群：{{people}}</div>
+                        <div>内容：{{content}}</div>
                     </div>
                     <div class="bottom">
-                        <div>璐熻矗浜猴細{{personInCharge}}鑱旂郴鏂瑰紡锛歿{numbers}}</div>
+                        <div>负责人：{{personInCharge}}联系方式：{numbers}}</div>
                     </div>
                 <div class="st">
                     <div class="signUp">
-                    鎶ュ悕
+                    报名
                     </div>
                 </div>
             </div>
