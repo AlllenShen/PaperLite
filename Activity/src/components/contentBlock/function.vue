@@ -25,7 +25,7 @@
                 <div slot="watch" class="f">
                     <img src="../../photos/liulan.png" class="watchIcon">
                     <div class="count">
-                        {{likeCount}}
+                        {{watchCount}}
                     </div>
                 </div>
                 <div slot="comment" class="f">
@@ -37,13 +37,13 @@
                 <div slot="like" class="f" >
                     <img src="../../photos/pinglun.png" class="commentIcon">
                     <div class="count">
-                        {{likeCount}}
+                        {{commentCount}}
                     </div>
                 </div>
                 <div slot="team" class="f">
                     <img src="../../photos/icons_Group_.png" class="teamIcon">
                     <div class="count">
-                        {{likeCount}}
+                        {{teamCount}}
                     </div>
                 </div>
         </functionFrame>
@@ -58,7 +58,10 @@
                 islike: false,
                 iconType: 'md-heart-outline',
                 iconColor: '#4a4a48',
-                likeCount: 15
+                likeCount: 15,
+                watchCount:135,
+                commentCount:34,
+                teamCount:11
             }
         },
         components: {
