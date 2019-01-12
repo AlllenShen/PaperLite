@@ -5,7 +5,7 @@
                 <div>
                     <div class="projectColor">
                     </div>
-                    <div class="proName">{{name}}娲诲姩</div>
+                    <div class="proName">{{name}}活动</div>
                 </div>
                     <div class="head">
                         <div>时间：{{time}}</div>
