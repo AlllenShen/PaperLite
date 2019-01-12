@@ -14,7 +14,7 @@
                         <div>内容：{{content}}</div>
                     </div>
                     <div class="bottom">
-                        <div>负责人：{{personInCharge}}联系方式：{numbers}}</div>
+                        <div>负责人：{{personInCharge}}联系方式：{{numbers}}</div>
                     </div>
                 <div class="st">
                     <div class="signUp">
