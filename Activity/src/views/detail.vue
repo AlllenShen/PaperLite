@@ -4,7 +4,8 @@
     <div class="change">
       <headNav headline="详情">
         <template slot="left_element">
-            <Icon type="md-arrow-back" color="#7e7e7e" size="24" />
+            <Icon type="ios-arrow-back" color="#7e7e7e" size="26"
+                @click="back()"/>
         </template>
       </headNav>
       <func></func>
@@ -38,7 +39,12 @@ export default {
     func,
     comment,
     headNav
-  }
+  },
+  methods: {
+        back () {
+            this.$router.go(-1)
+        }
+    }
 }
 </script>
 
@@ -52,8 +58,7 @@ export default {
         margin-bottom:50px;
     }
     .choose{
-      margin-top:10px;
-      border-top: 1px solid #e0e0e0;
+      border-top: 5px solid #efefef;
       border-bottom: 1px solid #e0e0e0;
     }
     
