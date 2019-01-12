@@ -37,7 +37,8 @@
                 error_warning:false,
                 email: '',
                 pw: '',
-                loginAPI: 'http://118.89.48.63:8001/user/login'
+                // loginAPI: 'http://118.89.48.63:8001/user/login',
+                loginAPI: 'http://127.0.0.1:8888/user/login'
             }
         },
         methods:{
@@ -54,6 +55,8 @@
                         let data = response.data
                         if (data.code == 200) {
                             utils.setCookie('userInfo', data.user_info)
+                            utils.setCookie('token', data.token)
+                            utils.setCookie('expires', data.expires)
                             this.$emit('loginSuccess', data.user_info)
                             console.log('emit');
                         }
