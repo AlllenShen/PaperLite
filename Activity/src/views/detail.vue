@@ -58,8 +58,7 @@ export default {
         margin-bottom:50px;
     }
     .choose{
-      margin-top:10px;
-      border-top: 1px solid #e0e0e0;
+      border-top: 5px solid #efefef;
       border-bottom: 1px solid #e0e0e0;
     }
     
