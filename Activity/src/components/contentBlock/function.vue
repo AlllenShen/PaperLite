@@ -14,7 +14,7 @@
                         <div>内容：{{content}}</div>
                     </div>
                     <div class="bottom">
-                        <div>负责人：{{personInCharge}}联系方式：{{numbers}}</div>
+                        <div>负责人：{{personInCharge}}联系方式：{numbers}}</div>
                     </div>
                 <div class="st">
                     <div class="signUp">
@@ -23,17 +23,28 @@
                 </div>
             </div>
                 <div slot="watch" class="f">
-                    浏览
+                    <img src="../../photos/liulan.png" class="watchIcon">
+                    <div class="count">
+                        {{likeCount}}
+                    </div>
                 </div>
                 <div slot="comment" class="f">
-                    评论
+                    <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="20"/>
+                    <div class="count">
+                        {{likeCount}}
+                    </div>
                 </div>
                 <div slot="like" class="f" >
-                    <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="20"/>
-                    {{likeCount}}
+                    <img src="../../photos/pinglun.png" class="commentIcon">
+                    <div class="count">
+                        {{likeCount}}
+                    </div>
                 </div>
                 <div slot="team" class="f">
-                    组队
+                    <img src="../../photos/icons_Group_.png" class="teamIcon">
+                    <div class="count">
+                        {{likeCount}}
+                    </div>
                 </div>
         </functionFrame>
     </div>
@@ -126,5 +137,20 @@
       color: white;
       background-color: #ffba5a;
       font-size: 13px;
+    }
+    .watchIcon{
+        width:24px;
+        margin-top:-3px;
+    }
+    .commentIcon{
+        width:18px;
+        margin-top:0px;
+    }
+    .teamIcon{
+        margin-top:-3px;
+        width:24px;
+    }
+    .count{
+        float:right;
     }
 </style>
