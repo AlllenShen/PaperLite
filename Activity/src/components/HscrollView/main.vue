@@ -36,7 +36,7 @@
           eventPassthrough: 'vertical',
         })
         this.$refs.content.style.width = this.width + 'px';
-        console.log(this.scroll);
+        // console.log(this.scroll);
       },
       disable() {
         // 代理better-scroll的disable方法

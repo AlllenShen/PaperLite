@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '11'
+before_install:
+- openssl aes-256-cbc -K $encrypted_9635d272d587_key -iv $encrypted_9635d272d587_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- export TZ='Asia/Shanghai'
+install:
+- cd Activity
+- npm install
+script:
+- npm run build
+after_success:
+- ssh root@118.89.48.63 -o StrictHostKeyChecking=no 'cd /root/projects/PaperLite && git
+  pull origin dev && source build.sh'

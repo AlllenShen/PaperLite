@@ -104,7 +104,7 @@ export default {
         };
         total_calendar_list.push(obj);
       }
-      console.log(total_calendar_list);
+      // console.log(total_calendar_list);
       return total_calendar_list;
     },
     handlePreMonth() {
