@@ -37,8 +37,8 @@
                 error_warning:false,
                 email: '',
                 pw: '',
-                // loginAPI: 'http://118.89.48.63:8001/user/login',
-                loginAPI: 'http://127.0.0.1:8888/user/login'
+                loginAPI: 'http://118.89.48.63:8001/user/login',
+                // loginAPI: 'http://127.0.0.1:8888/user/login'
             }
         },
         methods:{

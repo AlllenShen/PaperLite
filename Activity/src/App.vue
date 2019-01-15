@@ -12,8 +12,8 @@ export default {
       login: false,
       userInfo: null,
       route: null,
-      // loginAPI: 'http://118.89.48.63:8001/user/login'
-      loginAPI: 'http://127.0.0.1:8888/user/login'
+      loginAPI: 'http://118.89.48.63:8001/user/login'
+      // loginAPI: 'http://127.0.0.1:8888/user/login'
     }
   },
   created () {
