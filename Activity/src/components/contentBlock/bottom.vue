@@ -4,7 +4,7 @@
         </div>
         <div class="child" id="child" v-show="maskShow">
             <div class="newComment">
-                <textarea rows="2" cols="30"  placeholder="添加评论">
+                <textarea rows="2" cols="30" placeholder="添加评论">
                     
                 </textarea>
             </div>
@@ -76,15 +76,14 @@
         position: relative;
         float: left;
         top:2px;
-        margin-left: 10px;
-        width:80%;
+        margin-left: 9px;
         color: #bdbdbd;
     }
     .announce{
         position: relative;
         top:12px;
         float: right;
-        margin-right:30px;
+        margin-right:8%;
         color: #364e68;
         font-size: 15px;
     }
