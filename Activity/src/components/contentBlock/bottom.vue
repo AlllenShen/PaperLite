@@ -1,7 +1,9 @@
 <template>
     <div class="bottom">
             <div class="comment">
-            <Input v-model="value8" type="textarea" :autosize="{minRows: 1,maxRows: 3}" placeholder="添加评论" />
+                <textarea rows="1" cols="40" placeholder="添加评论">
+
+                </textarea>
             </div>
         <div class="announce">
         发布
@@ -42,10 +44,14 @@
     .comment{
         position: relative;
         float: left;
-        top:8px;
+        top:13px;
         margin-left: 10px;
         width:80%;
         color: #bdbdbd;
+    }
+    textarea{
+        resize: none;
+        border-style:none;
     }
     .announce{
         position: relative;
