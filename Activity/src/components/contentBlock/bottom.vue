@@ -4,8 +4,7 @@
         </div>
         <div class="child" id="child" v-show="maskShow">
             <div class="newComment">
-                <textarea rows="2" cols="30" placeholder="添加评论">
-                    
+                <textarea rows="2" cols="39" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
                 </textarea>
             </div>
             <div class="announce">
@@ -25,11 +24,23 @@
         data: function(){
             return {
                 maskShow: false,
+                focusState: false
             }
         },
         methods: {
             setMaskShow(){
                 this.maskShow = !this.maskShow;
+                this.focusState = true 
+            }
+        },
+        directives: {
+            focus: {
+            //根据focusState的状态改变是否聚焦focus
+                update: function (el, {value}) {    //第二个参数传进来的是个json
+                    if (value) {
+                        el.focus()
+                    }
+                }
             }
         }
     }
@@ -54,8 +65,9 @@
     opacity: 0.3;
     } 
     textarea{
-            resize: none;
-            font-size: 15px;
+        resize: none;
+        font-size: 15px;
+        padding:1px;
     }
     .child{
         position: fixed;
@@ -69,21 +81,21 @@
         bottom:-2px;
         width:100%;
         color: #bdbdbd;
-        margin-left: 10px;
+        margin-left: 11px;
         font-size: 15px;
     }
     .newComment{
         position: relative;
         float: left;
-        top:2px;
+        top:1px;
         margin-left: 9px;
         color: #bdbdbd;
     }
     .announce{
         position: relative;
-        top:12px;
+        top:23px;
         float: right;
-        margin-right:8%;
+        margin-right:2%;
         color: #364e68;
         font-size: 15px;
     }
