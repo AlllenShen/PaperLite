@@ -4,7 +4,7 @@
         </div>
         <div class="child" id="child" v-show="maskShow">
             <div class="newComment">
-                <textarea rows="2" cols="39" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
+                <textarea rows="2" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
                 </textarea>
             </div>
             <div class="announce">
@@ -67,7 +67,9 @@
     textarea{
         resize: none;
         font-size: 15px;
-        padding:1px;
+        padding:2px;
+        width: 100%;
+        height:48px;
     }
     .child{
         position: fixed;
@@ -78,10 +80,10 @@
     }
     .comment{
         position: relative;
-        bottom:-2px;
+        bottom:-3px;
         width:100%;
         color: #bdbdbd;
-        margin-left: 11px;
+        margin-left: 12px;
         font-size: 15px;
     }
     .newComment{
@@ -90,6 +92,8 @@
         top:1px;
         margin-left: 9px;
         color: #bdbdbd;
+        width: 85%;
+        height:48px;
     }
     .announce{
         position: relative;
