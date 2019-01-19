@@ -23,7 +23,7 @@
                 </div>
             </div>
                 <div slot="watch" class="f">
-                    <img src="../../photos/liulan.png" class="watchIcon">
+                    <img src="../../assets/img/liulan.png" class="watchIcon">
                     <div class="count">
                         {{watchCount}}
                     </div>
@@ -35,13 +35,13 @@
                     </div>
                 </div>
                 <div slot="like" class="f" >
-                    <img src="../../photos/pinglun.png" class="commentIcon">
+                    <img src="../../assets/img/pinglun.png" class="commentIcon">
                     <div class="count">
                         {{commentCount}}
                     </div>
                 </div>
                 <div slot="team" class="f">
-                    <img src="../../photos/icons_Group_.png" class="teamIcon">
+                    <img src="../../assets/img/icons_Group_.png" class="teamIcon">
                     <div class="count">
                         {{teamCount}}
                     </div>
