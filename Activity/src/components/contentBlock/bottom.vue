@@ -1,30 +1,46 @@
 <template>
     <div class="bottom">
-            <div class="comment">
-            <Input v-model="value8" type="textarea" :autosize="{minRows: 1,maxRows: 3}" placeholder="添加评论" />
+        <div class="mask" v-show="maskShow" @click="setMaskShow">
+        </div>
+        <div class="child" id="child" v-show="maskShow">
+            <div class="newComment">
+                <textarea rows="2" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
+                </textarea>
             </div>
-        <div class="announce">
-        发布
+            <div class="announce">
+            发布
+            </div>
         </div>
-        
-        
-    <!-- <Drawer  placement="down" :closable="false" v-model="value1">
         <div class="comment">
-            <Input v-model="value8" type="textarea" :autosize="{minRows: 1,maxRows: 3}" placeholder="" />
+        <div @click="setMaskShow" v-show="!maskShow">
+            添加评论
         </div>
-        <div class="signUp">
-        发布
         </div>
-    </Drawer> -->
     </div>
 </template>
 
 <script>
    export default {
-        data () {
+        data: function(){
             return {
-                value1: false,
-                value8: ''
+                maskShow: false,
+                focusState: false
+            }
+        },
+        methods: {
+            setMaskShow(){
+                this.maskShow = !this.maskShow;
+                this.focusState = true 
+            }
+        },
+        directives: {
+            focus: {
+            //根据focusState的状态改变是否聚焦focus
+                update: function (el, {value}) {    //第二个参数传进来的是个json
+                    if (value) {
+                        el.focus()
+                    }
+                }
             }
         }
     }
@@ -39,21 +55,52 @@
         border-top: 1px solid #e0e0e0;
         background-color: #ffffff;
     }
+    .mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.3;
+    } 
+    textarea{
+        resize: none;
+        font-size: 15px;
+        padding:2px;
+        width: 100%;
+        height:48px;
+    }
+    .child{
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        bottom: 0px;
+        background: #fff;
+    }
     .comment{
         position: relative;
-        float: left;
-        top:8px;
-        margin-left: 10px;
-        width:80%;
+        bottom:-3px;
+        width:100%;
         color: #bdbdbd;
+        margin-left: 12px;
+        font-size: 15px;
+    }
+    .newComment{
+        position: relative;
+        float: left;
+        top:1px;
+        margin-left: 9px;
+        color: #bdbdbd;
+        width: 85%;
+        height:48px;
     }
     .announce{
         position: relative;
-        top:12px;
+        top:23px;
         float: right;
-        margin-right:16px;
+        margin-right:2%;
         color: #364e68;
         font-size: 15px;
     }
-    
 </style>
