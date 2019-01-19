@@ -45,6 +45,11 @@
             login () {
                 // todo: 格式校验
                 // console.log(this.pw, this.email);
+                // 测试功能 绕开登录
+                if (this.email == 'test'){
+                    this.$emit('loginSuccess', null)
+                    return
+                } 
                 this.$http.post(
                     this.loginAPI,
                     {
@@ -58,7 +63,7 @@
                             utils.setCookie('token', data.token)
                             utils.setCookie('expires', data.expires)
                             this.$emit('loginSuccess', data.user_info)
-                            console.log('emit');
+                            // console.log('emit');
                         }
                         if (data.code == 400) {
                             this.tip = '<strong>登录错误</strong>'
