@@ -2,7 +2,7 @@
   <div id="main">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1,user-scalable=no">
     <div class="change">
-      <headNav headline="详情">
+      <headNav headline=详情>
         <template slot="left_element">
             <Icon type="ios-arrow-back" color="#7e7e7e" size="26"
                 @click="back()"/>
@@ -14,15 +14,13 @@
             评论
         </div>
       </div>
-      
-      <comment></comment>
-      <comment></comment>
-      <comment></comment>
-      <comment></comment>
-      <comment></comment>
-      <comment></comment>
-      <comment></comment>
-      <bottom></bottom>
+      <comment v-for="item in comments" 
+      :name="item.name"
+      :time="item.time"
+      :content="item.content"
+      :likeCount="item.likeCount"
+      ></comment>
+      <bottom v-on:getContent="getCont"></bottom>
       
     </div>
   </div>
@@ -34,15 +32,43 @@ import bottom from '../components/contentBlock/bottom.vue'
 import func from '../components/contentBlock/function.vue'
 import comment from '../components/comment/'
 export default {
-  components: {
-    bottom,
-    func,
-    comment,
-    headNav
-  },
-  methods: {
+    data: function () {
+        return {
+            comments: [
+                {
+                    name: 'CR7',
+                    time: '12:02',
+                    content: '说来也不难，flex 的核心的概念就是容器和轴。容器包括外层的父容器也一样也一样',
+                    likeCount: 15,
+                },
+                {
+                    name: 'CR7',
+                    time: '12:03',
+                    content: 'C罗最帅',
+                    likeCount: 16,
+                }
+            ]
+        }
+    },
+    components: {
+      bottom,
+      func,
+      comment,
+      headNav
+    },
+    methods: {
         back () {
             this.$router.go(-1)
+        },
+        getCont: function(cont,t){
+          this.$data.comments.push(
+            {
+                    name: 'CR7',
+                    time: t,
+                    content: cont,
+                    likeCount: 0,
+                }
+          );
         }
     }
 }
