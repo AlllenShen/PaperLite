@@ -4,10 +4,10 @@
         </div>
         <div class="child" id="child" v-show="maskShow">
             <div class="newComment">
-                <textarea rows="2" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
+                <textarea ref="contarea" rows="2" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
                 </textarea>
             </div>
-            <div class="announce">
+            <div class="announce" v-on:click="sendContent">
             发布
             </div>
         </div>
@@ -20,17 +20,29 @@
 </template>
 
 <script>
-   export default {
+    import utils from '../../assets/utils'
+    export default {
         data: function(){
             return {
                 maskShow: false,
-                focusState: false
+                focusState: false,
+                cont: null,
+                time: null,
+                name: null
             }
         },
         methods: {
             setMaskShow(){
                 this.maskShow = !this.maskShow;
                 this.focusState = true 
+            },
+            sendContent: function (){
+                console.log(utils.getCookie('expires'));
+                this.cont = this.$refs.contarea.value;
+                this.maskShow = !this.maskShow;
+                this.$refs.contarea.value = null;
+                this.time = new Date().getHours() + ':' + new Date().getMinutes();
+                this.$emit('getContent',this.cont,this.time)
             }
         },
         directives: {

@@ -1,21 +1,22 @@
 <template>
     <div class="comment">
-        <div class="headImg">
-
-        </div>
         
-        <div class="like">
-            <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="15"/>
-            {{likeCount}}
-        </div>
-        <div class="name">
-            CR7{{name}}
-        </div>
-        <div class="time">
-            12:02{{time}}
-        </div>
-        <div class="content">
-            {{content}}说来也不难，flex 的核心的概念就是容器和轴。容器包括外层的父容器也一样也一样
+        <div>
+            <div class="headImg">
+            </div>
+            <div class="like">
+                <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="15"/>
+                {{likeCount}}
+            </div>
+            <div class="name">
+                {{name}}
+            </div>
+            <div class="time">
+                {{time}}
+            </div>
+            <div class="content">
+                {{content}}
+            </div>
         </div>
     </div>
 </template>
@@ -27,10 +28,9 @@
                 islike: false,
                 iconType: 'md-heart-outline',
                 iconColor: '#4a4a48',
-                likeCount: 15
             }
         },
-        props: ['name','time','content'],
+        props: ['name','time','content','likeCount'],
         methods:{
             togglelike: function(){
                 this.islike = !this.islike
