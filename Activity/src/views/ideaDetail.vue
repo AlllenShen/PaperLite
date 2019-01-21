@@ -1,35 +1,31 @@
 <template>
-    <div>
-        <!-- 调用headnav 实现返回按钮 发布按钮 参考mine.vue -->
+    <div class="allpage" @on-visible-change="change">
         <div>
-            <!-- 用原生textarea 去除边框 -->
-            <Input v-model="value1" type="textarea" :rows="8" placeholder="写下你的想法吧....." />
+            <textarea v-model="value1" style="resize:none; border:0px; height:100px"   placeholder="写下你的想法吧....."  />
         </div>
 
         <!-- 按键 -->
-        <div>
-            <!-- 调节pading和margin的间隔 -->
-            <Icon type="md-images" size="34"/>
-            <!-- 用span 不选中时边框+白底 选中填充+白字 -->
-            <Button type="warning"@click="noname">匿名</Button>
+        <div class="picicon">
+            <span>
+                <Icon type="md-images" size="34"/>
+            </span>
+
+            <span  class="first" click="changecolor($event)">
+                匿名
+            </span>
+
         </div>
+
         <div>
-            <!-- 用简洁模式 -->
-            <Collapse v-model="value2">
-                <!-- 内容用data的数据 不要写死 数据会从服务器请求 注意结构  下同 -->
+            <Collapse simple >
                 <Panel name="1">
                     面向人群:
                     <p slot="content">
                         <RadioGroup v-model="vertical" vertical>
-                            <Radio label="c-people">            
-                                <span>校级</span>
-                            </Radio>
-                            <Radio label="s-people">
-                                <span>院级</span>
-                            </Radio>
-                            <Radio label="sc-people">
-                                <span>三人群</span>
-                            </Radio>
+                            <!-- <Radio la> -->
+                            <Radio  v-for='a in people' :label='a' :key='index'>            
+                                <span>{{a}}</span>
+                            </Radio>  
                         </RadioGroup>
                     </p>
                 </Panel>
@@ -37,16 +33,10 @@
                 <Panel name="2">
                     活动类型:
                     <p slot="content">
-                        <RadioGroup v-model="activity" vertical>
-                            <Radio label="mostactivity">
-                                <span>mostactivity</span>
-                            </Radio>
-                            <Radio label="secondactivity">
-                                <span>secondactivity</span>
-                            </Radio>
-                            <Radio label="thirdactivity">
-                                <span>thirdactivity</span>
-                            </Radio>
+                        <RadioGroup v-model="vertical" vertical>
+                         <Radio  v-for='a in activity' :label='a' :key='index'>            
+                                <span>{{a}}</span>
+                            </Radio>  
                         </RadioGroup>
                     </p>
                 </Panel>
@@ -61,26 +51,58 @@
     export default {
         data () {
             return {
+                obj: " ",
                 value1: '' ,
                 value2: '' ,
                 nomame: '' ,
-                vertical: 's-people',
-                activity: 'mostactivity',
+                people:['校级','院级'],
+                activity:['1','2','3']
+                // first_group:'校级',
+                // second_group :'院级',
+                // vertical: 's-people',
+                // activity: 'mostactivity',
             }
         },
         methods:{
             nomame(){
                 this.nomame = true;
-            }
+            },
+            changecolor(object){
+                object.target.style.backgroundColor = "pink";
+            },//有问题，一直提示object是空值
         }
+        //改了vfor后返回值还没想好怎么写
+
+        //图片上传
+
     }
 </script>
 
 
 <style>
-  /* .name{
-        background:#fff ;
+    .allpage{
+        padding: 10px;
+        margin:  10px;
+    }
+    .picicon{
+        padding: 4px;
+        margin:  2px;
+    }
+    .first{
+        padding:2px;
+        margin: 6px;
+        font-style: 微软雅黑 ;
+        font-size: 20px;
 
-    } */
+        background:#FFFFFF;
+        color: #909090;
+
+        width: 60px;
+        height:40px;
+        border:1px;
+        border-style:  solid ;
+        /* border-color: #909090; */
+        border-radius:4px;
+    }
 
 </style>
