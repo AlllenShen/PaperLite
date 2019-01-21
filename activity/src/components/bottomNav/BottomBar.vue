@@ -27,15 +27,6 @@ export default {
 
 <style scoped>
 .bar{
-<<<<<<< HEAD
-    position: relative;
-    text-align: center;
-    padding-top: 11px;
-    width: 360px;
-    height: 55px;
-    background: #364e68;
-    }
-=======
     position: fixed;
     bottom: 0;
     text-align: center;
@@ -45,7 +36,6 @@ export default {
     background: #364e68;
     z-index: 10;
 }
->>>>>>> ee95d0afc063ab226c7b444f52e060382bf7edb2
 .item{
     display: flex;
     justify-content: space-around;
