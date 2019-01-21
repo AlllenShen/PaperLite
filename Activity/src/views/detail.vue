@@ -21,7 +21,7 @@
       :likeCount="item.likeCount"
       ></comment>
       <bottom v-on:getContent="getCont"></bottom>
-      
+      <div id="foot"></div>
     </div>
   </div>
 </template>
@@ -69,6 +69,7 @@ export default {
                     likeCount: 0,
                 }
           );
+          document.querySelector("#foot").scrollIntoView(true);
         }
     }
 }
@@ -87,5 +88,8 @@ export default {
       border-top: 5px solid #efefef;
       border-bottom: 1px solid #e0e0e0;
     }
-    
+    #foot{
+        height:65px;
+        width: 100%;
+    }
 </style>
