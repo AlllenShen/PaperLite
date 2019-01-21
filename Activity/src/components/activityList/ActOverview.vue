@@ -1,6 +1,6 @@
 <template>   
     <div id="ActOverview">
-        <div class="actlist" v-bind:key="act.actkey" v-for="(act,index) in activities">
+        <div class="actlist" v-for="act in activities">
             <div class="blank"></div>
             <div class="frame">
                 <div class="typecolor" :style="{'background-color':bgcolor(act)}"></div>
@@ -9,8 +9,8 @@
                 <p>地点：{{act.actplace}}</p>
                 <p>参与对象：{{act.actmember}}</p>
                 <p>说明：{{act.actnote}}</p>  
-                <button id="signup">报&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</button> 
-                <button id="detail">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</button>           
+                    <button id="signup">报&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</button> 
+                    <button id="detail">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</button>                     
             </div>           
         </div>
         <div class="blank"></div>       
@@ -38,14 +38,13 @@ export default {
 
 <style scoped>
 .blank{
-    width: 100%;
-    height: 12px;
+    width: 360px;
+    height: 12px;;
 }
 .frame{
     position: relative;
-    text-align: center;
-    margin-left: 2.5%;
-    width: 95%;
+    margin-left: 5px;
+    width: 350px;
     height: 150px;
     border-radius: 10px;      
     box-shadow: 1px 3px 10px #bdbdbd;  
@@ -61,7 +60,7 @@ export default {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 47.9%;
+    width: 167.5px;
     height: 25px;
     border: 1px solid #98ccd3;
     border-bottom-left-radius: 10px;
@@ -69,9 +68,9 @@ export default {
 }
 .frame #detail{
     position: absolute;
-    right: 4.2%;
+    right: 15px;
     bottom: 0;
-    width: 47.9%;
+    width: 167.5px;
     height: 25px;
     border: 1px solid #fbeed7;
     background-color: #fbeed7;
@@ -80,7 +79,7 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    width: 4.2%;
+    width: 15px;
     height: 150.5px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
