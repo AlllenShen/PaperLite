@@ -61,15 +61,17 @@ export default {
             this.$router.go(-1)
         },
         getCont: function(cont,t){
-          this.$data.comments.push(
-            {
-                    name: 'CR7',
-                    time: t,
-                    content: cont,
-                    likeCount: 0,
+            if(cont.length != 0){
+                this.$data.comments.push(
+                {
+                        name: 'CR7',
+                        time: t,
+                        content: cont,
+                        likeCount: 0,
                 }
-          );
-          document.querySelector("#foot").scrollIntoView(true);
+                )
+            }
+        document.querySelector("#foot").scrollIntoView(true);
         }
     }
 }

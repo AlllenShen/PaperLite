@@ -1,10 +1,11 @@
 <template>
     <div class="bottom">
+        <preference name="KeyboardDisplayRequiresUserAction" value="true" />
         <div class="mask" v-show="maskShow" @click="setMaskShow">
         </div>
         <div class="child" id="child" v-show="maskShow">
             <div class="newComment">
-                <textarea ref="contarea" rows="2" @blur="focusState = false" v-focus="focusState" placeholder="添加评论">
+                <textarea ref="contarea" rows="2" @blur="focusState = false" v-focus="focusState" placeholder="添加评论" id="t">
                 </textarea>
             </div>
             <div class="announce" v-on:click="sendContent">
@@ -12,9 +13,8 @@
             </div>
         </div>
         <div class="comment">
-        <div @click="setMaskShow" v-show="!maskShow">
-            添加评论
-        </div>
+        <textarea  @click="setMaskShow" v-show="!maskShow" placeholder="添加评论" style="border:none;">
+        </textarea>
         </div>
     </div>
 </template>
@@ -34,10 +34,9 @@
         methods: {
             setMaskShow(){
                 this.maskShow = !this.maskShow;
-                this.focusState = true 
+                this.focusState = true;
             },
             sendContent: function (){
-                console.log(utils.getCookie('expires'));
                 this.cont = this.$refs.contarea.value;
                 this.maskShow = !this.maskShow;
                 this.$refs.contarea.value = null;
@@ -92,10 +91,10 @@
     }
     .comment{
         position: relative;
-        bottom:-3px;
+        bottom:-1px;
         width:100%;
         color: #bdbdbd;
-        margin-left: 12px;
+        margin-left: 10px;
         font-size: 15px;
     }
     .newComment{
