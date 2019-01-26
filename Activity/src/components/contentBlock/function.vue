@@ -11,7 +11,10 @@
                         <div>时间：{{time}}</div>
                         <div>地点：{{info.organization}}</div>
                         <div>面向人群：{{people}}</div>
-                        <div>内容：{{content}}</div>
+                        <div class="cont">
+                            活动内容：
+                            <div v-html="content"></div>
+                        </div>
                     </div>
                     <div class="bottom">
                         <div>负责人：{{personInCharge}}联系方式：{{numbers}}</div>
@@ -69,7 +72,7 @@
                 personInCharge: null,
                 numbers:null,
                 color: 'black',
-                type: this.info.type,
+                type: null,
             }
         },
         components: {
@@ -97,6 +100,7 @@
                 if(this.type=='报告讲座') this.color="#ffba6a";
                 if(this.type=='志愿服务') this.color="#ff987e";
                 if(this.type=='为您推荐') this.color="#4a4a48";
+                this.content = newVal.content;
             }
         }
     } 
@@ -169,5 +173,8 @@
     }
     .count{
         float:right;
+    }
+    .cont{
+        font-size:12px;
     }
 </style>
