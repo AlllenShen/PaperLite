@@ -20,13 +20,13 @@
         }
       }  
     },
-    props: ['color','type','name','time','place', 'width'],
+    props: ['color','type','name','time','place', 'projectId', 'width'],
     mounted () {   
-      this.backColor = {backgroundColor: this.color}
+      this.backColor = {backgroundColor: this.color};
     },
     methods:{
       goTail() {
-        this.$router.push('/detail')
+        this.$router.push('/detail/' + this.projectId);
       }
     }
   }
