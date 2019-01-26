@@ -57,7 +57,7 @@ export default {
             name: '这是一个长名称的测试',
             time: '9:00',
             place:'五教101',
-            projectId: '5bbacbead5418551e2e26d92'
+            projectId: '5c337357d5418505ef3d2d68'
           },
           {
             color: '#ff987e',
@@ -65,7 +65,7 @@ export default {
             name: '人工智能讲座',
             time: '9:00',
             place:'五教101',
-            projectId: '5bbacbead5418551e2e26d93'
+            projectId: '5bf0157bd541857420703617'
           },
           {
             color: '#4a4a48',
