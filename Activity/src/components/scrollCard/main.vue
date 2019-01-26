@@ -11,6 +11,7 @@
           :name="item.name" 
           :time="item.time" 
           :place="item.place"
+          :projectId="item.projectId"
           :width="cardWidth"
         ></card>
       </scrollView>
@@ -26,6 +27,7 @@
           :name="item.name" 
           :time="item.time" 
           :place="item.place"
+          :projectId="item.projectId"
           :width="cardWidth"
         ></card>
       </scrollView>
@@ -46,28 +48,32 @@ export default {
             type: '竞赛活动',
             name:'数学竞赛',
             time:'8:00',
-            place:'二教101'
+            place:'二教101',
+            projectId: '5bbacbecd5418551e2e274ae'
           },
           {
             color: '#ffba6a',
             type: '报告讲座',
             name: '这是一个长名称的测试',
             time: '9:00',
-            place:'五教101'
+            place:'五教101',
+            projectId: '5bbacbead5418551e2e26d92'
           },
           {
             color: '#ff987e',
             type: '志愿服务',
             name: '人工智能讲座',
             time: '9:00',
-            place:'五教101'
+            place:'五教101',
+            projectId: '5bbacbead5418551e2e26d93'
           },
           {
             color: '#4a4a48',
             type: '为您推荐',
             name: '人工智能讲座',
             time: '9:00',
-            place:'五教101'
+            place:'五教101',
+            projectId: '5bbacbead5418551e2e26d94'
           },
       ],
       all: [{
@@ -75,21 +81,24 @@ export default {
             type: '报告讲座',
             name: '这是一个长名称的测试',
             time: '9:00',
-            place:'五教101'
+            place:'五教101',
+            projectId: '5bbacbead5418551e2e26d92'
           },
           {
             color: '#ff987e',
             type: '志愿服务',
             name: '人工智能讲座',
             time: '9:00',
-            place:'五教101'
+            place:'五教101',
+            projectId: '5bbacbead5418551e2e26d93'
           },
           {
             color: '#4a4a48',
             type: '为您推荐',
             name: '人工智能讲座',
             time: '9:00',
-            place:'五教101'
+            place:'五教101',
+            projectId: '5bbacbead5418551e2e26d94'
           },],
       cardWidth: 130,
       cardMargin: 16,

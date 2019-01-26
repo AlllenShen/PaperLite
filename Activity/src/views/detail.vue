@@ -8,7 +8,7 @@
                 @click="back()"/>
         </template>
       </headNav>
-      <func></func>
+      <func :info="information"></func>
       <div class="choose">
         <div class="choice">
             评论
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import utils from '../assets/utils'
 import headNav from '../components/headNav/HeadBar'
 import bottom from '../components/contentBlock/bottom.vue'
 import func from '../components/contentBlock/function.vue'
@@ -34,6 +35,9 @@ import comment from '../components/comment/'
 export default {
     data: function () {
         return {
+            route: null,
+            information: null,
+            detailAPI: 'http://118.89.48.63:8001/activity/',
             comments: [
                 {
                     name: 'CR7',
@@ -55,6 +59,40 @@ export default {
       func,
       comment,
       headNav
+    },
+    created () {
+        this.route = this.$route.params.projectID;
+        console.log(this.route)
+        this.detailAPI += this.route
+        console.log(this.detailAPI);
+        // if (this.route == '/')
+        // this.route = '/home'
+        // // 验证token
+        let token = utils.getCookie('token')
+        if (token != '') {
+            this.$http.get(
+            this.detailAPI, {
+            headers: {
+            Authorization: 'JWT ' + token
+            }
+            }).then((response) => {
+                this.information = response.data.info
+                console.log(this.information)
+                // let data = response.data
+                // if (data.code == 200) {
+                // utils.setCookie('userInfo', data.user_info)
+                // utils.setCookie('token', data.token)
+                // utils.setCookie('expires', data.expires)
+                // this.loginSuccess(data.user_info)
+                // }
+            })
+        }
+        // if (!this.login){
+        // this.$router.push('/login')
+        // return
+        // }
+        // console.log(this.route);
+        // this.$router.push(this.route)
     },
     methods: {
         back () {

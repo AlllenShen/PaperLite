@@ -3,13 +3,13 @@
         <functionFrame>
             <div slot="content" class="project">
                 <div>
-                    <div class="projectColor">
+                    <div class="projectColor" :style="{backgroundColor: color}">
                     </div>
-                    <div class="proName">{{name}}活动</div>
+                    <div class="proName" :style="{color: this.color}">{{info.title}}</div>
                 </div>
                     <div class="head">
                         <div>时间：{{time}}</div>
-                        <div>地点：{{place}}</div>
+                        <div>地点：{{info.organization}}</div>
                         <div>面向人群：{{people}}</div>
                         <div>内容：{{content}}</div>
                     </div>
@@ -17,7 +17,7 @@
                         <div>负责人：{{personInCharge}}联系方式：{{numbers}}</div>
                     </div>
                 <div class="st">
-                    <div class="signUp">
+                    <div class="signUp" :style="{backgroundColor: color}">
                     报名
                     </div>
                 </div>
@@ -61,13 +61,21 @@
                 likeCount: 15,
                 watchCount:135,
                 commentCount:34,
-                teamCount:11
+                teamCount:11,
+                time: null,
+                place: null,
+                people: null,
+                content: null,
+                personInCharge: null,
+                numbers:null,
+                color: 'black',
+                type: this.info.type,
             }
         },
         components: {
             functionFrame
         },
-        props: ['name','time','place','people','content','personInCharge','numbers'],
+        props: ['info'],
         methods:{
             togglelike: function(){
                 this.islike = !this.islike
@@ -80,6 +88,15 @@
                     this.iconColor = '#4a4a48',
                     this.likeCount --;
                 }
+            },
+        },
+        watch: {
+            info: function(newVal,oldVal){
+                this.type = newVal.type;
+                if(this.type=='竞赛活动') this.color="#74b49b";
+                if(this.type=='报告讲座') this.color="#ffba6a";
+                if(this.type=='志愿服务') this.color="#ff987e";
+                if(this.type=='为您推荐') this.color="#4a4a48";
             }
         }
     } 
@@ -106,8 +123,7 @@
         float: left;
         width: 10px;
         height:35px;
-        margin-top:10px;
-        background-color: #ffba5a;
+        margin-top:5px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
         }
@@ -115,8 +131,7 @@
         margin-top:10px;
         padding-top:10px;
         margin-left:15px;
-        font-size: 20px;
-        color:#ffba5a;
+        font-size: 16px;
     }
     .head{
         margin-left:5%;
@@ -131,14 +146,13 @@
         position: absolute;
         right:10px;
         /* width: 40px; */
-        top:75px;
+        top:70px;
     }
     .signUp{
       border-radius: 5px;
       padding:6px 10px 6px 14px;
       letter-spacing: 4px;
       color: white;
-      background-color: #ffba5a;
       font-size: 13px;
     }
     .watchIcon{
