@@ -6,6 +6,7 @@ import router from './router'
 import 'iview/dist/styles/iview.css'
 import bus from './bus.vue'
 import vueResource from 'vue-resource'
+import store from './store'
 
 Vue.use(iView)
 Vue.use(vueResource)
@@ -15,5 +16,6 @@ Vue.bus = bus
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
