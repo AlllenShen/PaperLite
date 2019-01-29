@@ -44,10 +44,10 @@ export default {
 .frame{
     position: relative;
     text-align: center;
-    margin-left: 2.5%;
-    width: 95%;
+    margin-left: 2%;
+    width: 96%;
     height: 150px;
-    border-radius: 10px;      
+    border-radius: 5px;      
     box-shadow: 1px 3px 10px #bdbdbd;  
 }
 .frame h3{
@@ -64,7 +64,7 @@ export default {
     width: 47.9%;
     height: 25px;
     border: 1px solid #98ccd3;
-    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 5px;
     background-color: #98ccd3;
 }
 .frame #detail{
@@ -82,8 +82,8 @@ export default {
     top: 0;
     width: 4.2%;
     height: 150.5px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     background-color: #ff7657;
 }
 </style>
