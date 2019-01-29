@@ -44,7 +44,6 @@ export default {
   methods:{
     login () {
       // todo: 格式校验
-      // console.log(this.pw, this.email);
       // 测试功能 绕开登录
       if (this.email == 'test'){
         this.$emit('loginSuccess', null)
@@ -58,15 +57,14 @@ export default {
         }).then((response) => {
           console.log(response.data)
           let data = response.data
-          if (data.code == 200) {
-            this.$store.commit('login', data)
-            this.$router.push(this.route)
-          }
-          if (data.code == 400) {
-            this.tip = '<strong>登录错误</strong>'
-          }
-          if (data.code == 403) {
-            this.tip = '<strong>用户名或密码错误</strong>'
+          switch (data.code) {
+            case 200: 
+              this.$store.commit('login', data)
+              this.$router.push(this.route); break;
+            case 400:
+              this.tip = '<strong>登录错误</strong>'; break;
+            case 403:
+              this.tip = '<strong>用户名或密码错误</strong>'; break;
           }
         }, (response) => {
           this.tip = '<strong>登录请求失败</strong> 请检查您的网络 <br> 或者服务器挂了...'
