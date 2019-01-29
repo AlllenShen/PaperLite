@@ -36,7 +36,7 @@ export default new Router({
     },
     {
       name: 'detail',
-      path: '/detail',
+      path: '/detail/:projectID',
       component: detail
     },
     {
