@@ -1,11 +1,11 @@
 export default {
     namespace: true,
     state: {
-        route: '/home'
+        target: '/home' // 目标路由
     },
     mutations: {
-        routeTo (state, route) {
-            state.route = route
+        routeTo(state, target) {
+            state.target = target
         }
     }
 }

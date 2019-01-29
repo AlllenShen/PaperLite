@@ -8,7 +8,7 @@
     <div class="tip"> <span v-html="tip"></span> </div>
     <!-- <span class="erroe-show" v-show="error_warning">{{tip_warning}}</span> -->
     <div class="login">
-      <form name="login" id="login" >
+      <form name="login" id="login">
         <div class="center">
           <label class="input-label" for="email">邮箱</label>
           <input type="text" v-model="email" id="email" autofocus /><br>
@@ -38,7 +38,7 @@ export default {
   computed: {
     ...mapState({
       loginAPI: state => state.auth.loginAPI,
-      route: state => state.global.route,
+      target: state => state.global.target,
     })
   },
   methods:{
@@ -60,7 +60,7 @@ export default {
           switch (data.code) {
             case 200: 
               this.$store.commit('login', data)
-              this.$router.push(this.route); break;
+              this.$router.push(this.target); break;
             case 400:
               this.tip = '<strong>登录错误</strong>'; break;
             case 403:

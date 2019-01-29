@@ -17,12 +17,12 @@ export default {
       loginAPI: state => state.auth.loginAPI,
       token: state => state.auth.token,
       login: state => state.auth.login,
-      route: state => state.global.route,
+      target: state => state.global.target,
     })
   },
   created () {
-    let route = document.URL.split('#')[1]
-    this.$store.commit('routeTo', route == '/' ? '/home': route)
+    let target = document.URL.split('#')[1]
+    this.$store.commit('routeTo', target == '/' ? '/home': target)
     // 验证token
     if (this.token != '') {
       this.$http.post(
@@ -35,7 +35,7 @@ export default {
         let data = response.data
         if (data.code == 200) {
           this.$store.commit('login', data)
-          this.$router.push(this.route)
+          this.$router.push(this.target)
         }
       })
     }
@@ -43,8 +43,8 @@ export default {
       this.$router.push('/login')
       return
     }
-    console.log(this.route);
-    this.$router.push(this.route)
+    console.log(this.target);
+    this.$router.push(this.target)
   },
 }
 </script>
