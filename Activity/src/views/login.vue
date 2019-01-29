@@ -89,16 +89,9 @@ export default {
 }
 
 .title{
-  /* position: center; */
-  /* center是无效的 应该是想用absolute定位
-    这里不要使用绝对定位，用margin把div撑开即可
-   */
-  /* top: 14px; */
-  /* line-height: 24px; */
   padding: 8px 0;
   color: #364e68;
   font-size: 30px;
-  /* font-style: 微软雅黑; */
   font-family: PingFangSC-Ultralight, sans-serif;
   border-bottom: #364e68 solid 1px;
   padding-left: 5px;
@@ -140,25 +133,11 @@ export default {
   border-bottom: #364e68 solid 1px;
 }
 
-/* .loginbox span{
-  color: #ff7657;
-  font-size:5px;
-  padding-top: 0px;
-  text-align:center;
-} */
-
 .login input[type='button']{
-  /* position: center;
-  display: block;
-  font-size: 18px;
-  text-align: center;
-  font-style: 微软雅黑; 这段没意义*/
   border-bottom: 1px solid #364e68;
   color: #364e68;  
   background-color: #ffffff;
   font-size: 16px; 
-  /* margin-top: 30px; */
-  /* margin-right: 30px; */
   height: 30px;
   width: 30%;
 }
@@ -171,47 +150,4 @@ export default {
   float: right;
   border-bottom: 1px solid #ff7657;
 }
-
-/* id选择器可以直接定位 */
-/* #email{ */
-  /* margin-top: 10px; */
-  /* position: center; */
-  /* width: 40%;
-  height:30px ;
-}
-#pw{
-  margin-top: 30px;
-  position: center;
-  width:200px;
-  height:30px ;
-} */
-/* #exit{  
-  border-bottom: 1px solid #364e68;
-  color: #364e68;  
-  background-color: #ffffff;
-  font-size: 16px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px; 
-  margin-top: 30px;
-  margin-right: 30px;
-  height: 30px;
-  width: 30%; 
-  
-}
-#commit{
-  border: 2px solid #364e68;
-  background: #364e68;
-  color: #fff;
-  font-size: 20px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  margin-top: 30px;
-  margin-left: 30px;
-  height: 50px;
-  width:80px; 
-} */
 </style>
