@@ -50,6 +50,7 @@ export default new Router({
       component: tipForMail
     }
   ],
+  // eslint-disable-next-line
   scrollBehavior(to,from,savedPosition){
     return{x:0,y:0}
   }

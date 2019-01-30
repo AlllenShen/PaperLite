@@ -5,7 +5,7 @@ export default {
     },
     mutations: {
         routeTo(state, target) {
-            state.target = target
+            state.target = target == '/login' ? '/home' : target
         }
     }
 }
