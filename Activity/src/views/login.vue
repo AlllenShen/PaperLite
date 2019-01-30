@@ -46,7 +46,6 @@ export default {
       // todo: 格式校验
       // 测试功能 绕开登录
       if (this.email == 'test'){
-        this.$store.commit('login', data)
         this.$router.push(this.target)
         return
       } 
