@@ -8,6 +8,7 @@ import explore from './views/explore'
 import home from './views/home'
 import login from './views/login'
 import tipForMail from './views/tipForMail'
+import information from './views/information'
 
 Vue.use(Router)
 
@@ -48,7 +49,12 @@ export default new Router({
       name: 'tipForMail',
       path: '/tip-for-mail',
       component: tipForMail
-    }
+    },
+    {
+      name: 'information',
+      path: '/information',
+      component: information
+    },
   ],
   // eslint-disable-next-line
   scrollBehavior(to,from,savedPosition){
