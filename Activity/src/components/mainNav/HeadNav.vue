@@ -7,10 +7,10 @@
             <Drawer placement="left" :closable="false" v-model="value1">
                 <div class="drawerHead">
                     <img src="../../assets/img/10312115.jpg" class="headImg">
-                    <div class="name">
+                    <div class="name"  @click="goTail">
                         HFUTER
                     </div>
-                    <div  class="nickname">
+                    <div  class="nickname"  @click="goTail">
                         HFUTER
                     </div>
                     <div class="username">
@@ -98,6 +98,11 @@ export default {
     },
     components: {
         'HeadBar': HeadBar
+    },
+    methods:{
+      goTail() {
+        this.$router.push('/information');
+      }
     }
 }
 </script>
