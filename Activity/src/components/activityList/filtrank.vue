@@ -12,9 +12,11 @@
       </div>
             
       <div id="search">
+        <!-- 这个地方用原生input重写一下 
+            iview的input不能控制高度 -->
         <Input v-model="value4" icon="ios-search" placeholder="搜索" style="width: 70% " />
       </div>      
-      
+      <!-- value1这种最好改个名字 很久不看自己都忘了这是啥了 -->
       <div class="filtbutton" @click="value1 = true">
         <Icon type="md-arrow-dropleft" />筛选
       </div>
@@ -91,7 +93,7 @@ export default {
 #filtrank{
     padding-left: 2%;
     padding-right: 2%;
-    padding-top: 55px;
+    padding-top: 0.2rem;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -121,12 +123,14 @@ export default {
     z-index: 100;
     border: 1px solid #848484;
     color: #848484;
-    background: white;
+    /* background: rgba(255, 255, 255, 1); */
+    background-color: white;
 }
 
-.bar #search{
+#search{
     width: 70%;
     text-align: center;
+    height: 0.8rem;
 }
 .filtbutton{
     width: 25%;

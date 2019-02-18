@@ -55,7 +55,7 @@ export default {
 .frame{
     position: relative;
     text-align: center;
-    margin-top: 12px;
+    margin-top: 0.2rem;
     margin-bottom: 12px;
     margin-left: 2%;
     width: 96%;
