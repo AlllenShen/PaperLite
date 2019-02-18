@@ -41,10 +41,13 @@
 <script>
 import headNav from '../components/headNav/HeadBar'
 export default {
-    data: function () {
+    data () {
         return {
-            
+          
         }
+    },
+    created () {
+
     },
     components: {
         headNav,
@@ -58,9 +61,9 @@ export default {
 </script>
 
 <style scoped>
-    .information{
+    .information, body{
       background-color: #f6f6f5;
-      height:100%;
+      height:100vh;
     }
     .info{
       position:relative;

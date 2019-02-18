@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -18,7 +18,10 @@ export default {
       token: state => state.auth.token,
       login: state => state.auth.login,
       target: state => state.global.target,
-    })
+    }),
+    ...mapGetters([
+      'loginAPI'
+    ])
   },
   created () {
     let target = document.URL.split('#')[1]
@@ -31,7 +34,8 @@ export default {
           Authorization: 'JWT ' + this.token
         }
       }).then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
+        // console.log(this)
         let data = response.data
         if (data.code == 200) {
           this.$store.commit('login', data)
@@ -43,7 +47,7 @@ export default {
       this.$router.push('/login')
       return
     }
-    console.log(this.target);
+    // console.log(this.target);
     this.$router.push(this.target)
   },
 }

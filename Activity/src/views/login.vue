@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data(){
     return{
@@ -39,7 +39,10 @@ export default {
     ...mapState({
       loginAPI: state => state.auth.loginAPI,
       target: state => state.global.target,
-    })
+    }),
+    ...mapGetters([
+      'loginAPI'
+    ])
   },
   methods:{
     login () {
@@ -55,7 +58,8 @@ export default {
           'email': this.email,
           'pw': this.pw
         }).then((response) => {
-          console.log(response.data)
+          // console.log(response.data)
+          // console.log(this)
           let data = response.data
           switch (data.code) {
             case 200: 
