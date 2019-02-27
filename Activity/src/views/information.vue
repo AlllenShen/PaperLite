@@ -81,8 +81,9 @@
 <script>
 import headNav from '../components/headNav/HeadBar'
 export default {
-    data: function () {
+    data () {
         return {
+<<<<<<< HEAD
             name: "",
             phone: "",
             major: "",
@@ -95,7 +96,13 @@ export default {
             show: false,
             maskShow1: false,
             maskShow2: false,
+=======
+          
+>>>>>>> e2382ac4b8b4767daa8628c7fa1bf04ed88aaa60
         }
+    },
+    created () {
+
     },
     components: {
         headNav,
@@ -142,6 +149,7 @@ export default {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
     .change{
       position:relative;
       top:60px;
@@ -149,6 +157,11 @@ export default {
       width: 40px;
       font-size: 10px;
       margin-right:10px;
+=======
+    .information, body{
+      background-color: #f6f6f5;
+      height:100vh;
+>>>>>>> e2382ac4b8b4767daa8628c7fa1bf04ed88aaa60
     }
     .info{
       position:relative;

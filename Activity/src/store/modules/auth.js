@@ -6,7 +6,7 @@ export default {
         token: utils.getCookie('token'),
         expires: utils.getCookie('expires'),
         userInfo: utils.getCookie('userInfo'),
-        loginAPI: 'http://118.89.48.63:8001/user/login'
+        // loginAPI: 'http://118.89.48.63:8001/user/login'
     },
     mutations: {
         login (state, payload) {
@@ -28,6 +28,12 @@ export default {
             utils.delCookie('token')
             utils.delCookie('expires')
             utils.delCookie('userInfo')
+        }
+    },
+    getters: {
+        loginAPI: (state, getters, rootState) => {
+            console.log(getters);
+            return getters.baseURL + '/user/login'
         }
     }
 }
