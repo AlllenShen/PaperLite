@@ -9,6 +9,7 @@ import home from './views/home'
 import login from './views/login'
 import tipForMail from './views/tipForMail'
 import information from './views/information'
+import nickname from './views/nickname'
 
 Vue.use(Router)
 
@@ -54,6 +55,11 @@ export default new Router({
       name: 'information',
       path: '/information',
       component: information
+    },
+    {
+      name: 'nickname',
+      path: '/nickname',
+      component: nickname
     },
   ],
   // eslint-disable-next-line
