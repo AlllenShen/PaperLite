@@ -1,15 +1,7 @@
 <template>
 <div id="mine">
-    <headNav>
-        <template slot="left_element">
-            <Icon type="ios-arrow-back" color="#7e7e7e" size="26"
-                @click="back()"/>
-        </template>
-        <template slot="right_element">
-            <Icon type="md-more" color="#7e7e7e" size="24" />
-        </template>
-    </headNav>
-    这些是测试页面 <br>
+    <mainHead title="我的"></mainHead>
+    <div :style="{ marginTop: heightOfHeader }">这些是测试页面</div>
     <router-link class="link" to="/idea">想法页</router-link> <br>
     <router-link class="link" to="/login">login</router-link> <br>
     <router-link class="link" to="/tip-for-mail">tip-for-mail</router-link>
@@ -19,25 +11,31 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 import headNav from '../components/headNav/'
-import { mainBottom } from '../components/mainNav/'
+import { mainBottom, mainHead } from '../components/mainNav/'
+
 export default {
     components: {
         headNav,
         mainBottom,
+        mainHead,
     },
     methods: {
         back () {
             this.$router.go(-1)
         }
-    }
+    },
+    computed: {
+    ...mapState({
+      heightOfHeader: state => state.style.heightOfHeader + 'px'
+    })
+  }
 }
 </script>
 
 <style scoped>
-#mine {
-    padding-top: 55px;
-}
 .link {
     margin-top: 1rem;
     margin-left: 1rem;

@@ -1,13 +1,15 @@
 <template>
   <div id="home">
     <mainHead title="首页"></mainHead>
-    <calender></calender>
+    <calender :style="{ marginTop: heightOfHeader }"></calender>
     <scrollCard></scrollCard>
     <mainBottom current="首页"></mainBottom>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 import scrollCard from '../components/scrollCard/'
 import calender from '../components/calender/'
 import { mainBottom, mainHead } from '../components/mainNav/'
@@ -17,6 +19,11 @@ export default {
     calender,
     mainBottom,
     mainHead
+  },
+  computed: {
+    ...mapState({
+      heightOfHeader: state => state.style.heightOfHeader + 'px'
+    })
   }
 }
 </script>

@@ -3,13 +3,13 @@ import Router from 'vue-router'
 import detail from './views/detail.vue'
 import ideaDetail from './views/ideaDetail.vue'
 import mine from './views/mine.vue'
-import actList from './components/activityList'
 import explore from './views/explore'
 import home from './views/home'
 import login from './views/login'
 import tipForMail from './views/tipForMail'
 import information from './views/information'
 import nickname from './views/nickname'
+import myHistory from './components/myHistory'
 
 Vue.use(Router)
 
@@ -60,6 +60,11 @@ export default new Router({
       name: 'nickname',
       path: '/nickname',
       component: nickname
+    },
+    {
+      name: 'me',
+      path: '/me',
+      component: myHistory
     },
   ],
   // eslint-disable-next-line
