@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     ...mapState({
-      loginAPI: state => state.auth.loginAPI,
+      // loginAPI: state => state.auth.loginAPI,
       target: state => state.global.target,
     }),
     ...mapGetters([
