@@ -28,12 +28,45 @@ export default {
             utils.delCookie('token')
             utils.delCookie('expires')
             utils.delCookie('userInfo')
+        },
+        changeNickname (state, newName){
+            state.userInfo.major = newName;
+        },
+        changeIdenticon (state,newIdenticon){
+            state.userInfo.identicon = newIdenticon;
         }
     },
     getters: {
         loginAPI: (state, getters, rootState) => {
             console.log(getters);
             return getters.baseURL + '/user/login'
-        }
+        },
+        cancelAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/comment/del'
+        },
+        getAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/comment'
+        },
+        viewAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/view'
+        },
+        likeAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/like'
+        },
+        unlikeAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/like/cancel'
+        },
+        addCommentAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/comment/add'
+        },
+        updateAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/user/info/update'
+        },
+        photoAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/user/info/update/identicon'
+        },
+        imgUrl: (state, getters, rootState) => {
+            return getters.baseURL + state.userInfo.identicon
+        },
     }
 }

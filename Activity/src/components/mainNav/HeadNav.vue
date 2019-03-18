@@ -5,16 +5,14 @@
                 <Icon  type="md-person" color="#7e7e7e" size="26" />
             </div>
             <Drawer placement="left" :closable="false" v-model="value1">
-                <div class="drawerHead">
-                    <img src="../../assets/img/10312115.jpg" class="headImg">
+                <div class="drawerHead" >
+                    <img src="../../assets/img/10312115.jpg" class="headImg" @click="goTail">
                     <div class="name"  @click="goTail">
-                        HFUTER
+                        {{name}}
                     </div>
-                    <div  class="nickname"  @click="goTail">
-                        HFUTER
-                    </div>
+                    
                     <div class="username">
-                        2016212023@edu.com
+                        {{email}}
                     </div>
                 </div>
                 <div class="person">
@@ -84,6 +82,7 @@
 
 <script>
 import HeadBar from '../headNav/'
+import {mapState} from 'vuex'
 export default {
     props:{
         title: {
@@ -95,6 +94,12 @@ export default {
             bar_title: '标题',
             value1: false
         }
+    },
+    computed: {
+        ...mapState({
+        name: state => state.auth.userInfo.name,
+        email: state => state.auth.userInfo.email,
+        })
     },
     components: {
         'HeadBar': HeadBar
@@ -208,12 +213,12 @@ export default {
     .exit{
         position: absolute;
         width:100%;
-        bottom: 140px;
         font-family: "微软雅黑";
         font-size: 13px;
         left:20px;
         color:#ff7657;
         font-weight: bolder;
+        top:500px;
     }
     .commentIcon{
         width:18px;
