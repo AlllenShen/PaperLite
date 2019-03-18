@@ -1,203 +1,159 @@
 <template>
   <div class="information">
-      <headNav headline=信息>
-        <template slot="left_element">
-            <Icon type="ios-arrow-back" color="#7e7e7e" size="26"
-                @click="back()"/>
-        </template>
-      </headNav>
-      <div class="change" @click="change"> 
-        编辑信息
-      </div>
-      <div class="info">
-        <div class="name">
-          <div class="y">姓名</div>
-          Why Not{{name}}
+        <headNav headline=信息>
+            <template slot="left_element">
+                <Icon type="ios-arrow-back" color="#7e7e7e" size="26"
+                    @click="back()"/>
+            </template>
+        </headNav>
+        <div class="share-wrap" ref="screenshot">
+            <img :src='imgUrl' class="headImg" @click="changeHeadImg()"  crossOrigin="anonymous">
         </div>
-        <div class="phone">
-          <div class="y">手机号</div>
-          Why Not{{phone}}
+            <div  class="nickName">
+                {{name}}
+            </div>
+        <div class="info">
+            <div class="name">
+            <div class="y">姓名</div>
+            <div class="ch">
+                {{name}}
+            </div>
+            </div>
+            <div class="sno">
+            <div class="y">学号</div>
+            <div class="ch">
+                {{sno}}
+            </div>
+            </div>
+            <div class="gender">
+            <div class="y">性别</div>
+            <div class="ch">
+                {{gender}}
+            </div>
+            </div>
+            <div class="nickname" @click="changeNickname">
+            <div class="y">昵称</div>
+            <div class="ch">
+                {{major}}
+            </div>
+            </div>
+            <div class="academy">
+            <div class="y">学院</div>
+            <div class="ch">
+                {{academy}}
+            </div>
+            </div>
+            <div class="major">
+            <div class="y">专业</div>
+            <div class="ch">
+                {{major}}
+            </div>
+            </div>
+            <div class="cls">
+            <div class="y">班级</div>
+            <div class="ch">
+                {{cls}}
+            </div>
+            </div>
+            
+            <div class="email">
+            <div class="y">邮箱</div>
+            <div class="ch">
+                {{email}}
+            </div>
+            </div>
         </div>
-        <div class="major">
-          <div class="y">专业</div>
-          Why Not{{major}}
+        <div class="mask" v-show="maskShow" @click="changeHeadImg()">
         </div>
-        <div class="cls">
-          <div class="y">班级</div>
-          Why Not{{cls}}
+        <div class="child" v-show="maskShow">
+            <cropper :uploadType="`head`" :imgWidth="`85px`" :imgHeight="`85px`" :imgUrl="imgUrl" @upload="getImgUrl"></cropper>
+            <div class="noChangeImg" @click="changeHeadImg()">
+                取消
+            </div>
         </div>
-        <div class="gender">
-          <div class="y">性别</div>
-          Why Not{{gender}}
-        </div>
-        <div class="email">
-          <div class="y">邮箱</div>
-          Why Not{{email}}
-        </div>
-        <div class="academy">
-          <div class="y">学院</div>
-          Why Not{{academy}}
-        </div>
-        <div class="nickname">
-          <div class="y">昵称</div>
-          Why Not{{nickname}}
-          <div class="ch" v-if="show"  @click="setMaskShow1">></div>
-        </div>
-        <div class="sign">
-          <div class="y">个性签名</div>
-          Why Not{{sign}}
-          <div class="ch" v-if="show" @click="setMaskShow2">></div>
-        </div>
-        
-      </div>
-      <div class="save" @click="change" v-if="show" > 
-        保存
-      </div>
-      <div class="mask1" v-show="maskShow1" @click="setMaskShow1">
-      </div>
-      <div class="child1" id="child1" v-show="maskShow1">
-          <div class="newNickname">
-              <textarea ref="contarea1" rows="2" placeholder="修改昵称">
-              </textarea>
-          </div>
-          <div class="true" v-on:click="changeNickname">
-            确定
-          </div>
-      </div>
-      <div class="mask2" v-show="maskShow2" @click="setMaskShow2">
-      </div>
-      <div class="child2" id="child2" v-show="maskShow2">
-          <div class="newSign">
-              <textarea ref="contarea2" rows="2" placeholder="修改个性签名">
-              </textarea>
-          </div>
-          <div class="true" v-on:click="changeSign">
-            确定
-          </div>
-      </div>
+      
+      
   </div>
 </template>
 
 <script>
 import headNav from '../components/headNav/HeadBar'
+import cropper from "../components/cropper/cropper"
+import {mapState, mapGetters } from 'vuex'
+import utils from '../assets/utils'
 export default {
     data () {
         return {
-<<<<<<< HEAD
-            name: "",
-            phone: "",
-            major: "",
-            cls: "",
-            gender: "",
-            email: "",
-            academy: "",
-            nickname: "",
-            sign: "",
-            show: false,
-            maskShow1: false,
-            maskShow2: false,
-=======
-          
->>>>>>> e2382ac4b8b4767daa8628c7fa1bf04ed88aaa60
+            maskShow: false,
+            screenshotImage: ''
         }
     },
-    created () {
-
+    mounted() {
+        console.log(this.userinfo);
+        
+    },
+    computed: {
+        ...mapState({
+            token: state => state.auth.token,
+            name: state => state.auth.userInfo.name,
+            major: state => state.auth.userInfo.major,
+            cls: state => state.auth.userInfo.cls,
+            imgUrl: state => state.auth.imgUrl,
+            gender: state => {
+                if(state.auth.userInfo.gender!=1){
+                    return '女'
+                }
+                else{
+                    return '男'
+                }
+            },
+            email: state => state.auth.userInfo.email,
+            sno: state => state.auth.userInfo.sno,
+            photoAPI: state => state.auth.photoAPI,
+        }),
+        ...mapGetters([
+            'photoAPI',
+            'imgUrl'
+        ])
     },
     components: {
         headNav,
-    },
-    created () {
-        let token = utils.getCookie('token')
-        if (token != '') {
-            this.$http.get(
-            this.detailAPI, {
-            headers: {
-            Authorization: 'JWT ' + token
-            }
-            }).then((response) => {
-                this.information = response.data.info
-                console.log(this.information)
-            })
-        }
+        cropper,
     },
     methods: {
         back () {
             this.$router.go(-1)
         },
-        change(){
-          this.show = !this.show
+        changeNickname (){
+            this.$router.push('/nickname');
         },
-        setMaskShow1(){
-            this.maskShow1 = !this.maskShow1;
+        changeHeadImg (){
+            this.maskShow = !this.maskShow;
+            console.log(this.imgUrl)
         },
-        changeNickname(){
-            this.nickname = this.$refs.contarea1.value;
-            this.$refs.contarea1.value = null;
-            this.maskShow1 = !this.maskShow1;
-        },
-        setMaskShow2(){
-            this.maskShow2 = !this.maskShow2;
-        },
-        changeSign(){
-            this.sign = this.$refs.contarea2.value;
-            this.$refs.contarea2.value = null;
-            this.maskShow2 = !this.maskShow2;
+        async shareHandle () {
+            const opts = {
+                useCORS: true
+            }
+            const ele = this.$refs.screenshot
+            const canvas = await html2canvas(this.$refs.screenshot, opts)
+            this.screenshotImage = canvas.toDataURL('image/jpg')
         }
     }
 }
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-    .change{
-      position:relative;
-      top:60px;
-      float:right;
-      width: 40px;
-      font-size: 10px;
-      margin-right:10px;
-=======
-    .information, body{
-      background-color: #f6f6f5;
-      height:100vh;
->>>>>>> e2382ac4b8b4767daa8628c7fa1bf04ed88aaa60
-    }
     .info{
       position:relative;
-      top:80px;
-      font-size: 20px;
+      top:75px;
+      font-size: 14px;
       color:#848484;
-      border-bottom: 1px solid #bdbdbd;
-      border-top: 1px solid #bdbdbd;
-      background-color: #f6f6f5;
+      background-color: #ffffff;
+      
+      padding-top:10px;
     }
-    .name,.phone,.major,.cls,.gender,.email,.academy,.nickname{
-      height:30px;
-      border-bottom: 1px solid #bdbdbd;
-      margin-left:20px;
-    }
-    .sign{
-      height:30px;
-      margin-left:20px;
-    }
-    .y{
-      float: left;
-      width: 80px;
-      margin-right: 40px;
-    }
-    .ch{
-      float: right;
-    }
-    .save{
-      position:relative;
-      top:90px;
-      float:right;
-      width: 20px;
-      font-size: 10px;
-      margin-right:10px;
-    }
-    .mask1,.mask2{
+    .mask{
     width: 100%;
     height: 100%;
     position: fixed;
@@ -206,44 +162,69 @@ export default {
     background: #000;
     opacity: 0.3;
     } 
-    textarea{
-        resize: none;
-        font-size: 15px;
-        padding:2px;
+    .child{
+        position:fixed;
         width: 100%;
-        height:48px;
+        height: 100%;
+        top: 55px;
+        background: #F6F6F5;
     }
-    .child1,.child2{
-        position: fixed;
+    .name,.major,.cls,.gender,.nickname,.academy,.sno{
+      height:30px;
+      border-bottom: 1px solid #bdbdbd;
+      margin-left:20px;
+      margin-top:10px;
+      margin-right: 20px;
+    }
+    .email{
+      height:30px;
+      margin-left:20px;
+      margin-top:10px;
+      margin-right: 20px;
+      border-bottom: 1px solid #bdbdbd;
+    }
+    .y{
+      float: left;
+      width: 80px;
+      margin-right: 40px;
+    }
+    .ch{
+      float: right;
+      color:#4A4A48;
+      font-weight: bold;
+    }
+    .headImg{
+        position: relative;
+        left:50%;
+        top:65px;
+        width: 60px;
+        height:60px;
+        margin-left:-30px;
+        border-radius: 100%;
+    }
+    .nickName{
+        position: relative;
+        top:65px;
         width: 100%;
-        height: 50px;
-        bottom: 0px;
-        background: #fff;
+        text-align: center;
+        font-size: 16px;
     }
-    .true{
-        position: relative;
-        top:23px;
-        float: right;
-        margin-right:2%;
-        color: #364e68;
-        font-size: 15px;
+    .information{
+        background-color: #F6F6F5
     }
-    .newNickname{
-        position: relative;
-        float: left;
-        top:1px;
-        margin-left: 9px;
-        color: #bdbdbd;
-        width: 85%;
-        height:48px;
+    .changeImg{
+        font-size: 20px;
+        width:100%;
+        text-align:center;
+        line-height:50px;
+        border-bottom: 1px solid #bdbdbd;
+        color:#4285f4;
     }
-    .newSign{
-        position: relative;
-        float: left;
-        top:1px;
-        margin-left: 9px;
-        color: #bdbdbd;
-        width: 85%;
-        height:48px;
+    .noChangeImg{
+        font-size: 20px;
+        width:100%;
+        text-align:center;
+        line-height:50px;
+        color:#4285f4;
     }
 </style>
