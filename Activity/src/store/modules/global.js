@@ -3,7 +3,7 @@ export default {
     state: {
         target: '/home', // 目标路由
         host:  '118.89.48.63', // 'api.wyyxhlxy.com', // API host
-        port: 6000, // API port
+        port: 8001, // API port
     },
     mutations: {
         routeTo(state, target) {
