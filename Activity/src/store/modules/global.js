@@ -2,8 +2,8 @@ export default {
     namespace: true,
     state: {
         target: '/home', // 目标路由
-        host: 'api.wyyxhlxy.com', // API host
-        port: 80, // API port
+        host:  '118.89.48.63', // 'api.wyyxhlxy.com', // API host
+        port: 6000, // API port
     },
     mutations: {
         routeTo(state, target) {
