@@ -10,7 +10,7 @@ import store from './store'
 
 Vue.use(iView)
 Vue.use(vueResource)
-Vue.http.options.emulateJSON = true;
+// Vue.http.options.emulateJSON = true;
 Vue.config.productionTip = false
 Vue.bus = bus
 

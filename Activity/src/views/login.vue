@@ -55,8 +55,8 @@ export default {
       this.$http.post(
         this.loginAPI,
         {
-          'email': this.email,
-          'pw': this.pw
+          email: this.email,
+          pw: this.pw
         }).then((response) => {
           // console.log(response.data)
           // console.log(this)
