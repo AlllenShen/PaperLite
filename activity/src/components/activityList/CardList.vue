@@ -1,6 +1,6 @@
 <template>
   <div id="CardList">
-    <ActCard :activities="{activities}"></ActCard>
+    <ActCard :activities="activities"></ActCard>
   </div>
 </template>
 
