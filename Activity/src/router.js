@@ -8,6 +8,7 @@ import home from './views/home'
 import login from './views/login'
 import tipForMail from './views/tipForMail'
 import information from './views/information'
+import nickname from './views/nickname'
 import myHistory from './components/myHistory'
 
 Vue.use(Router)
@@ -54,6 +55,11 @@ export default new Router({
       name: 'information',
       path: '/information',
       component: information
+    },
+    {
+      name: 'nickname',
+      path: '/nickname',
+      component: nickname
     },
     {
       name: 'me',
