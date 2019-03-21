@@ -37,7 +37,7 @@ export default {
                 console.log(response)
                 //$store.state.activities=response.data.result
                 this.$store.commit('getacts',data)
-                //console.log($store.state.activities);
+                //console.log($store.activity.activities);
             },(response) => {
                 console.log(response);
             })
