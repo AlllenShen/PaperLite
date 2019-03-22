@@ -2,7 +2,7 @@
     <div>
         <div class="boardsearch">
             <div class="search">
-                <Input v-model="searchstr" prefix="md-menu"  suffix="md-more" style="width: 90%" />
+                <Input v-model="searchstr" prefix="md-menu"  suffix="md-more" style="width: 98%" />
             </div>
 
         </div>
@@ -84,18 +84,17 @@
         left: 0px;
         width: 100%;
         height: 50px;
-        line-height: 20px;
+        line-height: 25px;
         background-color: rgba(189, 189, 189, 1);
         text-align: center;
-        box-shadow: 0px 0px 0px 0px rgba(189, 189, 189, 1);
         border: 1px solid rgba(255, 255, 255, 0);
     }
     .search{
         left: 5px;
         top: 25px;
-        width: 365px;
+        width: 100%;
         height: 40px;
-        margin-top: 10px;
+        margin-top: 5px;
         line-height: 20px;
         border-radius: 3px;
         text-align: center;
@@ -105,15 +104,18 @@
         height: 40px;
         line-height: 40px;
         background-color: rgba(189, 189, 189, 1);
+        /* margin-bottom: 2px; */
         text-align: center;
     }
     .classf{
         display: inline;
-        margin:30px;
+        padding:30px;
         color: rgba(132, 132, 132, 1);
         text-align: center;
+        line-height: 20px;
         border: 1px solid rgba(255, 255, 255, 0);
         font-family: PingFangSC-regular;
+        font-size: 14px;
     }
 
     .unfind{
