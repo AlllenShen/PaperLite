@@ -4,19 +4,17 @@
             <div class="search">
                 <Input v-model="searchstr" prefix="md-menu"  suffix="md-more" style="width: 98%" />
             </div>
-
         </div>
-        
         <div class="classfic">
-
-            <div v-for="tab in tabs" class='classf'>
+            <div v-for="tab in tabs" class='classf'
+                @click="changeTag(tab.activityc)">
                 {{tab.activityc}}
             </div>
         </div>
         
         <div v-show="isactive" class="hideshow">
             <div class="un_activity" @click="colorchg(this)">
-                {{acti_name}}
+                XXX
             </div>    
         </div>
 
@@ -31,52 +29,57 @@
 
 
 <script>
-    import { mapState } from 'vuex';
-    export default {
+import { mapState, mapGetters } from 'vuex'
 
-        data () {
-            return {
-                activity:'http://118.89.48.63:8001/activity/search',
-                searchstr: ' ',
-                tabs:[
-                    {activityc:'竞赛活动',value:1},
-                    {activityc:'报告讲座',value:2},
-                    {activityc:'志愿服务',value:3}
-                    ],   
-                acti_name: "趣味代码大赛",
-
-                isactive: false,
-            }
-        },
-        mounted:function(){
-            this.getaction();
-        },
-        
-        methods:{
-
-            toggle:function(){
-                this.isactive = !this.isactive;
-            },
-
-            trans:function(){
-                this.aortactivi = !this.sortactivi;
-            },
-            // colorchg(_this){
-            //     this.style.color="white";
-            // }
-            getaction:function(){
-                this.$http.post(this.activity,{'title_like':this.searchstr}).then((response) => {
-                    console.log(response)
-                    this.activities=response.data.result
-                    console.log(response);
-                },(response) => {
-                    console.log(response);
-                })
-            }
-
+export default {
+    data () {
+        return {
+            activity:'http://118.89.48.63:8001/activity/search',
+            searchstr: ' ',
+            tabs:[
+                {activityc:'竞赛活动',value:1},
+                {activityc:'报告讲座',value:2},
+                {activityc:'志愿服务',value:3}
+            ],   
+            isactive: false,
         }
-        
+    },
+    computed: {
+        ...mapState({
+            currentTag: (state) => state.activity.currentTag,
+            currentActs: (state) => state.activity.currentActs,
+        }),
+        ...mapGetters([
+            'activityAPI'
+        ])
+    },
+    methods:{
+        toggle:function(){
+            this.isactive = !this.isactive;
+        },
+        trans:function(){
+            this.aortactivi = !this.sortactivi;
+        },
+        changeTag (tagName) {
+            this.$store.commit('changeTag', tagName)
+            if (this.currentActs.length == 0) {
+                this.initActs(this.changeTag)
+            }
+        },
+        initActs (tagName) {
+            this.$http.post(
+                this.activityAPI,
+                {type: this.currentTag}
+            ).then((res) => {
+                this.$store.commit('addActs', res.data.result)
+            })
+        }
+    },
+    mounted () {
+        this.changeTag('报告讲座')
     }
+    
+}
 </script>
 
 <style>
@@ -146,7 +149,6 @@
         color: aliceblue;
         background-color: rgba(132, 132, 132, 1);
         font-family: PingFangSC-regular;
-
     }
 
 
