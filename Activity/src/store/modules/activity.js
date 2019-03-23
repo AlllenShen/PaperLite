@@ -7,7 +7,7 @@ export default {
       ]
     },
     mutations: {
-        add (state,newComment) {
+        addComment (state,newComment) {
           state.comments.push(
             {
                 name: newComment.name,
@@ -16,10 +16,11 @@ export default {
                 likeCount: 0,
                 id: newComment.id,
                 studentId: newComment.studentId,
+                identicon: newComment.identicon,
             }
             )
         },
-        cancelAll (state){
+        cancelComment (state){
             state.comments=[];
         },
         getComments (state,comments){
@@ -33,6 +34,7 @@ export default {
                         likeCount: 0,
                         id: comments[i].id,
                         studentId: comments[i].student.id,
+                        identicon: comments[i].student.identicon,
                     }
                 )
             }
