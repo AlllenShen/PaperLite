@@ -1,3 +1,3 @@
-import feedback from './star.vue'
+import feedback from './summary.vue'
 
 export default feedback
