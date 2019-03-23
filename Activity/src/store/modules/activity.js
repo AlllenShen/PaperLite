@@ -20,7 +20,7 @@ export default {
             }
             )
         },
-        cancelComment (state){
+        cancelAll (state){
             state.comments=[];
         },
         getComments (state,comments){
@@ -40,7 +40,7 @@ export default {
             }
             
         },
-        cancel (state,cancelComment) {
+        cancelComment (state,cancelComment) {
           for (let i = 0;i<state.comments.length;i++){
             let obj = state.comments[i];
             if (obj.id==cancelComment.id){
