@@ -3,12 +3,22 @@ export default {
     namespace: true,
     state: {
         activities:[],
-        comments: [
-          
-      ]
+        comments: [],
+        currentTag: '报告讲座',
+        currentActs: null,
+        bgjz: [],
+        jshd: [],
+        zyfu: [],
+        search: [],
+        map: {
+            '报告讲座': 'bgjz',
+            '竞赛活动': 'jshd',
+            '志愿服务': 'zyfu',
+            '搜索': 'search',
+        }
     },
     mutations: {
-        add (state,newComment) {
+        addComment (state,newComment) {
           state.comments.push(
             {
                 name: newComment.name,
@@ -39,7 +49,7 @@ export default {
             }
             
         },
-        cancel (state,cancelComment) {
+        cancelComment (state,cancelComment) {
           for (let i = 0;i<state.comments.length;i++){
             let obj = state.comments[i];
             if (obj.id==cancelComment.id){
@@ -48,9 +58,14 @@ export default {
             }
            }
         },
-        getacts(state,payload){
-            state.activities.push(...payload)
+        addActs(state,payload){
+            state.currentActs.push(...payload)
         },
+        changeTag (state, tag) {
+            state.currentTag = tag
+            console.log(state[state.map[tag]]);
+            state.currentActs = state[state.map[tag]]
+        }
     },
     getters:{
         activityAPI: (state, getters) => {
