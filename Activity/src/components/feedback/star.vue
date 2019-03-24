@@ -43,7 +43,7 @@ export default {
       textLen: 100
     }
 	},
-	props: ['actTitle','questionList'],
+	props: ['actTitle','questionList', 'actID'],
 	computed: {
 
   },
