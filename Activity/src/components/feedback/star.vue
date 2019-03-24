@@ -12,7 +12,7 @@
           <img :src="starCount >= 5 ? imgStar:imgStarInvert" @click="starClick(5)">       
       </div>
       <div class="evaluat-tab"><!-- 标签选择 -->
-	      <div class="tab-item" v-bind:key="qus.quskey" v-for="(qus) in questionList[starCount].tags" @click="tagClick">
+	      <div class="tab-item" v-bind:key="qus.quskey" v-for="qus in questionList[starCount]" @click="tagClick">
 	      	<div class="qusName" choosed="false">{{ qus.name }}</div>
 	      </div>
 	    </div>
@@ -72,15 +72,9 @@ export default {
 </script>
 <style scoped>
 .evaluat-content {
-    width: 90%;
-    height: 75%;
     padding-left: 20px;
     padding-right:20PX;
-    margin-top: 100px;
     background: #FFFFFF;
-    box-shadow: 0px 0px 15px 3px rgba(132, 132, 132, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0);
-    border-radius: 15px 15px 0px 0px;
     text-align: center;
   }
   .cardTitle{

@@ -15,8 +15,7 @@ export default {
     return {
       actTitle:'合肥工业大学第1届无线电测向大赛',
       questionList: [
-			  {
-			    tags:[
+			  [
 			      {
 			        quskey: 1,
 			        name: '规则有缺陷'
@@ -57,10 +56,8 @@ export default {
 			        quskey: 10,
 			        name: '其他问题'
 			      }
-			    ]
-			  },
-			  {
-			    tags:[
+			  ],
+			  [
 			      {
 			        quskey: 11,
 			        name: '工作人员态度恶劣'
@@ -101,54 +98,50 @@ export default {
 			        quskey: 20,
 			        name: '其他问题'
 			      }
-			    ]
-			  },
-			  {
-			    tags:[
-			      {
-			        quskey: 21,
-			        name: '奖励与宣传时不符'
-			      },
-			      {
-			        quskey: 22,
-			        name: '流程混乱'
-            },
-            {
-			        quskey: 23,
-			        name: '工作人员未能提供必要帮助'
-			      },
-			      {
-			        quskey: 24,
-			        name: '场地布置不美观'
-			      },
-			      {
-			        quskey: 25,
-			        name: '未能准时开始'
-			      },
-			      {
-			        quskey: 26,
-			        name: '材料准备不充分'
-            },
-            {
-			        quskey: 27,
-			        name: '活动时间过长'
-            },
-            {
-			        quskey: 28,
-			        name: '规则有缺陷'
-            },
-            {
-			        quskey: 29,
-			        name: '工作人员态度恶劣'
-			      },
-            {
-			        quskey: 30,
-			        name: '其他问题'
-			      }
-			    ]
-			  },
-			  {
-			    tags:[
+				],
+				[
+					{
+						quskey: 21,
+						name: '奖励与宣传时不符'
+					},
+					{
+						quskey: 22,
+						name: '流程混乱'
+					},
+					{
+						quskey: 23,
+						name: '工作人员未能提供必要帮助'
+					},
+					{
+						quskey: 24,
+						name: '场地布置不美观'
+					},
+					{
+						quskey: 25,
+						name: '未能准时开始'
+					},
+					{
+						quskey: 26,
+						name: '材料准备不充分'
+					},
+					{
+						quskey: 27,
+						name: '活动时间过长'
+					},
+					{
+						quskey: 28,
+						name: '规则有缺陷'
+					},
+					{
+						quskey: 29,
+						name: '工作人员态度恶劣'
+					},
+					{
+						quskey: 30,
+						name: '其他问题'
+					}
+				],
+			  [
 			      {
 			        quskey: 31,
 			        name: '流程混乱'
@@ -189,10 +182,8 @@ export default {
 			        quskey: 40,
 			        name: '其他问题'
 			      }
-			    ]
-			  },
-			  {
-			    tags:[
+				],
+			  [
 			      
             {
 			        quskey: 41,
@@ -234,10 +225,8 @@ export default {
 			        quskey: 50,
 			        name: '其他问题'
 			      }
-			    ]
-        },
-        {
-			    tags:[
+				],
+        [
 			      {
 			        quskey: 51,
 			        name: '流程有序'
@@ -258,9 +247,8 @@ export default {
 			        quskey: 55,
 			        name: '其他问题'
 			      }
-			    ]
-			  }
-      ],
+				]
+			],
     }
   }
 }
