@@ -68,10 +68,15 @@ export default {
         }
     },
     getters:{
-        activityAPI: (state, getters) => {
+        activitySearch: (state, getters) => {
             //console.log(getters);
             console.log(state.activities)
             return getters.baseURL + '/activity/search'
+        },
+        activityApply: (state, getters) => {
+            //console.log(getters);
+            console.log(state.activities)
+            return getters.baseURL + '/activity/joined'
         }
     }
 }
