@@ -50,7 +50,7 @@ export default {
             currentActs: (state) => state.activity.currentActs,
         }),
         ...mapGetters([
-            'activityAPI'
+            'activitySearch'
         ])
     },
     methods:{

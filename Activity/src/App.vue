@@ -25,7 +25,8 @@ export default {
   },
   created () {
     let target = document.URL.split('#')[1]
-    this.$store.commit('routeTo', target == '/' ? '/home': target)
+    // this.$store.commit('routeTo', target == '/' ? '/home': target)
+    this.$store.commit('routeTo', target)
     // 验证token
     if (this.token != '') {
       this.$http.post(

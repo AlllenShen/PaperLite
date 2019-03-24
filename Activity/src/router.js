@@ -9,6 +9,8 @@ import login from './views/login'
 import tipForMail from './views/tipForMail'
 import information from './views/information'
 import nickname from './views/nickname'
+import main from './views/main'
+
 import myHistory from './components/myHistory'
 import feedback from './components/feedback'
 
@@ -71,6 +73,11 @@ export default new Router({
       name: 'test',
       path: '/test',
       component: feedback
+    },
+    {
+      name: 'main',
+      path: '/',
+      component: main
     },
   ],
   // eslint-disable-next-line

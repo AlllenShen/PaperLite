@@ -2,7 +2,7 @@ import utils from '../../assets/utils'
 export default {
     namespace: true,
     state: {
-        activities:[],
+        applied:[],
         comments: [],
         currentTag: '报告讲座',
         currentActs: null,
@@ -65,6 +65,9 @@ export default {
             state.currentTag = tag
             console.log(state[state.map[tag]]);
             state.currentActs = state[state.map[tag]]
+        },
+        initApplied(state, applied) {
+            state.applied = applied
         }
     },
     getters:{
