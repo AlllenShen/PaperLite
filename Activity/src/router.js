@@ -10,7 +10,7 @@ import tipForMail from './views/tipForMail'
 import information from './views/information'
 import nickname from './views/nickname'
 import myHistory from './components/myHistory'
-import feedback from './components/feedback'
+import search from './components/search'
 
 Vue.use(Router)
 
@@ -70,7 +70,7 @@ export default new Router({
     {
       name: 'test',
       path: '/test',
-      component: feedback
+      component: search
     },
   ],
   // eslint-disable-next-line
