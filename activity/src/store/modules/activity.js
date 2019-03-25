@@ -15,6 +15,14 @@ export default {
             '竞赛活动': 'jshd',
             '志愿服务': 'zyfu',
             '搜索': 'search',
+        },
+        bgjzpage:1,
+        jshdpage:1,
+        zyfupage:1,
+        pagemap:{
+            '报告讲座': 'bgjzpage',
+            '竞赛活动': 'jshdpage',
+            '志愿服务': 'zyfupage',
         }
     },
     mutations: {
@@ -63,22 +71,28 @@ export default {
         },
         changeTag (state, tag) {
             state.currentTag = tag
-            console.log(state[state.map[tag]]);
+            //console.log(state[state.map[tag]]);
             state.currentActs = state[state.map[tag]]
         },
         initApplied(state, applied) {
             state.applied = applied
-        }
+        },
+        loadmore(state){
+            state[state.pagemap[state.currentTag]]++
+            //console.log(state[state.pagemap[state.currentTag]])
+        },
+        addmoreActs(state,payload){
+            state.currentActs.push(...payload)
+        },
     },
     getters:{
         activitySearch: (state, getters) => {
             //console.log(getters);
-            console.log(state.activities)
+            //console.log(state.currentActs)
             return getters.baseURL + '/activity/search'
         },
         activityApply: (state, getters) => {
             //console.log(getters);
-            console.log(state.activities)
             return getters.baseURL + '/activity/joined'
         }
     }
