@@ -1,36 +1,25 @@
 <template>
   <div id="scroll-main">
     <div>
-        <div class="mine">
-          我的
-        </div>
-        <scrollView class="scroll-pad" :scrollX="true" :width="minewidth" :data="mine">
-        <card class="card" :style="{marginLeft: cardMargin + 'px'}" v-for="item in mine" 
-          :color="item.color" 
-          :type="item.type" 
-          :name="item.name" 
-          :time="item.time" 
-          :place="item.place"
-          :projectId="item.projectId"
-          :width="cardWidth"
-        ></card>
-      </scrollView>
-    </div>
-    <div>
-        <div class="all">
-          全部
-        </div>
-      <scrollView class="scroll-pad" :scrollX="true" :width="allwidth" :data="all">
-        <card class="card" :style="{marginLeft: cardMargin + 'px'}" v-for="item in all" 
-          :color="item.color" 
-          :type="item.type" 
-          :name="item.name" 
-          :time="item.time" 
-          :place="item.place"
-          :projectId="item.projectId"
-          :width="cardWidth"
-        ></card>
-      </scrollView>
+        <scrollView class="scroll-pad" :scrollX="true" :width="minewidth" :data="mine" >
+            <div v-for="item in mine">
+                <div @click="evaluate(item)">
+                    <card class="card" :style="{marginLeft: cardMargin + 'px'}" 
+                      :name="item.title" 
+                      :projectId="item.id"
+                      :width="cardWidth"
+                    ></card>
+                </div>
+            </div>
+        </scrollView>
+      <div class="mask" v-show="maskShow" @click="evaluate2()">
+      </div>
+      <div class="child" id="child" v-show="maskShow">
+          <star 
+          :actTitle="selectAct.title"
+          :actID="selectAct.id">
+          </star>
+      </div>
     </div>
   </div>
 </template>
@@ -39,67 +28,15 @@
 import card from './card.vue'
 import BScroll from 'better-scroll' 
 import scrollView from '../HscrollView'
+import star from '../feedback/star.vue'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      mine: [
-          {
-            color: '#74b49b',
-            type: '竞赛活动',
-            name:'数学竞赛',
-            time:'8:00',
-            place:'二教101',
-            projectId: '5bbacbecd5418551e2e274ae'
-          },
-          {
-            color: '#ffba6a',
-            type: '报告讲座',
-            name: '这是一个长名称的测试',
-            time: '9:00',
-            place:'五教101',
-            projectId: '5c337357d5418505ef3d2d68'
-          },
-          {
-            color: '#ff987e',
-            type: '志愿服务',
-            name: '人工智能讲座',
-            time: '9:00',
-            place:'五教101',
-            projectId: '5bf0157bd541857420703617'
-          },
-          {
-            color: '#4a4a48',
-            type: '为您推荐',
-            name: '人工智能讲座',
-            time: '9:00',
-            place:'五教101',
-            projectId: '5bbacbead5418551e2e26d94'
-          },
-      ],
-      all: [{
-            color: '#ffba6a',
-            type: '报告讲座',
-            name: '这是一个长名称的测试',
-            time: '9:00',
-            place:'五教101',
-            projectId: '5bbacbead5418551e2e26d92'
-          },
-          {
-            color: '#ff987e',
-            type: '志愿服务',
-            name: '人工智能讲座',
-            time: '9:00',
-            place:'五教101',
-            projectId: '5bbacbead5418551e2e26d93'
-          },
-          {
-            color: '#4a4a48',
-            type: '为您推荐',
-            name: '人工智能讲座',
-            time: '9:00',
-            place:'五教101',
-            projectId: '5bbacbead5418551e2e26d94'
-          },],
+      maskShow: false,
+      selectAct:{
+
+      },
       cardWidth: 130,
       cardMargin: 16,
     }
@@ -110,11 +47,24 @@ export default {
     },
     allwidth () {
       return this.cardWidth * (this.all.length + 1)
-    }
+    },
+    ...mapState({
+      mine: (state) => state.activity.applied,
+    })
   },
   components: {
     card,
-    scrollView
+    scrollView,
+    star
+  },
+  methods:{
+    evaluate (item){
+        this.maskShow = !this.maskShow;
+        this.selectAct = item;
+    },
+    evaluate2 (){
+        this.maskShow = !this.maskShow;
+    },
   }
 }
 </script>
@@ -122,29 +72,31 @@ export default {
 <style scoped>
 #scroll-main {
   overflow: hidden;
-  border-top: solid 5px #efefef;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-.mine{
-  font-size: 15px;
-  color:#4a4a48;
-  padding: 1.2rem 0.5rem 0.7rem 0.5rem;
-  background-color: #ffffff
-}
-.all{
-  font-size: 15px;
-  color:#4a4a48;
-  padding: 1.2rem 0.5rem 0.7rem 0.5rem;
-  background-color: #ffffff
+  padding-top: 0.5rem;
 }
 .scroll-pad {
-  padding-left: 1rem;
+  padding-left: 0.3rem;
 }
 .card{
   float: left;
 }
-
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.3;
+}
+.child{
+    position: fixed;
+    width: 100%;
+    height: 570px;
+    bottom: 0px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 </style>
-

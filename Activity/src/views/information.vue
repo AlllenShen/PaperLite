@@ -6,9 +6,7 @@
                     @click="back()"/>
             </template>
         </headNav>
-        <div class="share-wrap" ref="screenshot">
-            <img :src='imgUrl' class="headImg" @click="changeHeadImg()"  crossOrigin="anonymous">
-        </div>
+            <img :src='imgUrl ' class="headImg" @click="changeHeadImg()">
             <div  class="nickName">
                 {{name}}
             </div>
@@ -63,14 +61,6 @@
             </div>
             </div>
         </div>
-        <div class="mask" v-show="maskShow" @click="changeHeadImg()">
-        </div>
-        <div class="child" v-show="maskShow">
-            <cropper :uploadType="`head`" :imgWidth="`85px`" :imgHeight="`85px`" :imgUrl="imgUrl" @upload="getImgUrl"></cropper>
-            <div class="noChangeImg" @click="changeHeadImg()">
-                取消
-            </div>
-        </div>
       
       
   </div>
@@ -78,19 +68,13 @@
 
 <script>
 import headNav from '../components/headNav/HeadBar'
-import cropper from "../components/cropper/cropper"
 import {mapState, mapGetters } from 'vuex'
 import utils from '../assets/utils'
 export default {
     data () {
         return {
-            maskShow: false,
-            screenshotImage: ''
+            
         }
-    },
-    mounted() {
-        console.log(this.userinfo);
-        
     },
     computed: {
         ...mapState({
@@ -109,16 +93,13 @@ export default {
             },
             email: state => state.auth.userInfo.email,
             sno: state => state.auth.userInfo.sno,
-            photoAPI: state => state.auth.photoAPI,
         }),
         ...mapGetters([
-            'photoAPI',
             'imgUrl'
         ])
     },
     components: {
         headNav,
-        cropper,
     },
     methods: {
         back () {
@@ -128,17 +109,9 @@ export default {
             this.$router.push('/nickname');
         },
         changeHeadImg (){
-            this.maskShow = !this.maskShow;
+            this.$router.push('/photo');
             console.log(this.imgUrl)
         },
-        async shareHandle () {
-            const opts = {
-                useCORS: true
-            }
-            const ele = this.$refs.screenshot
-            const canvas = await html2canvas(this.$refs.screenshot, opts)
-            this.screenshotImage = canvas.toDataURL('image/jpg')
-        }
     }
 }
 </script>

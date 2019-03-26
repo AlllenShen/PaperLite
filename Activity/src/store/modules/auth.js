@@ -65,6 +65,9 @@ export default {
         photoAPI: (state, getters, rootState) => {
             return getters.baseURL + '/user/info/update/identicon'
         },
+        detailAPI: (state, getters, rootState) => {
+            return getters.baseURL + '/activity/'
+        },
         imgUrl: (state, getters, rootState) => {
             return getters.baseURL + state.userInfo.identicon
         },

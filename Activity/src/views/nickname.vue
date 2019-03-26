@@ -32,22 +32,16 @@ export default {
         },
         update() {
             this.newName = this.$refs.a.value;
-            console.log(this.newName);
             this.$router.go(-1);
             this.$store.commit('changeNickname',this.newName);
-            if (this.token != '') {
-                this.$http.post(
-                this.updateAPI,{'major': this.newName},
-                {
-                headers: {
-                    Authorization: 'JWT ' + this.token
-                }
-                }).then((response) => {
-                   console.log(response)
-                },(response) => {
+            this.$http.post(
+            this.updateAPI,{'major': this.newName},
+            {
+            headers: this.JWTHeaderObj
+            }).then((response) => {
+            },(response) => {
 
-                })
-            }
+            })
         }
     },
     components: {
@@ -60,7 +54,8 @@ export default {
         updateAPI: state => state.auth.updateAPI,
         }),
         ...mapGetters([
-            'updateAPI'
+            'updateAPI',
+            'JWTHeaderObj'
         ])
     },
 }
