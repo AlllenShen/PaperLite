@@ -29,5 +29,6 @@ export default {
 <style scoped>
 #CardList{
     background-color: #F6F6F5;
+    padding-top: 0.5rem;
 }
 </style>

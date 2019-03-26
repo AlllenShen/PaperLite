@@ -1,7 +1,8 @@
 <template>
 <div id="main">
   <div id="search"><search></search></div>
-  <div id="cardlist"><CardList></CardList></div>
+  <div id="cardlist"
+    :style="{marginTop: heightOfHeader + 'px'}"><CardList></CardList></div>
 </div>
 </template>
 
@@ -23,6 +24,7 @@ export default {
         jshdpage:state=>state.activity.jshdpage,
         zyfupage:state=>state.activity.zyfupage,
         pagemap:state=>state.activity.pagemap,
+        heightOfHeader:state=>state.style.heightOfHeader,
     }),
     ...mapGetters([
       'activitySearch',
@@ -54,7 +56,7 @@ export default {
         let outerHeight = document.documentElement.clientHeight; //屏幕高度
         let scrollTop = document.documentElement.scrollTop; //已上拉长度
         //console.log(innerHeight + " " + outerHeight + " " + scrollTop+" "+headHeight);
-        if (innerHeight < (outerHeight + scrollTop-headHeight+1)) {  //加1因为高度有些误差，拉到底后已上拉高度存在小数的情况
+        if (innerHeight < (outerHeight + scrollTop-headHeight+5)) {  //加1因为高度有些误差，拉到底后已上拉高度存在小数的情况
         //加载更多
             console.log("loadmore");
             this.$store.commit('loadmore')
@@ -96,6 +98,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#search {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 </style>
