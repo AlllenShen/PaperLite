@@ -22,12 +22,11 @@
         <div class="classfic">
             <Row>
                 
-                <div v-for="tab in tabs" class='classf'
-                    @click="changeTag(tab.activityc)">
-                    <Col span="8">
+                <span v-for="(tab,index) in tabs" :key="index" class='classf' @click="changeTag(tab.activityc , index)">
+                    <Col span="8" :class="{'bor':clicked==index,'midBor':index==1}" >
                         {{tab.activityc}}
                     </Col>
-                </div>
+                </span>
                 
             </Row>
         </div>
@@ -37,7 +36,7 @@
         </div>
         
 
-        <div class="unfind" @click="toggle()">
+        <div class="unfind" @click="toggle()" v-show="show">
             待评价
             <Icon v-if="isactive" type="ios-arrow-down" />
             <Icon v-else type="ios-arrow-up" />
@@ -132,6 +131,8 @@ export default {
             isactive: false,
             searchContent: null,
             value1: false,
+            show: false,
+            clicked:0,
         }
     },
     components: {
@@ -153,31 +154,38 @@ export default {
             'JWTHeaderObj'
         ])
     },
+    created () {
+        this.$http.get(
+            this.activityApply,
+            {
+            headers: this.JWTHeaderObj,
+            forcomment: true,
+            }).then((response) => {
+                this.$store.commit('initApplied', response.data.result);
+                if(response.data.result.length != 0){
+                    this.show = true;
+                }
+            },(response) => {
+
+            })
+    },
     methods:{
         goTail() {
             this.$router.push('/information');
         },
         toggle:function(){
             this.isactive = !this.isactive;
-            this.$http.get(
-            this.activityApply,
-            {
-            headers: this.JWTHeaderObj,
-            forcomment: true,
-            }).then((response) => {
-                this.$store.commit('initApplied', response.data.result)
-            },(response) => {
-
-            })
+            
         },
         trans:function(){
             this.aortactivi = !this.sortactivi;
         },
-        changeTag (tagName) {
+        changeTag (tagName , index) {
             this.$store.commit('changeTag', tagName)
             if (this.currentActs.length == 0) {
                 this.initActs(this.changeTag)
             }
+            this.clicked = index
         },
         initActs (tagName) {
             this.$http.post(
@@ -189,6 +197,7 @@ export default {
         },
         searchfor (){
             let tagName = '搜索';
+            this.clicked = 3;
             this.$store.commit('changeTag', tagName);
             this.$store.commit('clearActs');
             this.searchContent = this.$refs.a.value;
@@ -221,8 +230,17 @@ export default {
         text-align: center;
         font-family: PingFangSC-regular;
         font-size: 14px;
+        color:#fff;
+        height: 35px;
+        line-height: 35px;
     }
-
+    .bor{
+        border-bottom:solid 5px #fff;
+    }
+    .midBor{
+        border-left: solid 1px #fff;
+        border-right: solid 1px #fff;
+    }
     .unfind{
         float:none;
         text-align: center;
