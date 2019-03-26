@@ -144,10 +144,13 @@ export default {
             name: state => state.auth.userInfo.name,
             email: state => state.auth.userInfo.email,
             imgUrl: state => state.auth.imgUrl,
+            token: state => state.auth.token,
         }),
         ...mapGetters([
-            'activityAPI',
-            'imgUrl'
+            'imgUrl',
+            'activitySearch',
+            'activityApply',
+            'JWTHeaderObj'
         ])
     },
     methods:{
@@ -156,6 +159,16 @@ export default {
         },
         toggle:function(){
             this.isactive = !this.isactive;
+            this.$http.get(
+            this.activityApply,
+            {
+            headers: this.JWTHeaderObj,
+            forcomment: true,
+            }).then((response) => {
+                this.$store.commit('initApplied', response.data.result)
+            },(response) => {
+
+            })
         },
         trans:function(){
             this.aortactivi = !this.sortactivi;
@@ -168,7 +181,7 @@ export default {
         },
         initActs (tagName) {
             this.$http.post(
-                this.activityAPI,
+                this.activitySearch,
                 {type: this.currentTag}
             ).then((res) => {
                 this.$store.commit('addActs', res.data.result)
@@ -180,7 +193,7 @@ export default {
             this.$store.commit('clearActs');
             this.searchContent = this.$refs.a.value;
             this.$http.post(
-                this.activityAPI,
+                this.activitySearch,
                 {title_like: this.searchContent}
             ).then((res) => {
                 this.$store.commit('addActs', res.data.result)
@@ -202,6 +215,7 @@ export default {
         background-color: #5F98F4;
         /* margin-bottom: 2px; */
         text-align: center;
+        border-bottom: solid 1px #efefef;
     }
     .classf{
         text-align: center;
@@ -211,32 +225,15 @@ export default {
 
     .unfind{
         float:none;
-        margin: 0px;
         text-align: center;
-        /* font-size: 8px; */
-        /* border-top: 1px  solid gray; */
-        color: rgba(132, 132, 132, 1);
         font-family: PingFangSC-regular;
-        background-color: rgb(230, 230, 230);
+        background-color: #f6f6f5;
     }
 
     .hideshow{
         float: none;
         height: 90px;
-        text-align: center;
-        border-top: 1px solid rgba(132, 132, 132, 1);
-        background-color: rgb(230, 230, 230);
-    }
-    .un_activity{
-        margin-top: 15px;
-        margin-left:15px;
-        width: 90px;
-        height:60px;
-        border: 1px solid rgba(132, 132, 132, 1);
-        border-radius:5%; 
-        color: aliceblue;
-        background-color: rgba(132, 132, 132, 1);
-        font-family: PingFangSC-regular;
+        background-color: #f6f6f5;
     }
     .boardsearch{
         margin-left: 4px;

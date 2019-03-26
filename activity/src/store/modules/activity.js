@@ -2,7 +2,7 @@ import utils from '../../assets/utils'
 export default {
     namespace: true,
     state: {
-        activities:[],
+        applied:[],
         comments: [],
         currentTag: '报告讲座',
         currentActs:null,
@@ -305,18 +305,21 @@ export default {
             state.currentTag = tag;
             console.log(state[state.map[tag]]);
             state.currentActs = state[state.map[tag]]
+        },
+        initApplied(state, applied) {
+            state.applied = applied
         }
     },
     getters:{
-        activityAPI: (state, getters) => {
+        activitySearch: (state, getters) => {
             //console.log(getters);
             console.log(state.activities)
             return getters.baseURL + '/activity/search'
         },
-        joinedAPI: (state, getters) => {
-          //console.log(getters);
-          console.log(state.activities)
-          return getters.baseURL + '/activity/joined'
-      }
+        activityApply: (state, getters) => {
+            //console.log(getters);
+            console.log(state.activities)
+            return getters.baseURL + '/activity/joined'
+        }
     }
 }

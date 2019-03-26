@@ -9,6 +9,8 @@ import login from './views/login'
 import tipForMail from './views/tipForMail'
 import information from './views/information'
 import nickname from './views/nickname'
+import main from './views/main'
+import photo from './views/photo'
 import myHistory from './components/myHistory'
 import search from './components/search'
 
@@ -71,6 +73,16 @@ export default new Router({
       name: 'test',
       path: '/test',
       component: search
+    },
+    {
+      name: 'main',
+      path: '/',
+      component: main
+    },
+    {
+      name: 'photo',
+      path: '/photo',
+      component: photo
     },
   ],
   // eslint-disable-next-line

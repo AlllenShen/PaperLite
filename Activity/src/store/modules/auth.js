@@ -71,5 +71,10 @@ export default {
         imgUrl: (state, getters, rootState) => {
             return getters.baseURL + state.userInfo.identicon
         },
+        JWTHeaderObj: (state) => {
+            return {
+                Authorization: 'JWT ' + state.token
+            }
+        }
     }
 }

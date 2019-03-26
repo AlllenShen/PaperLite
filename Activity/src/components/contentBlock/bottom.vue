@@ -20,7 +20,8 @@
 </template>
 
 <script>
-    import utils from '../../assets/utils'
+import utils from '../../assets/utils'
+import {mapState, mapGetters } from 'vuex'
     export default {
         data: function(){
             return {
@@ -28,8 +29,22 @@
                 focusState: false,
                 cont: null,
                 time: null,
-                name: null
+                commId: null,
             }
+        },
+        props: ['proId'],
+        computed: {
+            ...mapState({
+            token: state => state.auth.token,
+            name: state => state.auth.userInfo.name,
+            stuId: state => state.auth.userInfo.id,
+            addCommentAPI: state => state.auth.addCommentAPI,
+            sno: state => state.auth.userInfo.sno,
+            identicon: state => state.auth.userInfo.identicon,
+            }),
+            ...mapGetters([
+                'addCommentAPI'
+            ])
         },
         methods: {
             setMaskShow(){
@@ -37,11 +52,33 @@
                 this.focusState = true;
             },
             sendContent: function (){
+                console.log("this.proId");
                 this.cont = this.$refs.contarea.value;
                 this.maskShow = !this.maskShow;
                 this.$refs.contarea.value = null;
                 this.time = new Date().getHours() + ':' + new Date().getMinutes();
-                this.$emit('getContent',this.cont,this.time)
+                console.log(this.proId);
+                if (this.token != '') {
+                    console.log(this.token);
+                    this.$http.post(
+                    this.addCommentAPI,
+                    {
+                        'act_id': this.proId,
+                        'content': this.cont,
+                        'tags': ([1,2]),
+                    },
+                    {
+                    headers: {
+                        Authorization: 'JWT ' + this.token
+                    }
+                    }).then((response) => {
+                        console.log(response);
+                        // console.log(this.name);
+                        this.commId = response.data.comment_id;
+                        // console.log(this.commId);
+                        this.$emit('getContent',this.cont,this.time,this.commId,this.name,this.stuId,this.identicon);
+                    })
+                }
             }
         },
         directives: {

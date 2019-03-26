@@ -18,7 +18,7 @@ export default {
     scrollCard,
     calender,
     mainBottom,
-    mainHead
+    mainHead,
   },
   computed: {
     ...mapState({

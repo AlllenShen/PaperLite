@@ -43,10 +43,12 @@ export default {
       textLen: 100
     }
 	},
-	props: ['actTitle','questionList', 'actID'],
-	computed: {
-
-  },
+	props: ['actTitle', 'actID'],
+  computed: {
+        ...mapState({
+            questionList: (state) => state.activity.questionList,
+        })
+    },
   methods: { // 内部方法
   	starClick (val) {
   		this.starCount = val

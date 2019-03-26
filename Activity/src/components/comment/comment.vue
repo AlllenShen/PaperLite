@@ -2,8 +2,7 @@
     <div class="comment">
         
         <div>
-            <div class="headImg">
-            </div>
+            <img :src='imgSrc' class="headImg">
             <div class="like">
                 <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="15"/>
                 {{likeCount}}
@@ -22,15 +21,17 @@
 </template>
 
 <script>
+import {mapState, mapGetters } from 'vuex'
     export default {
         data: function () {
             return {
                 islike: false,
                 iconType: 'md-heart-outline',
                 iconColor: '#4a4a48',
+                imgSrc: "http://118.89.48.63:8001"+this.identicon,
             }
         },
-        props: ['name','time','content','likeCount'],
+        props: ['name','time','content','likeCount','identicon'],
         methods:{
             togglelike: function(){
                 this.islike = !this.islike
@@ -59,7 +60,6 @@
         margin-top:5px;
         margin-left:5px;
         margin-right: 0px;
-        background-color: black;
         border-radius: 100%;
     }
     .content{
