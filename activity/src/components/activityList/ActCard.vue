@@ -12,7 +12,7 @@
                     <div class="signup">
                         <button id="ifapply" v-if="apply(act.id)">已报名</button>
                         <button id="overtime" v-if="!apply(act.id)&&timecompare(act.apply_end_at)">报名</button>
-                        <button id="withintime" v-if="!apply(act.id)&&!timecompare(act.apply_end_at)">报名</button>
+                        <button id="withintime" v-if="!apply(act.id)&&!timecompare(act.apply_end_at)" @click="toapply(act.id)">报名</button>
                     </div>
                 </div>
                 <div class="cardbar">
@@ -36,14 +36,18 @@
 </template>
 <script>
 import { mapState, mapGetters } from 'vuex'
+import utils from '../../assets/utils'
 export default {
     props:['activities'],
     computed: {
         ...mapState({
             applied:state=>state.activity.applied,
+            activityApplyAPI:state=>state.auth.activityApplyAPI
         }),
         ...mapGetters([
-            'activitySearch'
+            'activitySearch',
+            'activityApplyAPI',
+            'JWTHeaderObj'
         ]),
     },
     methods:{
@@ -153,6 +157,13 @@ export default {
                 }
             }
             return false
+        },
+        toapply(actid){
+            let activityapplyapi=this.activityApplyAPI+actid;
+            this.$http.post(activityapplyapi,{},{headers:this.JWTHeaderObj}).then((response)=>{
+                console.log(response);
+                this.$Message.success('报名成功')
+            })
         }
     }    
 }
@@ -193,28 +204,28 @@ export default {
     width: 55%;
     height: 25px;
     margin-left: 22.5%;
-    border: rgb(190, 188, 188);
+    border: 1px solid #5F98F4;
     border-radius: 2px;
     color: white;
-    background: rgb(190, 188, 188);
+    background: #5F98F4;
 }
 .signup #overtime{
     width: 55%;
     height: 25px;
     margin-left: 22.5%;
-    border: rgb(190, 188, 188);
+    border: 1px solid #BDBDBD;
     border-radius: 2px;
     color: white;
-    background: rgb(190, 188, 188);
+    background: #BDBDBD;
 }
 .signup #withintime{
     width: 55%;
     height: 25px;
     margin-left: 22.5%;
-    border: #009688;
+    border: 1px solid #5F98F4;
     border-radius: 2px;
-    color: white;
-    background: #009688;
+    color: #5F98F4;
+    background: white;
 }
 .cardbar{
     width: 100%;
