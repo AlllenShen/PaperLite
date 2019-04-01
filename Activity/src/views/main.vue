@@ -39,15 +39,6 @@ export default {
     this.$Message.config({
       top: 120,
     })
-    this.$http.get(
-      this.activityApply,
-      {headers: this.JWTHeaderObj}
-    ).then((res) => {
-      this.$store.commit('initApplied', res.data.result)
-      this.$Message.success('刷新成功')
-    }, (res) => {
-      this.$Message.error('刷新失败，请检查网络')
-    })
   },
   methods:{
     onScroll() {
