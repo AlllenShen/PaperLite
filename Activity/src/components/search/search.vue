@@ -38,8 +38,8 @@
 
         <div class="unfind" @click="toggle()" v-show="show">
             待评价
-            <Icon v-if="isactive" type="ios-arrow-down" />
-            <Icon v-else type="ios-arrow-up" />
+            <Icon v-if="isactive" type="ios-arrow-up" />
+            <Icon v-else type="ios-arrow-down" />
         </div>
 
         <Drawer placement="left" :closable="false" v-model="value1">

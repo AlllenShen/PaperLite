@@ -39,24 +39,15 @@ export default {
     this.$Message.config({
       top: 120,
     })
-    this.$http.get(
-      this.activityApply,
-      {headers: this.JWTHeaderObj}
-    ).then((res) => {
-      this.$store.commit('initApplied', res.data.result)
-      this.$Message.success('刷新成功')
-    }, (res) => {
-      this.$Message.error('刷新失败，请检查网络')
-    })
   },
   methods:{
     onScroll() {
         let innerHeight = document.querySelector('#cardlist').clientHeight; //cardlist总长
-        let headHeight = document.querySelector('#search').clientHeight; //顶部search长度
+        //let headHeight = document.querySelector('#search').clientHeight; //顶部search长度
         let outerHeight = document.documentElement.clientHeight; //屏幕高度
         let scrollTop = document.documentElement.scrollTop; //已上拉长度
-        //console.log(innerHeight + " " + outerHeight + " " + scrollTop+" "+headHeight);
-        if (innerHeight < (outerHeight + scrollTop-headHeight+5)) {  //加1因为高度有些误差，拉到底后已上拉高度存在小数的情况
+        console.log(innerHeight + " " + outerHeight + " " + scrollTop+" "+this.heightOfHeader);
+        if (innerHeight < (outerHeight + scrollTop - this.heightOfHeader + 5)) {  //加1因为高度有些误差，拉到底后已上拉高度存在小数的情况
         //加载更多
             console.log("loadmore");
             this.$store.commit('loadmore')
