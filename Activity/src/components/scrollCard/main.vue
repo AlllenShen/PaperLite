@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     minewidth () {
-      return this.cardWidth * (this.mine.length + 1)
+      return (this.cardWidth+20) * (this.mine.length + 1)
     },
     allwidth () {
       return this.cardWidth * (this.all.length + 1)
