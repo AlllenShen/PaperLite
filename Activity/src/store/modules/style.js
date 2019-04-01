@@ -1,6 +1,6 @@
 export default{
   namespace: true,
   state: {
-    heightOfHeader: 85,
+    heightOfHeader: 90,
   }
 }

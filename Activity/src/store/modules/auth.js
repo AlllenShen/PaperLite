@@ -75,6 +75,9 @@ export default {
             return {
                 Authorization: 'JWT ' + state.token
             }
+        },
+        activityApplyAPI: (state,getters) => {
+            return getters.baseURL + '/activity/apply/'
         }
     }
 }
