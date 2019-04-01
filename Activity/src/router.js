@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import detail from './views/detail.vue'
-import ideaDetail from './views/ideaDetail.vue'
-import mine from './views/mine.vue'
-import explore from './views/explore'
-import home from './views/home'
-import login from './views/login'
-import tipForMail from './views/tipForMail'
-import information from './views/information'
-import nickname from './views/nickname'
-import main from './views/main'
-import photo from './views/photo'
-import myHistory from './components/myHistory'
-import search from './components/search'
+const detail = () => import('@/views/detail.vue')
+const ideaDetail = () => import('@/views/ideaDetail.vue')
+const mine = () => import('@/views/mine.vue')
+const explore = () => import('@/views/explore.vue')
+const home = () => import('@/views/home.vue')
+const login = () => import('@/views/login.vue')
+const tipForMail = () => import('@/views/tipForMail.vue')
+const information = () => import('@/views/information.vue')
+const nickname = () => import('@/views/nickname.vue')
+const main = () => import('@/views/main.vue')
+const photo = () => import('@/views/photo.vue')
+const myHistory = () => import('@/components/myHistory')
+const search = () => import('@/components/search')
 
 Vue.use(Router)
 
@@ -42,12 +42,18 @@ export default new Router({
     {
       name: 'detail',
       path: '/detail/:projectID',
-      component: detail
+      component: detail,
+      meta: {
+        title: '活动详情'
+      }
     },
     {
       name: 'login',
       path: '/login',
-      component: login
+      component: login,
+      meta: {
+        title: '登录'
+      }
     },
     {
       name: 'tipForMail',
@@ -77,7 +83,10 @@ export default new Router({
     {
       name: 'main',
       path: '/',
-      component: main
+      component: main,
+      meta: {
+        title: '不纸 - 主页'
+      }
     },
     {
       name: 'photo',
