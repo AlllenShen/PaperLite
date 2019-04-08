@@ -8,7 +8,7 @@
         </headNav>
             <img :src='imgUrl ' class="headImg" @click="changeHeadImg()">
             <div  class="nickName">
-                {{name}}
+                {{nickname}}
             </div>
         <div class="info">
             <div class="name">
@@ -32,7 +32,7 @@
             <div class="nickname" @click="changeNickname">
             <div class="y">昵称</div>
             <div class="ch">
-                {{major}}
+                {{nickname}}
             </div>
             </div>
             <div class="academy">
@@ -80,6 +80,14 @@ export default {
         ...mapState({
             token: state => state.auth.token,
             name: state => state.auth.userInfo.name,
+            nickname: state => {
+                if(state.auth.userInfo.nickname == null){
+                    return state.auth.userInfo.name
+                }
+                else{
+                    return state.auth.userInfo.nickname
+                }
+            },
             major: state => state.auth.userInfo.major,
             cls: state => state.auth.userInfo.cls,
             imgUrl: state => state.auth.imgUrl,

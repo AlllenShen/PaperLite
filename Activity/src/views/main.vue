@@ -1,6 +1,7 @@
 <template>
 <div id="main">
   <div id="search"><search></search></div>
+  <div class="eva"><evaluate></evaluate></div>
   <div id="cardlist"
     :style="{marginTop: heightOfHeader + 'px'}"><CardList></CardList></div>
 </div>
@@ -10,12 +11,14 @@
 import {mapState, mapGetters } from 'vuex'
 import CardList from '../components/activityList/CardList.vue'
 import ActList from '../components/activityList/ActList.vue'
-import search from '../components/search'
+import search from '../components/search/search.vue'
+import evaluate from '../components/search/evaluate.vue'
 
 export default {
   components: {
     CardList,
     search,
+    evaluate
   },
   computed: {
     ...mapState({
@@ -38,7 +41,17 @@ export default {
   mounted () {
     this.$Message.config({
       top: 120,
-    })
+    }),
+    this.$http.get(
+        this.activityApply,
+        {
+        headers: this.JWTHeaderObj,
+        forcomment: true,
+        }).then((response) => {
+            this.$store.commit('initApplied', response.data.result);
+        },(response) => {
+
+        })
   },
   methods:{
     onScroll() {
@@ -94,5 +107,9 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
+}
+.eva{
+  position:relative;
+  top:88px;
 }
 </style>

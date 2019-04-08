@@ -30,7 +30,7 @@ export default {
             utils.delCookie('userInfo')
         },
         changeNickname (state, newName){
-            state.userInfo.major = newName;
+            state.userInfo.nickname = newName;
         },
         changeIdenticon (state,newIdenticon){
             state.userInfo.identicon = newIdenticon;
