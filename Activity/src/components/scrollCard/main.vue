@@ -17,7 +17,8 @@
       <div class="child" id="child" v-show="maskShow">
           <star 
           :actTitle="selectAct.title"
-          :actID="selectAct.id">
+          :actID="selectAct.id"
+          v-on:headCallBack="headCall">
           </star>
       </div>
     </div>
@@ -65,6 +66,9 @@ export default {
     evaluate2 (){
         this.maskShow = !this.maskShow;
     },
+    headCall: function (msg) { //回调方法，接收子组件传的参数
+      this.maskShow = false;
+    }
   }
 }
 </script>

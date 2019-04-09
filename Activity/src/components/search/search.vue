@@ -23,23 +23,12 @@
             <Row>
                 
                 <span v-for="(tab,index) in tabs" :key="index" class='classf' @click="changeTag(tab.activityc , index)">
-                    <Col span="8" :class="{'bor':clicked==index,'midBor':index==1}" >
+                    <Col span="8" :class="{'bor':clicked==index, 'midBor':index==1}" >
                         {{tab.activityc}}
                     </Col>
                 </span>
                 
             </Row>
-        </div>
-        
-        <div v-show="isactive" class="hideshow">
-                <scrollCard></scrollCard> 
-        </div>
-        
-
-        <div class="unfind" @click="toggle()" v-show="show">
-            待评价
-            <Icon v-if="isactive" type="ios-arrow-up" />
-            <Icon v-else type="ios-arrow-down" />
         </div>
 
         <Drawer placement="left" :closable="false" v-model="value1">
@@ -100,7 +89,7 @@
                     
                 </div>
             </div>
-            <div class="exit">
+            <div class="exit" @click="exitSystem()">
                 <div>
                     <Icon type="md-exit" size="18" class="exitIcon"/>
                     <div class="exitWord">
@@ -128,10 +117,8 @@ export default {
                 {activityc:'报告讲座',value:2},
                 {activityc:'志愿服务',value:3}
             ],   
-            isactive: false,
             searchContent: null,
             value1: false,
-            show: false,
             clicked:0,
         }
     },
@@ -155,27 +142,11 @@ export default {
         ])
     },
     created () {
-        this.$http.get(
-            this.activityApply,
-            {
-            headers: this.JWTHeaderObj,
-            forcomment: true,
-            }).then((response) => {
-                this.$store.commit('initApplied', response.data.result);
-                if(response.data.result.length != 0){
-                    this.show = true;
-                }
-            },(response) => {
-
-            })
+        
     },
     methods:{
         goTail() {
             this.$router.push('/information');
-        },
-        toggle:function(){
-            this.isactive = !this.isactive;
-            
         },
         trans:function(){
             this.aortactivi = !this.sortactivi;
@@ -208,10 +179,14 @@ export default {
                 this.$store.commit('addActs', res.data.result)
             })
         },
+        exitSystem (){
+            this.$router.push('/login');
+            this.$store.commit('logout')
+        }
         
     },
     mounted () {
-        this.changeTag('报告讲座')
+        this.changeTag('竞赛活动' , 0)
     }
     
 }
@@ -241,17 +216,8 @@ export default {
         border-left: solid 1px #fff;
         border-right: solid 1px #fff;
     }
-    .unfind{
-        float:none;
-        text-align: center;
-        font-family: PingFangSC-regular;
-        background-color: #f6f6f5;
-    }
-
-    .hideshow{
-        float: none;
-        height: 90px;
-        background-color: #f6f6f5;
+    .startBor{
+        border-bottom:solid 5px #fff;
     }
     .boardsearch{
         margin-left: 4px;
@@ -348,6 +314,7 @@ export default {
         position: relative;
         top:30px;
         left:18px;
+        width: 90%;
         color:#fff;
         font-size:15px;
     }
@@ -411,7 +378,7 @@ export default {
     }
     .exit{
         position: absolute;
-        width:100%;
+        width:90%;
         font-family: "微软雅黑";
         font-size: 13px;
         left:20px;
@@ -454,7 +421,7 @@ export default {
     }
     .exitWord{
         float:right;
-        margin-right:68%;
+        margin-right:64%;
         margin-top:2px;
     }
 </style>
