@@ -7,7 +7,7 @@ export default {
     },
     mutations: {
         routeTo(state, target) {
-            state.target = target == '/login' ? '/home' : target
+            state.target = target == '/login' ? '/' : target
         }
     },
     getters: {

@@ -35,7 +35,7 @@ export default {
             this.$router.go(-1);
             this.$store.commit('changeNickname',this.newName);
             this.$http.post(
-            this.updateAPI,{'major': this.newName},
+            this.updateAPI,{'nickname': this.newName},
             {
             headers: this.JWTHeaderObj
             }).then((response) => {
@@ -49,7 +49,14 @@ export default {
     },
     computed: {
         ...mapState({
-        name: state => state.auth.userInfo.major,
+        name: state => {
+                if(state.auth.userInfo.nickname == null){
+                    return state.auth.userInfo.name
+                }
+                else{
+                    return state.auth.userInfo.nickname
+                }
+        },
         token: state => state.auth.token,
         updateAPI: state => state.auth.updateAPI,
         }),
@@ -71,6 +78,7 @@ export default {
         border:none;
         font-size: 14px;
         padding:20px;
+        outline:none;
     }
     .n{
         position:fixed;
