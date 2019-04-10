@@ -2,8 +2,8 @@
     <div>
         <div class="head">
             <div class="boardsearch">
-                <div class="more">
-                    <Icon type="md-more" color="#7e7e7e" size="26" />
+                <div id="more" @click="rankmenu">
+                    <Icon id="iconmore" type="md-more" color="#7e7e7e" size="26" />
                 </div>
                 <div class="search">
                     
@@ -18,6 +18,10 @@
                     <Icon  type="md-person" color="#7e7e7e" size="26" />
                 </div>
             </div>
+        </div>
+        <div id="rankdrop" v-if="rankmenudrop">
+            <h4>排序</h4>
+            <ul v-for="(rk,index) in ranklist" style="margin:2%" @click="rank(rk.rankname)">{{rk.rankname}}</ul>
         </div>
         <div class="classfic">
             <Row>
@@ -133,6 +137,11 @@ export default {
             value1: false,
             show: false,
             clicked:0,
+            rankmenudrop:false,
+            ranklist:[
+                {key:1, rankname:'按热度'},
+                {key:2, rankname:'按时间'}
+            ]
         }
     },
     components: {
@@ -146,6 +155,11 @@ export default {
             email: state => state.auth.userInfo.email,
             imgUrl: state => state.auth.imgUrl,
             token: state => state.auth.token,
+            bgjzpage:state=>state.activity.bgjzpage,
+            jshdpage:state=>state.activity.jshdpage,
+            zyfupage:state=>state.activity.zyfupage,
+            pagemap:state=>state.activity.pagemap,
+            currentOrder:state => state.activity.currentOrder,
         }),
         ...mapGetters([
             'imgUrl',
@@ -168,6 +182,16 @@ export default {
             },(response) => {
 
             })
+        let body=document.querySelector('body')
+        body.addEventListener('click',(e)=>{
+            //console.log(e.target.id==='more')
+            if((e.target.id==='more'||e.target.id==='iconmore')&&e.target.id!='rankdrop'){
+                this.rankmenudrop=!this.rankmenudrop
+            }
+            else{
+                this.rankmenudrop=false
+            }
+        },false)
     },
     methods:{
         goTail() {
@@ -208,6 +232,88 @@ export default {
                 this.$store.commit('addActs', res.data.result)
             })
         },
+        rankmenu(e){
+        },
+        rank(rankname){
+            if(rankname!=this.currentOrder){
+                if(rankname=='按热度'){
+                    var date=new Date();
+                    var dateend=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+                    var daterange=new Date()
+                    daterange.setDate(daterange.getDate()-14)
+                    var datebegin=daterange.getFullYear()+'-'+(daterange.getMonth()+1)+'-'+daterange.getDate();
+                    this.$store.commit('changeOrder', 'hot')
+                    //console.log(this.currentActs)                   
+                    this.$store.commit('clearAllActs')
+                    this.$store.commit('searchrecent')
+                    this.$http.post(
+                        this.activitySearch,
+                        {size:20,
+                        page: this.$store.state.activity[this.$store.state.activity.pagemap[this.currentTag]]+1,
+                        type:this.currentTag,
+                        order:this.currentOrder,
+                        apply_end_during:[datebegin,dateend],
+                        ignore_expired:false}
+                    ).then((res) => {
+                        let data=res.data.result
+                        console.log(res)
+                        let select=0
+                        while(select<data.length){
+                            if(data[select].type!=this.$store.state.activity.currentTag){
+                                data.splice(select,1)
+                            }
+                            else{
+                                select++
+                            }
+                        }
+                        if(data.length!=0){
+                            this.$store.commit('addmoreActs', data)
+                        }
+                    })
+                    this.$store.commit('changeTag',this.currentTag)
+                    //console.log(this.currentTag)
+                    
+                }
+                if(rankname=='按时间'){
+                    var date=new Date();
+                    var dateend=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+                    var daterange=new Date()
+                    daterange.setDate(daterange.getDate()-14)
+                    var datebegin=daterange.getFullYear()+'-'+(daterange.getMonth()+1)+'-'+daterange.getDate();
+                    this.$store.commit('changeOrder', 'time')
+                    //console.log(this.currentActs)
+                    this.$store.commit('clearAllActs')
+                    this.$store.commit('searchrecent')
+                    this.$http.post(
+                        this.activitySearch,
+                        {size:20,
+                        page: this.$store.state.activity[this.$store.state.activity.pagemap[this.currentTag]]+1,
+                        type:this.currentTag,
+                        order:this.currentOrder,
+                        apply_end_during:[datebegin,dateend],
+                        ignore_expired:false}
+                    ).then((res) => {
+                        let data=res.data.result
+                        console.log(res)
+                        let select=0
+                        while(select<data.length){
+                            if(data[select].type!=this.$store.state.activity.currentTag){
+                                data.splice(select,1)
+                            }
+                            else{
+                                select++
+                            }
+                        }
+                        if(data.length!=0){
+                            this.$store.commit('addmoreActs', data)
+                        }
+                    })
+                    this.$store.commit('changeTag',this.currentTag)
+                }
+
+            }
+            
+        }
         
     },
     mounted () {
@@ -289,7 +395,7 @@ export default {
         border:none;
         outline:none;
     }
-    .more{
+    #more{
         position: relative;
         float: right;
         margin-right:1%;
@@ -310,6 +416,16 @@ export default {
         background-color:  #5F98F4;
         height: 48px;
         padding-top:4px;
+    }
+    #rankdrop{
+        position: absolute;
+        right: 2%;
+        z-index: 10;
+        width: 25%;
+        padding: 3%;
+        font-size: 13px;
+        background: rgb(236, 232, 232);
+        border-radius: 3px;
     }
     .drawerHead{
         position: absolute;

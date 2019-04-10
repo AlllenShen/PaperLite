@@ -1,6 +1,6 @@
 <template>
     <div id="ActCard">
-        <div class="cards" v-for="(act) in activities">
+        <div class="cards" v-for="(act) in activities" @click="todetail(act.id)">
             <div class="mainpart">
                 <div class="cardinfo">
                     <div class="info">
@@ -164,6 +164,9 @@ export default {
                 console.log(response);
                 this.$Message.success('报名成功')
             })
+        },
+        todetail(id){
+            this.$router.push({path:'/detail/id'})
         }
     }    
 }

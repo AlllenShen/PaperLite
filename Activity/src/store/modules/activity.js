@@ -251,14 +251,31 @@ export default {
                 }
               ]
           ],
-        bgjzpage:1,
-        jshdpage:1,
-        zyfupage:1,
+        bgjzpage:0,
+        jshdpage:0,
+        zyfupage:0,
         pagemap:{
             '报告讲座': 'bgjzpage',
             '竞赛活动': 'jshdpage',
             '志愿服务': 'zyfupage',
-        }
+        },
+        recentbgjz:false,
+        recentjshd:false,
+        recentzyfu:false,
+        recentmap:{
+            '报告讲座': 'recentbgjz',
+            '竞赛活动': 'recentjshd',
+            '志愿服务': 'recentzyfu',
+        },
+        allbgjz:false,
+        alljshd:false,
+        allzyfu:false,
+        loadallmap:{
+            '报告讲座': 'allbgjz',
+            '竞赛活动': 'alljshd',
+            '志愿服务': 'allzyfu',
+        },
+        currentOrder:null,
     },
     mutations: {
         addComment (state,newComment) {
@@ -313,6 +330,7 @@ export default {
             state.currentTag = tag
             //console.log(state[state.map[tag]]);
             state.currentActs = state[state.map[tag]]
+            console.log(state.currentActs.length)
         },
         initApplied(state, applied) {
             state.applied = applied
@@ -321,8 +339,27 @@ export default {
             state[state.pagemap[state.currentTag]]++
             //console.log(state[state.pagemap[state.currentTag]])
         },
+        searchrecent(state){
+          state[state.recentmap[state.currentTag]]=true
+          //console.log('searchrecnet',state[state.recentmap[state.currentTag]])
+          state[state.pagemap[state.currentTag]]=0
+          console.log('searchrecnet',state[state.pagemap[state.currentTag]])
+        },
         addmoreActs(state,payload){
             state.currentActs.push(...payload)
+        },
+        loadall(state){
+          state[state.loadallmap[state.currentTag]]=true
+          //console.log('loadall',state[state.loadallmap[state.currentTag]])
+        },
+        changeOrder(state,order){
+          state.currentOrder=order
+          console.log(state.currentOrder)
+        },
+        clearAllActs(state){
+          for(var arr in state.map){
+            state[state.map[arr]]=[]
+          }
         },
     },
     getters:{
