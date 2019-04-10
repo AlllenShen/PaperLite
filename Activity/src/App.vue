@@ -6,12 +6,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import utils from '@/assets/utils'
+
 export default {
-  data () {
-    return {
-      // loginAPI: 'http://127.0.0.1:8888/user/login'
-    }
-  },
   computed: {
     ...mapState({
       loginAPI: state => state.auth.loginAPI,
@@ -20,22 +17,37 @@ export default {
       target: state => state.global.target,
     }),
     ...mapGetters([
-      'loginAPI'
+      'loginAPI',
+      'visitorLogin',
+      'JWTHeaderObj'
     ])
   },
   created () {
     let target = document.URL.split('#')[1]
     // this.$store.commit('routeTo', target == '/' ? '/home': target)
     this.$store.commit('routeTo', target)
+    
     // 验证token
     if (this.token != '') {
       this.$http.post(
         this.loginAPI, {}, {
-        headers: {
-          Authorization: 'JWT ' + this.token
-        }
+        headers: this.JWTHeaderObj
       }).then((response) => {
         // console.log(response.data)
+        // console.log(this)
+        let data = response.data
+        if (data.code == 200) {
+          this.$store.commit('login', data)
+          this.$router.push(this.target)
+        }
+      })
+    }
+    // 游客模式
+    if (utils.getQueryString('visitor') == '1') {
+      this.$http.get(
+        this.visitorLogin
+      ).then((response) => {
+        console.log(response.data)
         // console.log(this)
         let data = response.data
         if (data.code == 200) {

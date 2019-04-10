@@ -89,7 +89,7 @@ export default {
             }
             }).then((response) => {
                 console.log(response);
-                this.$store.commit('cancelApplied', this.actID);
+                this.$store.commit('commentedAct', this.actID);
                 this.$emit('headCallBack', false)
             })
         }

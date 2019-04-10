@@ -50,7 +50,7 @@ export default {
       return this.cardWidth * (this.all.length + 1)
     },
     ...mapState({
-      mine: (state) => state.activity.applied,
+      mine: (state) => state.activity.needComment,
     })
   },
   components: {

@@ -31,7 +31,7 @@ export default {
     computed: {
         ...mapState({
             show: state => {
-                if(state.activity.applied.length == 0){
+                if(state.activity.needComment.length == 0){
                     return false
                 }
                 else{

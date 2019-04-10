@@ -46,9 +46,12 @@ export default {
       this.activityApply,
       {
         headers: this.JWTHeaderObj,
-        forcomment: true,
+        params: {for_comment: true}
       }
     ).then((response) => {
+      console.log('comment');
+      console.log(response.data);
+      
       this.$store.commit('initNeedComment', response.data.result);
     })
     this.$http.get(
