@@ -44,6 +44,11 @@ export default {
     }
     // 游客模式
     if (utils.getQueryString('visitor') == '1') {
+      this.$Message.info({
+                content: '您正在使用游客模式',
+                duration: 6,
+                closable: true
+            })
       this.$http.get(
         this.visitorLogin
       ).then((response) => {
