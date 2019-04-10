@@ -3,6 +3,7 @@ export default {
     namespace: true,
     state: {
         applied:[],
+        needComment:[],
         comments: [],
         currentTag: '报告讲座',
         currentActs:null,
@@ -371,6 +372,9 @@ export default {
         },
         initApplied(state, applied) {
             state.applied = applied
+        },
+        initNeedComment(state, applied) {
+          state.needComment = applied
         },
         loadmore(state){
             state[state.pagemap[state.currentTag]]++

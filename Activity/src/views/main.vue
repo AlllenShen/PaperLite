@@ -43,15 +43,22 @@ export default {
       top: 120,
     }),
     this.$http.get(
-        this.activityApply,
-        {
+      this.activityApply,
+      {
         headers: this.JWTHeaderObj,
         forcomment: true,
-        }).then((response) => {
-            this.$store.commit('initApplied', response.data.result);
-        },(response) => {
-
-        })
+      }
+    ).then((response) => {
+      this.$store.commit('initNeedComment', response.data.result);
+    })
+    this.$http.get(
+      this.activityApply,
+      {
+        headers: this.JWTHeaderObj,
+      }
+    ).then((response) => {
+      this.$store.commit('initApplied', response.data.result);
+    })
   },
   methods:{
     onScroll() {
