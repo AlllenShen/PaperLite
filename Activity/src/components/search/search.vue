@@ -218,6 +218,7 @@ export default {
         exitSystem (){
             this.$router.push('/login');
             this.$store.commit('logout')
+        },
         rankmenu(e){
         },
         rank(rankname){
