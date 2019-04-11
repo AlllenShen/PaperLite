@@ -103,6 +103,21 @@ export default {
         initApplied(state, applied) {
             state.applied = applied
         },
+        addApplied(state, act) {
+            state.applied.push({
+                id: act.id,
+                title: act.title
+            })
+            console.log(state.applied);
+        },
+        cancelApplied(state, act) {
+            for (var i = 0; i < state.applied.length; i++) {
+                if (act.id == state.applied[i].id) {
+                    state.applied.splice(i, 1)
+                    return
+                }
+            }
+        },
         initNeedComment(state, applied) {
           state.needComment = applied
         },

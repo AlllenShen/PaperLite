@@ -10,9 +10,9 @@
                         <p><Icon type="md-calendar" />{{act.apply_end_at}}</p>
                     </div>
                     <div class="signup">
-                        <button id="ifapply" v-if="apply(act.id)">已报名</button>
+                        <button id="ifapply" v-if="apply(act.id)" @click.stop="cancelApply(act)">已报名</button>
                         <button id="overtime" v-if="!apply(act.id)&&timecompare(act.apply_end_at)">报名</button>
-                        <button id="withintime" v-if="!apply(act.id)&&!timecompare(act.apply_end_at)" @click="toapply(act.id)">报名</button>
+                        <button id="withintime" v-if="!apply(act.id)&&!timecompare(act.apply_end_at)" @click.stop="toapply(act)">报名</button>
                     </div>
                 </div>
                 <div class="cardbar">
@@ -47,7 +47,8 @@ export default {
         ...mapGetters([
             'activitySearch',
             'activityApplyAPI',
-            'JWTHeaderObj'
+            'JWTHeaderObj',
+            'cancelApplyAPI'
         ]),
     },
     methods:{
@@ -158,11 +159,34 @@ export default {
             }
             return false
         },
-        toapply(actid){
-            let activityapplyapi=this.activityApplyAPI+actid;
-            this.$http.post(activityapplyapi,{},{headers:this.JWTHeaderObj}).then((response)=>{
-                console.log(response);
-                this.$Message.success('报名成功')
+        toapply(act){
+            let activityapplyapi = this.activityApplyAPI + act.id;
+            this.$http.post(
+                activityapplyapi,{},
+                {headers:this.JWTHeaderObj}
+            ).then((response)=>{
+                console.log(act.id);
+                if (response.data.code == 200) {
+                    this.$Message.success('报名成功')
+                } else {
+                    this.$Message.error(response.data.msg)
+                }
+                this.$store.commit('addApplied', act)
+            }, (response) => {
+                this.$Message.error('报名失败，请重试')
+            })
+        },
+        cancelApply(act){
+            console.log(act);
+            
+            this.$http.get(
+                this.cancelApplyAPI + act.id,
+                {headers:this.JWTHeaderObj}
+            ).then((response)=>{
+                this.$Message.success('已取消')
+                this.$store.commit('cancelApplied', act)
+            }, (response) => {
+                this.$Message.error('取消报名失败，请重试')
             })
         },
         todetail(id){

@@ -4,7 +4,7 @@ export default {
         target: '/home', // 目标路由
         host:  'paperlite-api.wyyxhlxy.com',  // API host
         port: 443, // API port
-        testMode: false,        
+        testMode: true,        
     },
     mutations: {
         routeTo(state, target) {
