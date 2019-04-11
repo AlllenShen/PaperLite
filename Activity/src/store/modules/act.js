@@ -147,6 +147,18 @@ export default {
             state[state.map[arr]]=[]
           }
         },
+        commentedAct(state, payload) {
+            for (let i = 0; i < state.needComment.length; i++) {
+                let obj = state.needComment[i];
+                if (obj.id == payload) {
+                    state.needComment.splice(i, 1);
+                    i--
+                }
+            }
+            if (state.needComment == undefined) {
+                state.needComment = []
+            }
+        },
     },
     getters:{
         activitySearch: (state, getters) => {

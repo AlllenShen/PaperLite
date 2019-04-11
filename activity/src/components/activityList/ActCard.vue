@@ -48,7 +48,8 @@ export default {
             'activitySearch',
             'activityApplyAPI',
             'JWTHeaderObj',
-            'cancelApplyAPI'
+            'cancelApplyAPI',
+            'activityApply'
         ]),
     },
     methods:{
@@ -174,6 +175,17 @@ export default {
                 this.$store.commit('addApplied', act)
             }, (response) => {
                 this.$Message.error('报名失败，请重试')
+            })
+            this.$http.get(
+                this.activityApply,
+                {
+                    headers: this.JWTHeaderObj,
+                    params: {for_comment: true}
+                }
+            ).then((response) => {
+                console.log(response);
+                
+                this.$store.commit('initNeedComment', response.data.result);
             })
         },
         cancelApply(act){

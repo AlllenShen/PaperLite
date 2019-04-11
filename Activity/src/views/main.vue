@@ -1,7 +1,7 @@
 <template>
 <div id="main">
-  <div id="search"><search></search></div>
-  <div class="eva"><evaluate></evaluate></div>
+  <div id="search"><search></search><evaluate></evaluate></div>
+  <div class="eva"></div>
   <div id="cardlist"
     :style="{marginTop: heightOfHeader + 'px'}"><CardList></CardList></div>
   <div id="reachbottom" v-if="this[this.loadallmap[this.currentTag]]">已显示近两周全部活动</div>
@@ -72,9 +72,6 @@ export default {
         params: {for_comment: true}
       }
     ).then((response) => {
-      console.log('comment');
-      console.log(response.data);
-      
       this.$store.commit('initNeedComment', response.data.result);
     })
     this.$http.get(

@@ -1,8 +1,10 @@
 <template>
     <div>
-        <div v-show="isactive && show" class="hideshow">
-                <scrollCard></scrollCard> 
-        </div>
+        <transition name="evaluate"> 
+            <div v-show="isactive && show" class="hideshow">
+                    <scrollCard></scrollCard> 
+            </div>
+        </transition>
         
 
         <div class="unfind" @click="toggle()" v-show="show">
@@ -57,15 +59,20 @@ export default {
 </script>
 
 <style scoped>
-    .unfind{
-        float:none;
-        text-align: center;
-        font-family: PingFangSC-regular;
-        background-color: #f6f6f5;
-    }
-    .hideshow{
-        float: none;
-        height: 90px;
-        background-color: #f6f6f5;
-    }
+.unfind{
+    float:none;
+    text-align: center;
+    font-family: PingFangSC-regular;
+    background-color: #f6f6f5;
+}
+.hideshow{
+    float: none;
+    height: 90px;
+    background-color: #f6f6f5;
+}
+
+.evaluate-enter-active, .evaluate-leave-active {
+}
+.evaluate-enter, .evaluate-leave-to {
+}
 </style>
