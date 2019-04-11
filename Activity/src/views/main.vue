@@ -229,6 +229,7 @@ export default {
 .eva{
   position:relative;
   top:88px;
+  z-index: -1;
 }
 
 #reachbottom{
