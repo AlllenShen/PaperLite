@@ -166,7 +166,7 @@ export default {
             })
         },
         todetail(id){
-            this.$router.push({path:'/detail/id'})
+            this.$router.push({path:'/detail/' + id})
         }
     }    
 }
