@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="eva">
         <div v-show="isactive && show" class="hideshow">
                 <scrollCard></scrollCard> 
         </div>
@@ -31,7 +31,7 @@ export default {
     computed: {
         ...mapState({
             show: state => {
-                if(state.activity.applied.length == 0){
+                if(state.activity.needComment.length == 0){
                     return false
                 }
                 else{
@@ -62,6 +62,9 @@ export default {
         text-align: center;
         font-family: PingFangSC-regular;
         background-color: #f6f6f5;
+        margin-bottom: -15px;
+        color: #5F98F4;
+        font-size: 13px;
     }
     .hideshow{
         float: none;

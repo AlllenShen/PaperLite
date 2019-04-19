@@ -16,6 +16,11 @@ var utils = {
         if (cval != null)
             document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
     },
+    getQueryString(name) {
+        let reg = `(^|&)${name}=([^&]*)(&|$)`
+        let r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null; 
+    }
 }
 
 export default utils

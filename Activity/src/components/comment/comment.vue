@@ -4,7 +4,7 @@
         <div>
             <img :src='imgSrc' class="headImg">
             <div class="like">
-                <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="15"/>
+                <Icon :type="iconType" :color="iconColor" @click.stop="togglelike()" size="15"/>
                 {{likeCount}}
             </div>
             <div class="name">

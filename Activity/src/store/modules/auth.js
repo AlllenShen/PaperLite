@@ -41,6 +41,10 @@ export default {
             console.log(getters);
             return getters.baseURL + '/user/login'
         },
+        visitorLogin: (state, getters, rootState) => {
+            console.log(getters);
+            return getters.baseURL + '/user/visitor'
+        },
         cancelAPI: (state, getters, rootState) => {
             return getters.baseURL + '/activity/comment/del'
         },

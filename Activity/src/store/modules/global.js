@@ -2,17 +2,24 @@ export default {
     namespace: true,
     state: {
         target: '/home', // 目标路由
-        host:  '118.89.48.63', // 'api.wyyxhlxy.com', // API host
-        port: 8001, // API port
+        host:  'paperlite-api.wyyxhlxy.com',  // API host
+        port: 443, // API port
+        testMode: false,        
     },
     mutations: {
         routeTo(state, target) {
             state.target = target == '/login' ? '/' : target
+        },
+        visitor(state) {
+            state.visitorMode = true
         }
     },
     getters: {
         baseURL: state => {
-            return 'http://' + state.host + ':' + state.port
+            if (state.testMode) {
+                return 'http://127.0.0.1:8888'
+            }
+            return 'https://' + state.host + ':' + state.port
         }
     }
 }
