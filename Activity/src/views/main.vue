@@ -225,9 +225,6 @@ export default {
 }
 .eva{
   position:relative;
-<<<<<<< HEAD
-  top:44px;
-=======
   top:88px;
   z-index: -1;
 }
@@ -238,6 +235,5 @@ export default {
   text-align: center;
   color: grey;
   background: #F6F6F5;
->>>>>>> 7286e92f8da4067b54ae222ca6359b0f51e360d0
 }
 </style>

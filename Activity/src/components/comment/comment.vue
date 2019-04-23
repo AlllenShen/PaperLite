@@ -28,7 +28,7 @@ import {mapState, mapGetters } from 'vuex'
                 islike: false,
                 iconType: 'md-heart-outline',
                 iconColor: '#4a4a48',
-                imgSrc: "http://paperlite-api.wyyxhlxy.com:443/"+this.identicon,
+                imgSrc: "https://paperlite-api.wyyxhlxy.com"+this.identicon,
             }
         },
         props: ['name','time','content','likeCount','identicon'],

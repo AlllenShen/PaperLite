@@ -17,11 +17,16 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <div>负责人：{{personInCharge}}联系方式：{{numbers}}</div>
+                        <div>负责人：{{personInCharge}} 、 联系方式：{{numbers}}</div>
                     </div>
                 <div class="st">
-                    <div class="signUp" :style="{backgroundColor: color}">
+                    <!-- <div class="signUp" :style="{backgroundColor: color}">
                     报名
+                    </div> -->
+                    <div class="signup">
+                        <button id="ifapply" v-if="apply(actId)" @click.stop="cancelApply(act)" :style="{backgroundColor: color}">已报名</button>
+                        <button id="overtime" v-if="!apply(actId)&&timecompare(time)">报名</button>
+                        <button id="withintime" v-if="!apply(actId)&&!timecompare(time)" @click.stop="toapply(act)">报名</button>
                     </div>
                 </div>
             </div>
@@ -79,6 +84,8 @@ import {mapState, mapGetters } from 'vuex'
                 color: 'black',
                 type: null,
                 title: null,
+                actId: null,
+                act: null,
             }
         },
         components: {
@@ -90,10 +97,17 @@ import {mapState, mapGetters } from 'vuex'
             token: state => state.auth.token,
             likeAPI: state => state.auth.likeAPI,
             unlikeAPI: state => state.auth.unlikeAPI,
+            applied:state=>state.activity.applied,
+            activityApplyAPI:state=>state.auth.activityApplyAPI
             }),
             ...mapGetters([
                 'likeAPI',
                 'unlikeAPI',
+                'activitySearch',
+                'activityApplyAPI',
+                'JWTHeaderObj',
+                'cancelApplyAPI',
+                'activityApply'
             ])
         },
         methods:{
@@ -136,6 +150,143 @@ import {mapState, mapGetters } from 'vuex'
                     }
                 }
             },
+            timecompare:(ddl)=>{
+                //console.log(ddl)
+                var ddldate=ddl.split(' ')[0]
+                var ddltime=ddl.split(' ')[1]
+                var ddlyear=ddldate.split('-')[0]
+                var ddlmonth=ddldate.split('-')[1]
+                var ddlday=ddldate.split('-')[2]
+                var ddlhour=ddltime.split(':')[0]
+                var ddlminute=ddltime.split(':')[1]
+                var ddlsecond=ddltime.split(':')[2]
+                var date=new Date()
+                var year=date.getFullYear()
+                if(year!=ddlyear){
+                    if(year<ddlyear){
+                        //console.log('可报名',year)
+                        return false
+                    }
+                    if(year>ddlyear){
+                        //console.log('超过时间',year)
+                        return true
+                    }          
+                }
+                else{
+                    var month=date.getMonth()+1
+                    if(month!=ddlmonth){
+                        if(month<ddlmonth){
+                            //console.log('可报名',month)
+                            return false
+                        }
+                        if(month>ddlmonth){
+                            //console.log('超过时间',month)
+                            return true
+                        }
+                    }
+                    else{
+                        var day=date.getDate()
+                        if(day!=ddlday){
+                            if(day<ddlday){
+                                //console.log('可报名',day)
+                                return false
+                            }
+                            if(day>ddlday){
+                                //console.log('超过时间',day)
+                                return true
+                            }
+                        }
+                        else{
+                            var hour=date.getHours()
+                            if(hour!=ddlhour){
+                                if(hour<ddlhour){
+                                    //console.log('可报名',hour)
+                                    return false
+                                }
+                                if(hour>ddlhour){
+                                    //console.log('超过时间',hour)
+                                    return true
+                                }
+                            }
+                            else{
+                                var minute=date.getMinutes()
+                                if(minute!=ddlminute){
+                                    if(minute<ddlminute){
+                                        //console.log('可报名',minute)
+                                        return false
+                                    }
+                                    if(minute>ddlminute){
+                                        //console.log('超过时间',minute)
+                                        return true
+                                    }
+                                }
+                                else{
+                                    var second=date.getSeconds()
+                                    if(second>ddlsecond){
+                                        //console.log('超过时间',second)
+                                        return true
+                                    }
+                                    else{
+                                        //console.log('未超时')
+                                        return false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            apply(actid){
+                //console.log(this.applied)
+                for(var i=0;i<this.applied.length;i++){
+                    //console.log(this.applied[i])
+                    if(actid==this.applied[i].id){
+                        return true
+                    }
+                }
+                return false
+            },
+            toapply(act){
+                let activityapplyapi = this.activityApplyAPI + act.id;
+                this.$http.post(
+                    activityapplyapi,{},
+                    {headers:this.JWTHeaderObj}
+                ).then((response)=>{
+                    console.log(act.id);
+                    if (response.data.code == 200) {
+                        this.$Message.success('报名成功')
+                    } else {
+                        this.$Message.error(response.data.msg)
+                    }
+                    this.$store.commit('addApplied', act)
+                }, (response) => {
+                    this.$Message.error('报名失败，请重试')
+                })
+                this.$http.get(
+                    this.activityApply,
+                    {
+                        headers: this.JWTHeaderObj,
+                        params: {for_comment: true}
+                    }
+                ).then((response) => {
+                    console.log(response);
+                    
+                    this.$store.commit('initNeedComment', response.data.result);
+                })
+            },
+            cancelApply(act){
+                console.log(act);
+                
+                this.$http.get(
+                    this.cancelApplyAPI + act.id,
+                    {headers:this.JWTHeaderObj}
+                ).then((response)=>{
+                    this.$Message.success('已取消')
+                    this.$store.commit('cancelApplied', act)
+                }, (response) => {
+                    this.$Message.error('取消报名失败，请重试')
+                })
+            },
         },
         watch: {
             info: function(newVal,oldVal){
@@ -146,11 +297,24 @@ import {mapState, mapGetters } from 'vuex'
                 if(this.type=='为您推荐') this.color="#4a4a48";
                 this.content = newVal.content;
                 this.place = newVal.organization;
+                this.people = newVal.accepted_apply;
+                this.time = newVal.apply_end_at
                 this.title = newVal.title;
+                this.personInCharge = newVal.principal
                 this.likeCount=newVal.like;
                 this.watchCount=newVal.view;
                 this.commentCount=newVal.comment;
                 this.teamCount=newVal.members;
+                this.numbers=newVal.contact;
+                this.actId=newVal.id;
+                this.act = newVal;
+                console.log(this.content);
+                if(this.content.length == 0) this.content="无";
+                if(this.place.length == 0) this.place="无";
+                if(this.time.length == 0) this.time="无";
+                if(this.title.length == 0) this.title="无";
+                if(this.personInCharge.length == 0) this.personInCharge="无";
+                if(this.numbers.length == 0) this.numbers="无";
             }
         }
     } 
@@ -201,7 +365,7 @@ import {mapState, mapGetters } from 'vuex'
         position: absolute;
         right:10px;
         /* width: 40px; */
-        top:70px;
+        top:72px;
     }
     .signUp{
       border-radius: 5px;
@@ -234,5 +398,31 @@ import {mapState, mapGetters } from 'vuex'
     }
     .cont{
         font-size:12px;
+    }
+    .signup #ifapply{
+        width:150%;
+        height: 25px;
+        margin-left: -40%;
+        border: 1px solid #5F98F4;
+        border-radius: 2px;
+        color: white;
+    }
+    .signup #overtime{
+        width:200%;
+        height: 25px;
+        margin-left: -90%;
+        border: 1px solid #BDBDBD;
+        border-radius: 2px;
+        color: white;
+        background: #BDBDBD;
+    }
+    .signup #withintime{
+        width:200%;
+        height: 25px;
+        margin-left: -90%;
+        border: 1px solid #5F98F4;
+        border-radius: 2px;
+        color: #5F98F4;
+        background: white;
     }
 </style>
