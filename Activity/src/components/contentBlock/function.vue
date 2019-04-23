@@ -17,14 +17,15 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <div>负责人：{{personInCharge}} 、 联系方式：{{numbers}}</div>
+                        <div>负责人：{{personInCharge}}</div>
+                        <div>联系方式：{{numbers}}</div>
                     </div>
                 <div class="st">
                     <!-- <div class="signUp" :style="{backgroundColor: color}">
                     报名
                     </div> -->
                     <div class="signup">
-                        <button id="ifapply" v-if="apply(actId)" @click.stop="cancelApply(act)" :style="{backgroundColor: color}">已报名</button>
+                        <button id="ifapply" v-if="apply(actId)" @click.stop="cancelApply(act)">已报名</button>
                         <button id="overtime" v-if="!apply(actId)&&timecompare(time)">报名</button>
                         <button id="withintime" v-if="!apply(actId)&&!timecompare(time)" @click.stop="toapply(act)">报名</button>
                     </div>
@@ -81,7 +82,7 @@ import {mapState, mapGetters } from 'vuex'
                 content: null,
                 personInCharge: null,
                 numbers:null,
-                color: 'black',
+                color: '#5F98F4',
                 type: null,
                 title: null,
                 actId: null,
@@ -290,11 +291,6 @@ import {mapState, mapGetters } from 'vuex'
         },
         watch: {
             info: function(newVal,oldVal){
-                this.type = newVal.type;
-                if(this.type=='竞赛活动') this.color="#74b49b";
-                if(this.type=='报告讲座') this.color="#ffba6a";
-                if(this.type=='志愿服务') this.color="#ff987e";
-                if(this.type=='为您推荐') this.color="#4a4a48";
                 this.content = newVal.content;
                 this.place = newVal.organization;
                 this.people = newVal.accepted_apply;
@@ -355,11 +351,13 @@ import {mapState, mapGetters } from 'vuex'
     .head{
         margin-left:5%;
         margin-top:12px;
+        font-size: 14px;
     }
     .bottom{
         margin-left:5%;
         margin-top: 20px;
         margin-bottom: 20px;
+        font-size: 14px;
     }
     .st{
         position: absolute;
@@ -397,15 +395,16 @@ import {mapState, mapGetters } from 'vuex'
         float:right;
     }
     .cont{
-        font-size:12px;
+        font-size:14px;
     }
     .signup #ifapply{
-        width:150%;
+        width:137%;
         height: 25px;
-        margin-left: -40%;
-        border: 1px solid #5F98F4;
+        margin-left: -30%;
+        border: 1px solid #fff;
         border-radius: 2px;
         color: white;
+        background: #5F98F4;
     }
     .signup #overtime{
         width:200%;
