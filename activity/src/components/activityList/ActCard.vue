@@ -55,13 +55,13 @@ export default {
     methods:{
         bgcolor:function(act){
             if(act.type=='竞赛活动'){
-                return '#FF9800'
+                return 'rgb(255, 183, 77)'
             }
             if(act.type=='报告讲座'){
-                return '#3F51B5'
+                return 'rgb(126, 140, 214)'
             }
             if(act.type=='志愿服务'){
-                return '#E51C23'
+                return 'rgba(251, 83, 89, 1)'
             }
         },
         timecompare:(ddl)=>{
