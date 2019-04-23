@@ -331,8 +331,7 @@ export default {
         border-bottom:solid 5px #fff;
     }
     .midBor{
-        border-left: solid 1px #fff;
-        border-right: solid 1px #fff;
+        
     }
     .startBor{
         border-bottom:solid 5px #fff;

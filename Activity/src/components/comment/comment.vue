@@ -4,7 +4,7 @@
         <div>
             <img :src='imgSrc' class="headImg">
             <div class="like">
-                <Icon :type="iconType" :color="iconColor" @click="togglelike()" size="15"/>
+                <Icon :type="iconType" :color="iconColor" @click.stop="togglelike()" size="15"/>
                 {{likeCount}}
             </div>
             <div class="name">
@@ -28,12 +28,13 @@ import {mapState, mapGetters } from 'vuex'
                 islike: false,
                 iconType: 'md-heart-outline',
                 iconColor: '#4a4a48',
-                imgSrc: "http://118.89.48.63:8001"+this.identicon,
+                imgSrc: "https://paperlite-api.wyyxhlxy.com"+this.identicon,
             }
         },
         props: ['name','time','content','likeCount','identicon'],
         methods:{
             togglelike: function(){
+                console.log(this.identicon)
                 this.islike = !this.islike
                 if (this.islike) {
                     this.iconType = 'md-heart',

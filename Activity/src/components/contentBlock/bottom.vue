@@ -118,6 +118,8 @@ import {mapState, mapGetters } from 'vuex'
         padding:2px;
         width: 100%;
         height:48px;
+        outline:none;
+        border:none;
     }
     .child{
         position: fixed;
@@ -125,6 +127,7 @@ import {mapState, mapGetters } from 'vuex'
         height: 50px;
         bottom: 0px;
         background: #fff;
+        
     }
     .comment{
         position: relative;

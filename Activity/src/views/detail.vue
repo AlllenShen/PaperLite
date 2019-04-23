@@ -234,7 +234,7 @@ export default {
                     {
                     headers: this.JWTHeaderObj
                     }).then((response) => {
-                    // console.log(response.data.result);
+                    console.log(response.data.result);
                     this.page = this.page + 1;
                     if(response.data.result.length != 10) {
                         this.page=1;

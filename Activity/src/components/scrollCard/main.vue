@@ -90,6 +90,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 2;
     background: #000;
     opacity: 0.3;
 }
@@ -99,6 +100,7 @@ export default {
     height: 570px;
     bottom: 0px;
     background: #fff;
+    z-index: 3;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }

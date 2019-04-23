@@ -55,6 +55,7 @@ export default {
                 likeCount: 0,
                 id: newComment.id,
                 studentId: newComment.studentId,
+                identicon: newComment.identicon,
             }
             )
         },
@@ -72,6 +73,7 @@ export default {
                         likeCount: 0,
                         id: comments[i].id,
                         studentId: comments[i].student.id,
+                        identicon: comments[i].student.identicon,
                     }
                 )
             }

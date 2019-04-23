@@ -59,20 +59,18 @@ export default {
 </script>
 
 <style scoped>
-.unfind{
-    float:none;
-    text-align: center;
-    font-family: PingFangSC-regular;
-    background-color: #f6f6f5;
-}
-.hideshow{
-    float: none;
-    height: 90px;
-    background-color: #f6f6f5;
-}
-
-.evaluate-enter-active, .evaluate-leave-active {
-}
-.evaluate-enter, .evaluate-leave-to {
-}
+    .unfind{
+        float:none;
+        text-align: center;
+        font-family: PingFangSC-regular;
+        background-color: #f6f6f5;
+        margin-bottom: -15px;
+        color: #5F98F4;
+        font-size: 13px;
+    }
+    .hideshow{
+        float: none;
+        height: 90px;
+        background-color: #f6f6f5;
+    }
 </style>
