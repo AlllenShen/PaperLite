@@ -349,7 +349,8 @@ import {mapState, mapGetters } from 'vuex'
         font-size: 16px;
     }
     .head{
-        margin-left:5%;
+        margin-left:15px;
+        margin-right:15px;
         margin-top:12px;
         font-size: 14px;
     }
