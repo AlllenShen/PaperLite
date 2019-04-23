@@ -3,8 +3,8 @@
         <functionFrame>
             <div slot="content" class="project">
                 <div>
-                    <div class="projectColor" :style="{backgroundColor: color}">
-                    </div>
+                    <!-- <div class="projectColor" :style="{backgroundColor: color}">
+                    </div> -->
                     <div class="proName" :style="{color: this.color}">{{title}}</div>
                 </div>
                     <div class="head">
@@ -184,6 +184,7 @@ import {mapState, mapGetters } from 'vuex'
     .proName{
         margin-top:10px;
         padding-top:10px;
+        width:78%;
         margin-left:15px;
         font-size: 16px;
     }
