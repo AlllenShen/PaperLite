@@ -1,4 +1,5 @@
-import utils from '../../assets/utils'
+import utils from '@/assets/utils'
+
 export default {
     namespace: true,
     state: {
@@ -82,6 +83,9 @@ export default {
         },
         activityApplyAPI: (state,getters) => {
             return getters.baseURL + '/activity/apply/'
-        }
+        },
+        cancelApplyAPI: (state,getters) => {
+            return getters.baseURL + '/activity/cancel/'
+        },
     }
 }

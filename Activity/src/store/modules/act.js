@@ -1,9 +1,10 @@
-import utils from '../../assets/utils'
+import questionList from '@/assets/questionList'
+
 export default {
     namespace: true,
     state: {
         applied:[],
-        needComment:[],
+        needComment: [],
         comments: [],
         currentTag: '报告讲座',
         currentActs:null,
@@ -17,304 +18,32 @@ export default {
             '志愿服务': 'zyfu',
             '搜索': 'search',
         },
-        questionList: [
-            [
-                {
-                  quskey: 1,
-                  name: '规则有缺陷',
-                  flag: false,
-                },
-                {
-                  quskey: 2,
-                  name: '工作人员态度恶劣',
-                  flag: false,
-                },
-                {
-                  quskey: 3,
-                  name: '奖励与宣传时不符',
-                  flag: false,
-                },
-                {
-                  quskey: 4,
-                  name: '流程混乱',
-                  flag: false,
-          },
-          {
-                  quskey: 5,
-                  name: '工作人员未能提供必要帮助',
-                  flag: false,
-                },
-                {
-                  quskey: 6,
-                  name: '场地布置不美观',
-                  flag: false,
-                },
-                {
-                  quskey: 7,
-                  name: '未能准时开始',
-                  flag: false,
-                },
-                {
-                  quskey: 8,
-                  name: '材料准备不充分',
-                  flag: false,
-          },
-          {
-                  quskey: 9,
-                  name: '活动时间过长',
-                  flag: false,
-          },
-          {
-                  quskey: 10,
-                  name: '其他问题',
-                  flag: false,
-                }
-            ],
-            [
-              {
-                quskey: 11,
-                name: '规则有缺陷',
-                flag: false,
-              },
-              {
-                quskey: 12,
-                name: '工作人员态度恶劣',
-                flag: false,
-              },
-              {
-                quskey: 13,
-                name: '奖励与宣传时不符',
-                flag: false,
-              },
-              {
-                quskey: 14,
-                name: '流程混乱',
-                flag: false,
-        },
-        {
-                quskey: 15,
-                name: '工作人员未能提供必要帮助',
-                flag: false,
-              },
-              {
-                quskey: 16,
-                name: '场地布置不美观',
-                flag: false,
-              },
-              {
-                quskey: 17,
-                name: '未能准时开始',
-                flag: false,
-              },
-              {
-                quskey: 18,
-                name: '材料准备不充分',
-                flag: false,
-        },
-        {
-                quskey: 19,
-                name: '活动时间过长',
-                flag: false,
-        },
-        {
-                quskey: 20,
-                name: '其他问题',
-                flag: false,
-              }
-              ],
-              [
-                {
-                  quskey: 21,
-                  name: '规则有缺陷',
-                  flag: false,
-                },
-                {
-                  quskey: 22,
-                  name: '工作人员态度恶劣',
-                  flag: false,
-                },
-                {
-                  quskey: 23,
-                  name: '奖励与宣传时不符',
-                  flag: false,
-                },
-                {
-                  quskey: 24,
-                  name: '流程混乱',
-                  flag: false,
-          },
-          {
-                  quskey: 25,
-                  name: '工作人员未能提供必要帮助',
-                  flag: false,
-                },
-                {
-                  quskey: 26,
-                  name: '场地布置不美观',
-                  flag: false,
-                },
-                {
-                  quskey: 27,
-                  name: '未能准时开始',
-                  flag: false,
-                },
-                {
-                  quskey: 28,
-                  name: '材料准备不充分',
-                  flag: false,
-          },
-          {
-                  quskey: 29,
-                  name: '活动时间过长',
-                  flag: false,
-          },
-          {
-                  quskey: 30,
-                  name: '其他问题',
-                  flag: false,
-                }
-              ],
-            [
-              {
-                quskey: 31,
-                name: '规则有缺陷',
-                flag: false,
-              },
-              {
-                quskey: 32,
-                name: '工作人员态度恶劣',
-                flag: false,
-              },
-              {
-                quskey: 33,
-                name: '奖励与宣传时不符',
-                flag: false,
-              },
-              {
-                quskey: 34,
-                name: '流程混乱',
-                flag: false,
-        },
-        {
-                quskey: 35,
-                name: '工作人员未能提供必要帮助',
-                flag: false,
-              },
-              {
-                quskey: 36,
-                name: '场地布置不美观',
-                flag: false,
-              },
-              {
-                quskey: 37,
-                name: '未能准时开始',
-                flag: false,
-              },
-              {
-                quskey: 38,
-                name: '材料准备不充分',
-                flag: false,
-        },
-        {
-                quskey: 39,
-                name: '活动时间过长',
-                flag: false,
-        },
-        {
-                quskey: 40,
-                name: '其他问题',
-                flag: false,
-              }
-              ],
-            [
-                
-              {
-                quskey: 41,
-                name: '规则有缺陷',
-                flag: false,
-              },
-              {
-                quskey: 42,
-                name: '工作人员态度恶劣',
-                flag: false,
-              },
-              {
-                quskey: 43,
-                name: '奖励与宣传时不符',
-                flag: false,
-              },
-              {
-                quskey: 44,
-                name: '流程混乱',
-                flag: false,
-        },
-        {
-                quskey: 45,
-                name: '工作人员未能提供必要帮助',
-                flag: false,
-              },
-              {
-                quskey: 46,
-                name: '场地布置不美观',
-                flag: false,
-              },
-              {
-                quskey: 47,
-                name: '未能准时开始',
-                flag: false,
-              },
-              {
-                quskey: 48,
-                name: '材料准备不充分',
-                flag: false,
-        },
-        {
-                quskey: 49,
-                name: '活动时间过长',
-                flag: false,
-        },
-        {
-                quskey: 50,
-                name: '其他问题',
-                flag: false,
-              }
-              ],
-      [
-                {
-                  quskey: 51,
-                  name: '流程有序',
-                  flag: false,
-                },
-                {
-                  quskey: 52,
-                  name: '干货满满',
-                  flag: false,
-                },
-                {
-                  quskey: 53,
-                  name: '工作人员态度好服务棒',
-                  flag: false,
-                },
-                {
-                  quskey: 54,
-                  name: '活动氛围好',
-                  flag: false,
-          },
-          {
-                  quskey: 55,
-                  name: '其他问题',
-                  flag: false,
-                }
-              ]
-          ],
-        bgjzpage:1,
-        jshdpage:1,
-        zyfupage:1,
+        questionList: questionList,
+        bgjzpage:0,
+        jshdpage:0,
+        zyfupage:0,
         pagemap:{
             '报告讲座': 'bgjzpage',
             '竞赛活动': 'jshdpage',
             '志愿服务': 'zyfupage',
-        }
+        },
+        recentbgjz:false,
+        recentjshd:false,
+        recentzyfu:false,
+        recentmap:{
+            '报告讲座': 'recentbgjz',
+            '竞赛活动': 'recentjshd',
+            '志愿服务': 'recentzyfu',
+        },
+        allbgjz:false,
+        alljshd:false,
+        allzyfu:false,
+        loadallmap:{
+            '报告讲座': 'allbgjz',
+            '竞赛活动': 'alljshd',
+            '志愿服务': 'allzyfu',
+        },
+        currentOrder:null,
     },
     mutations: {
         addComment (state,newComment) {
@@ -369,9 +98,25 @@ export default {
             state.currentTag = tag
             //console.log(state[state.map[tag]]);
             state.currentActs = state[state.map[tag]]
+            console.log(state.currentActs.length)
         },
         initApplied(state, applied) {
             state.applied = applied
+        },
+        addApplied(state, act) {
+            state.applied.push({
+                id: act.id,
+                title: act.title
+            })
+            console.log(state.applied);
+        },
+        cancelApplied(state, act) {
+            for (var i = 0; i < state.applied.length; i++) {
+                if (act.id == state.applied[i].id) {
+                    state.applied.splice(i, 1)
+                    return
+                }
+            }
         },
         initNeedComment(state, applied) {
           state.needComment = applied
@@ -380,26 +125,39 @@ export default {
             state[state.pagemap[state.currentTag]]++
             //console.log(state[state.pagemap[state.currentTag]])
         },
+        searchrecent(state){
+          state[state.recentmap[state.currentTag]]=true
+          //console.log('searchrecnet',state[state.recentmap[state.currentTag]])
+          state[state.pagemap[state.currentTag]]=0
+          console.log('searchrecnet',state[state.pagemap[state.currentTag]])
+        },
         addmoreActs(state,payload){
             state.currentActs.push(...payload)
         },
-        cancelApplied(state,payload){
-          for (let i = 0;i<state.applied.length;i++){
-            let obj = state.applied[i];
-            if (obj.id==payload){
-              state.applied.splice(i,1);
-              i--
-            }
-           }
+        loadall(state){
+          state[state.loadallmap[state.currentTag]]=true
+          //console.log('loadall',state[state.loadallmap[state.currentTag]])
         },
-        commentedAct(state,payload){
-          for (let i = 0;i<state.needComment.length;i++){
-            let obj = state.needComment[i];
-            if (obj.id==payload){
-              state.needComment.splice(i,1);
-              i--
+        changeOrder(state,order){
+          state.currentOrder=order
+          console.log(state.currentOrder)
+        },
+        clearAllActs(state){
+          for(var arr in state.map){
+            state[state.map[arr]]=[]
+          }
+        },
+        commentedAct(state, payload) {
+            for (let i = 0; i < state.needComment.length; i++) {
+                let obj = state.needComment[i];
+                if (obj.id == payload) {
+                    state.needComment.splice(i, 1);
+                    i--
+                }
             }
-           }
+            if (state.needComment == undefined) {
+                state.needComment = []
+            }
         },
     },
     getters:{

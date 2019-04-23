@@ -28,12 +28,13 @@ import {mapState, mapGetters } from 'vuex'
                 islike: false,
                 iconType: 'md-heart-outline',
                 iconColor: '#4a4a48',
-                imgSrc: "http://118.89.48.63:8001"+this.identicon,
+                imgSrc: "http://paperlite-api.wyyxhlxy.com:443/"+this.identicon,
             }
         },
         props: ['name','time','content','likeCount','identicon'],
         methods:{
             togglelike: function(){
+                console.log(this.identicon)
                 this.islike = !this.islike
                 if (this.islike) {
                     this.iconType = 'md-heart',
