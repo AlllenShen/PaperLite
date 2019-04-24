@@ -3,7 +3,13 @@
   <div id="search"><search></search><evaluate></evaluate></div>
   <div class="eva"></div>
   <div id="cardlist"
-    :style="{marginTop: heightOfHeader + 'px'}"><CardList></CardList></div>
+    :style="{marginTop: heightOfHeader + 'px'}">
+    <CardList></CardList>
+    <div class="spin-container"
+         v-if="currentActs && currentActs.length == 0">
+      <Spin  size="large" fix></Spin>
+    </div>
+  </div>
   <div id="reachbottom" v-if="this[this.loadallmap[this.currentTag]]">已显示近两周全部活动</div>
 </div>
 </template>
@@ -235,5 +241,11 @@ export default {
   text-align: center;
   color: grey;
   background: #F6F6F5;
+}
+
+.spin-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
 }
 </style>

@@ -33,7 +33,7 @@
             </div>
                 <div slot="watch" class="f">
                     <!-- <img src="../../assets/img/liulan.png" class="watchIcon"> -->
-                    <Icon type="md-eye"  size="20" class="watchIcon"/>
+                    <Icon type="md-eye"  size="20" class="watchIcon" color="#a5a5a5"/>
                     <div class="count">
                         {{watchCount}}
                     </div>
@@ -46,14 +46,14 @@
                 </div>
                 <div slot="like" class="f" >
                     <!-- <img src="../../assets/img/pinglun.png" class="commentIcon"> -->
-                    <Icon type="md-text"  size="20" class="commentIcon"/>
+                    <Icon type="md-text"  size="20" class="commentIcon" color="#a5a5a5"/>
                     <div class="count">
                         {{commentCount}}
                     </div>
                 </div>
                 <div slot="team" class="f">
                     <!-- <img src="../../assets/img/icons_Group_.png" class="teamIcon"> -->
-                    <Icon type="md-people"  size="20" class="teamIcon"/>
+                    <Icon type="md-people"  size="20" class="teamIcon" color="#a5a5a5"/>
                     <div class="count">
                         {{teamCount}}
                     </div>
@@ -66,254 +66,255 @@
 import utils from '../../assets/utils'
 import functionFrame from './functionFrame.vue'
 import {mapState, mapGetters } from 'vuex'
-    export default {
-        data: function () {
-            return {
-                islike: false,
-                iconType: 'md-thumbs-up',
-                iconColor: '#4a4a48',
-                likeCount: 0,
-                watchCount:0,
-                commentCount:0,
-                teamCount:0,
-                time: null,
-                place: null,
-                people: null,
-                content: null,
-                personInCharge: null,
-                numbers:null,
-                color: '#5F98F4',
-                type: null,
-                title: null,
-                actId: null,
-                act: null,
-            }
-        },
-        components: {
-            functionFrame
-        },
-        props: ['info','proId'],
-        computed: {
-            ...mapState({
+export default {
+    data () {
+        return {
+            islike: false,
+            iconType: 'md-thumbs-up',
+            iconColor: '#a5a5a5',
+            likeCount: 0,
+            watchCount:0,
+            commentCount:0,
+            teamCount:0,
+            time: null,
+            place: null,
+            people: null,
+            content: null,
+            personInCharge: null,
+            numbers:null,
+            color: '#5F98F4',
+            type: null,
+            title: null,
+            actId: null,
+            act: null,
+        }
+    },
+    components: {
+        functionFrame
+    },
+    props: ['info','proId'],
+    computed: {
+        ...mapState({
             token: state => state.auth.token,
             likeAPI: state => state.auth.likeAPI,
             unlikeAPI: state => state.auth.unlikeAPI,
             applied:state=>state.activity.applied,
-            activityApplyAPI:state=>state.auth.activityApplyAPI
-            }),
-            ...mapGetters([
-                'likeAPI',
-                'unlikeAPI',
-                'activitySearch',
-                'activityApplyAPI',
-                'JWTHeaderObj',
-                'cancelApplyAPI',
-                'activityApply'
-            ])
-        },
-        methods:{
-            togglelike: function(){
-                this.islike = !this.islike
-                if (this.islike) {
-                    this.iconColor = '#ff7657',
-                    this.likeCount ++;
-                    // let token = utils.getCookie('token');
-                    if (this.token != '') {
-                        this.$http.post(
-                        this.likeAPI,{'act_id': this.proId},
-                        {
-                        headers: {
-                            Authorization: 'JWT ' + this.token
-                        }
-                        }).then((response) => {
-                        console.log(response)
-                        },(response) => {
-
-                        })
-
-                    }
-                    
-                } else {
-                    this.iconColor = '#4a4a48',
-                    this.likeCount --;
-                    if (this.token != '') {
+            activityApplyAPI:state=>state.auth.activityApplyAPI,
+            likeIconColor: state => state.style.likeIconColor,
+        }),
+        ...mapGetters([
+            'likeAPI',
+            'unlikeAPI',
+            'activitySearch',
+            'activityApplyAPI',
+            'JWTHeaderObj',
+            'cancelApplyAPI',
+            'activityApply'
+        ])
+    },
+    methods:{
+        togglelike: function(){
+            this.islike = !this.islike
+            if (this.islike) {
+                this.iconColor = '#ff7657',
+                this.likeCount ++;
+                // let token = utils.getCookie('token');
+                if (this.token != '') {
                     this.$http.post(
-                        this.unlikeAPI,{'act_id': this.proId},
-                        {
-                        headers: {
-                            Authorization: 'JWT ' + this.token
-                        }
-                        }).then((response) => {
-                            console.log(response)
-                        },(response) => {
-
-                        })
+                    this.likeAPI,{'act_id': this.proId},
+                    {
+                    headers: {
+                        Authorization: 'JWT ' + this.token
                     }
+                    }).then((response) => {
+                    console.log(response)
+                    },(response) => {
+
+                    })
+
                 }
-            },
-            timecompare:(ddl)=>{
-                //console.log(ddl)
-                var ddldate=ddl.split(' ')[0]
-                var ddltime=ddl.split(' ')[1]
-                var ddlyear=ddldate.split('-')[0]
-                var ddlmonth=ddldate.split('-')[1]
-                var ddlday=ddldate.split('-')[2]
-                var ddlhour=ddltime.split(':')[0]
-                var ddlminute=ddltime.split(':')[1]
-                var ddlsecond=ddltime.split(':')[2]
-                var date=new Date()
-                var year=date.getFullYear()
-                if(year!=ddlyear){
-                    if(year<ddlyear){
-                        //console.log('可报名',year)
+                
+            } else {
+                this.iconColor = '#a5a5a5',
+                this.likeCount --;
+                if (this.token != '') {
+                this.$http.post(
+                    this.unlikeAPI,{'act_id': this.proId},
+                    {
+                    headers: {
+                        Authorization: 'JWT ' + this.token
+                    }
+                    }).then((response) => {
+                        console.log(response)
+                    },(response) => {
+
+                    })
+                }
+            }
+        },
+        timecompare:(ddl)=>{
+            //console.log(ddl)
+            var ddldate=ddl.split(' ')[0]
+            var ddltime=ddl.split(' ')[1]
+            var ddlyear=ddldate.split('-')[0]
+            var ddlmonth=ddldate.split('-')[1]
+            var ddlday=ddldate.split('-')[2]
+            var ddlhour=ddltime.split(':')[0]
+            var ddlminute=ddltime.split(':')[1]
+            var ddlsecond=ddltime.split(':')[2]
+            var date=new Date()
+            var year=date.getFullYear()
+            if(year!=ddlyear){
+                if(year<ddlyear){
+                    //console.log('可报名',year)
+                    return false
+                }
+                if(year>ddlyear){
+                    //console.log('超过时间',year)
+                    return true
+                }          
+            }
+            else{
+                var month=date.getMonth()+1
+                if(month!=ddlmonth){
+                    if(month<ddlmonth){
+                        //console.log('可报名',month)
                         return false
                     }
-                    if(year>ddlyear){
-                        //console.log('超过时间',year)
+                    if(month>ddlmonth){
+                        //console.log('超过时间',month)
                         return true
-                    }          
+                    }
                 }
                 else{
-                    var month=date.getMonth()+1
-                    if(month!=ddlmonth){
-                        if(month<ddlmonth){
-                            //console.log('可报名',month)
+                    var day=date.getDate()
+                    if(day!=ddlday){
+                        if(day<ddlday){
+                            //console.log('可报名',day)
                             return false
                         }
-                        if(month>ddlmonth){
-                            //console.log('超过时间',month)
+                        if(day>ddlday){
+                            //console.log('超过时间',day)
                             return true
                         }
                     }
                     else{
-                        var day=date.getDate()
-                        if(day!=ddlday){
-                            if(day<ddlday){
-                                //console.log('可报名',day)
+                        var hour=date.getHours()
+                        if(hour!=ddlhour){
+                            if(hour<ddlhour){
+                                //console.log('可报名',hour)
                                 return false
                             }
-                            if(day>ddlday){
-                                //console.log('超过时间',day)
+                            if(hour>ddlhour){
+                                //console.log('超过时间',hour)
                                 return true
                             }
                         }
                         else{
-                            var hour=date.getHours()
-                            if(hour!=ddlhour){
-                                if(hour<ddlhour){
-                                    //console.log('可报名',hour)
+                            var minute=date.getMinutes()
+                            if(minute!=ddlminute){
+                                if(minute<ddlminute){
+                                    //console.log('可报名',minute)
                                     return false
                                 }
-                                if(hour>ddlhour){
-                                    //console.log('超过时间',hour)
+                                if(minute>ddlminute){
+                                    //console.log('超过时间',minute)
                                     return true
                                 }
                             }
                             else{
-                                var minute=date.getMinutes()
-                                if(minute!=ddlminute){
-                                    if(minute<ddlminute){
-                                        //console.log('可报名',minute)
-                                        return false
-                                    }
-                                    if(minute>ddlminute){
-                                        //console.log('超过时间',minute)
-                                        return true
-                                    }
+                                var second=date.getSeconds()
+                                if(second>ddlsecond){
+                                    //console.log('超过时间',second)
+                                    return true
                                 }
                                 else{
-                                    var second=date.getSeconds()
-                                    if(second>ddlsecond){
-                                        //console.log('超过时间',second)
-                                        return true
-                                    }
-                                    else{
-                                        //console.log('未超时')
-                                        return false
-                                    }
+                                    //console.log('未超时')
+                                    return false
                                 }
                             }
                         }
                     }
                 }
-            },
-            apply(actid){
-                //console.log(this.applied)
-                for(var i=0;i<this.applied.length;i++){
-                    //console.log(this.applied[i])
-                    if(actid==this.applied[i].id){
-                        return true
-                    }
-                }
-                return false
-            },
-            toapply(act){
-                let activityapplyapi = this.activityApplyAPI + act.id;
-                this.$http.post(
-                    activityapplyapi,{},
-                    {headers:this.JWTHeaderObj}
-                ).then((response)=>{
-                    console.log(act.id);
-                    if (response.data.code == 200) {
-                        this.$Message.success('报名成功')
-                    } else {
-                        this.$Message.error(response.data.msg)
-                    }
-                    this.$store.commit('addApplied', act)
-                }, (response) => {
-                    this.$Message.error('报名失败，请重试')
-                })
-                this.$http.get(
-                    this.activityApply,
-                    {
-                        headers: this.JWTHeaderObj,
-                        params: {for_comment: true}
-                    }
-                ).then((response) => {
-                    console.log(response);
-                    
-                    this.$store.commit('initNeedComment', response.data.result);
-                })
-            },
-            cancelApply(act){
-                console.log(act);
-                
-                this.$http.get(
-                    this.cancelApplyAPI + act.id,
-                    {headers:this.JWTHeaderObj}
-                ).then((response)=>{
-                    this.$Message.success('已取消')
-                    this.$store.commit('cancelApplied', act)
-                }, (response) => {
-                    this.$Message.error('取消报名失败，请重试')
-                })
-            },
-        },
-        watch: {
-            info: function(newVal,oldVal){
-                this.content = newVal.content;
-                this.place = newVal.organization;
-                this.people = newVal.accepted_apply;
-                this.time = newVal.apply_end_at
-                this.title = newVal.title;
-                this.personInCharge = newVal.principal
-                this.likeCount=newVal.like;
-                this.watchCount=newVal.view;
-                this.commentCount=newVal.comment;
-                this.teamCount=newVal.members;
-                this.numbers=newVal.contact;
-                this.actId=newVal.id;
-                this.act = newVal;
-                console.log(this.content);
-                if(this.content.length == 0) this.content="无";
-                if(this.place.length == 0) this.place="无";
-                if(this.time.length == 0) this.time="无";
-                if(this.title.length == 0) this.title="无";
-                if(this.personInCharge.length == 0) this.personInCharge="无";
-                if(this.numbers.length == 0) this.numbers="无";
             }
+        },
+        apply(actid){
+            //console.log(this.applied)
+            for(var i=0;i<this.applied.length;i++){
+                //console.log(this.applied[i])
+                if(actid==this.applied[i].id){
+                    return true
+                }
+            }
+            return false
+        },
+        toapply(act){
+            let activityapplyapi = this.activityApplyAPI + act.id;
+            this.$http.post(
+                activityapplyapi,{},
+                {headers:this.JWTHeaderObj}
+            ).then((response)=>{
+                console.log(act.id);
+                if (response.data.code == 200) {
+                    this.$Message.success('报名成功')
+                } else {
+                    this.$Message.error(response.data.msg)
+                }
+                this.$store.commit('addApplied', act)
+            }, (response) => {
+                this.$Message.error('报名失败，请重试')
+            })
+            this.$http.get(
+                this.activityApply,
+                {
+                    headers: this.JWTHeaderObj,
+                    params: {for_comment: true}
+                }
+            ).then((response) => {
+                console.log(response);
+                
+                this.$store.commit('initNeedComment', response.data.result);
+            })
+        },
+        cancelApply(act){
+            console.log(act);
+            
+            this.$http.get(
+                this.cancelApplyAPI + act.id,
+                {headers:this.JWTHeaderObj}
+            ).then((response)=>{
+                this.$Message.success('已取消')
+                this.$store.commit('cancelApplied', act)
+            }, (response) => {
+                this.$Message.error('取消报名失败，请重试')
+            })
+        },
+    },
+    watch: {
+        info: function(newVal,oldVal){
+            this.content = newVal.content;
+            this.place = newVal.organization;
+            this.people = newVal.accepted_apply;
+            this.time = newVal.apply_end_at
+            this.title = newVal.title;
+            this.personInCharge = newVal.principal
+            this.likeCount=newVal.like;
+            this.watchCount=newVal.view;
+            this.commentCount=newVal.comment;
+            this.teamCount=newVal.members;
+            this.numbers=newVal.contact;
+            this.actId=newVal.id;
+            this.act = newVal;
+            console.log(this.content);
+            if(this.content.length == 0) this.content="无";
+            if(this.place.length == 0) this.place="无";
+            if(this.time.length == 0) this.time="无";
+            if(this.title.length == 0) this.title="无";
+            if(this.personInCharge.length == 0) this.personInCharge="无";
+            if(this.numbers.length == 0) this.numbers="无";
         }
-    } 
+    }
+} 
 </script>
 
 <style scoped>

@@ -5,9 +5,11 @@
                 <div class="cardinfo">
                     <div class="info">
                         <h3>{{act.title}}</h3>
-                        <p><Icon type="md-school" />{{act.organization}}</p>
-                        <p v-if="act.type!='竞赛活动'"><Icon type="md-pin" />{{act.position}}</p>
-                        <p><Icon type="md-calendar" />{{act.apply_end_at}}</p>
+                        <p><Icon type="md-school" /> {{act.organization}}</p>
+                        <p v-if="act.position != 'None'">
+                            <Icon type="md-pin" />{{act.position}}
+                        </p>
+                        <p><Icon type="md-calendar" /> {{act.apply_end_at}}</p>
                     </div>
                     <div class="signup">
                         <button id="ifapply" v-if="apply(act.id)" @click.stop="cancelApply(act)">已报名</button>
@@ -16,16 +18,20 @@
                     </div>
                 </div>
                 <div class="cardbar">
-                    <div class="item">
-                        <Icon type="md-eye" size="15"/>
+                    <div v-if="act.hot != 'None'" class="item">
+                        <Icon type="md-flame" size="15" color="#ff5a24"/>
+                        <span>{{parseInt(act.hot)}}</span>
+                    </div>
+                    <div v-else class="item">
+                        <Icon type="md-eye" size="15" color="#a5a5a5"/>
                         <span>{{act.view}}</span>
                     </div>
                     <div class="item">
-                        <Icon type="md-thumbs-up"  size="15"/>
+                        <Icon type="md-thumbs-up"  size="15" :color="iconColor"/>
                         <span>{{act.like}}</span>
                     </div>
                     <div class="item">
-                        <Icon type="md-text"  size="15"/>
+                        <Icon type="md-text"  size="15" color="#a5a5a5"/>
                         <span>{{act.comment}}</span>
                     </div>
                 </div>                      
@@ -38,6 +44,11 @@
 import { mapState, mapGetters } from 'vuex'
 import utils from '../../assets/utils'
 export default {
+    data () {
+        return {
+            iconColor: '#a5a5a5'
+        }
+    },
     props:['activities'],
     computed: {
         ...mapState({
